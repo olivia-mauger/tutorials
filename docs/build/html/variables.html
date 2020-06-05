@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Variables Introduction &#8212; Shadow Tutorials 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Getting Started - your first Shadow program" href="FirstProgram.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="FirstProgram.html" title="Getting Started - your first Shadow program"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Shadow Tutorials 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="variables-introduction">
+<h1>Variables Introduction<a class="headerlink" href="#variables-introduction" title="Permalink to this headline">¶</a></h1>
+<p>One key concept common for almost every programming language is called a variable. Just like in mathematics where you might say 3x = 24 (where x is the variable), variables in Shadow hold values.</p>
+<div class="section" id="numeric-types">
+<h2>Numeric Types<a class="headerlink" href="#numeric-types" title="Permalink to this headline">¶</a></h2>
+<p>Key <strong>numeric type</strong> variables, which are examples of <strong>primitive variables</strong> and store <strong>literal values</strong>, are listed with their sizes and ranges below:</p>
+<a class="reference internal image-reference" href="_images/primitives.jpeg"><img alt="_images/primitives.jpeg" class="align-center" src="_images/primitives.jpeg" style="width: 700px; height: 250px;" /></a>
+<p>In addition to the above integer-like types, Shadow also has two types of variables for storing <strong>floating-point values</strong> (i.e. 10.4 or 12.3564): <strong>double</strong> and <strong>float.</strong></p>
+<p>Unlike Java, Shadow has <strong>unsigned types</strong> for primitive variables as well. For example, an unsigned “int” is represented as “uint”. However, casting is still needed if you want to store an uint in an int, or vice versa. Due to strict Shadow type-checking, exercise caution when using unsigned variables.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is no udouble or ufloat class!</p>
+</div>
+<a class="reference internal image-reference" href="_images/unsigned2.jpeg"><img alt="_images/unsigned2.jpeg" class="align-center" src="_images/unsigned2.jpeg" style="width: 700px; height: 250px;" /></a>
+<p>As an example, a basic variable declaration of type <strong>int</strong> looks like this:</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>int age = 20;
+</pre></div>
+</div>
+<p>The <strong>variable</strong> age is of <strong>primitive</strong> type <strong>int</strong> and holds the <strong>literal value</strong> 20.</p>
+</div>
+<div class="section" id="boolean">
+<h2>Boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h2>
+<p>There is one other primitive type: <strong>boolean</strong>.  A boolean variable can hold one of two values – <strong>true</strong> or <strong>false</strong>.</p>
+<p>For example,</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>boolean isBeautiful = true;
+</pre></div>
+</div>
+<p>The <strong>variable</strong> isBeautiful is of <strong>primitive</strong> type boolean and holds the value “true.”</p>
+</div>
+<div class="section" id="strings-and-immutability">
+<h2>Strings and Immutability<a class="headerlink" href="#strings-and-immutability" title="Permalink to this headline">¶</a></h2>
+<p>Although Strings will be discussed more in-depth in a later tutorial, the basics are outlined here.</p>
+<p>While it appears that a Shadow variable can be declared of type <strong>String</strong>, you are actually creating an object of the String class (see “Shadow Classes”). This means that unlike a numeric variable which holds a literal value (like the number 20), String variables hold <strong>references</strong> (a location in memory) to an object.</p>
+<p>For example,</p>
+<p>Let’s use our age variable again (int age = 20;). If you had a birthday and wanted to update your age, you could write the following line of code:</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>age = 21;
+</pre></div>
+</div>
+<p>Now the variable age is updated and holds the literal value of 21. Notice how I did not write</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>int age = 21;
+</pre></div>
+</div>
+<p>This code would not compile because the age variable is already declared and <strong>cannot be declared twice</strong>. You are not trying to create a whole new age variable; you are simply changing its value.</p>
+<p>However, now consider the following String variable.</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>String name = &quot;Olivia&quot;; // note: you must put the characters in quotes
+</pre></div>
+</div>
+<p>Let’s say you wanted to change your name to “Stephanie.” :</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>name = &quot;Stephanie&quot;;
+</pre></div>
+</div>
+<p>While this statement is legal and would compile, it is important to note that you are not changing the literal value of the name variable. Because Strings hold references to an object, you are actually creating a new reference to a new object that the variable name now points to. Thus, we say that Strings are <strong>immutable</strong>.</p>
+</div>
+<div class="section" id="code-example">
+<h2>Code Example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>import shadow:io@Console;
+
+/*This is a short bit of code the demonstrates how to the declare the variable
+types defined above. */
+
+class VariableExample
+{
+    public main( String[] args ) =&gt; ()
+    {
+            String restaurantName = &quot;Taco Tuesday&quot;;
+            boolean isHungry = true;
+
+            String meal = &quot;Meat and Bean Burrito&quot;;
+            int quantity = 2;
+            double price = 5.50;
+
+            Console.printLine(&quot;I love eating at &quot; # restaurantName # &quot;.&quot;);
+            Console.printLine(&quot;I would like &quot; # quantity # &quot; &quot; # meal # &quot;(s).&quot;);
+    }
+
+}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Variables Introduction</a><ul>
+<li><a class="reference internal" href="#numeric-types">Numeric Types</a></li>
+<li><a class="reference internal" href="#boolean">Boolean</a></li>
+<li><a class="reference internal" href="#strings-and-immutability">Strings and Immutability</a></li>
+<li><a class="reference internal" href="#code-example">Code Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="FirstProgram.html"
+                        title="previous chapter">Getting Started - your first Shadow program</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/variables.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="FirstProgram.html" title="Getting Started - your first Shadow program"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Shadow Tutorials 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Dr. Barry Wittman and Olivia Mauger.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>
