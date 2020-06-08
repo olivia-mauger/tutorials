@@ -14,7 +14,7 @@ Key **numeric type** variables, which are examples of **primitive variables** an
     :align: center
     :height: 250px
 
-In addition to the above integer-like types, Shadow also has two types of variables for storing **floating-point values** (i.e. 10.4 or 12.3564): **double** and **float.**
+In addition to the above integer-like types, Shadow also has two types of primitive variables for storing **floating-point values** (i.e. 10.4 or 12.3564): **double** and **float.**
 
 Unlike Java, Shadow has **unsigned types** for primitive variables as well. For example, an unsigned “int” is represented as “uint”. However, casting is still needed if you want to store an uint in an int, or vice versa. Due to strict Shadow type-checking, exercise caution when using unsigned variables.
 
@@ -83,8 +83,11 @@ Let’s say you wanted to change your name to “Stephanie.” :
 
 While this statement is legal and would compile, it is important to note that you are not changing the literal value of the name variable. Because Strings hold references to an object, you are actually creating a new reference to a new object that the variable name now points to. Thus, we say that Strings are **immutable**.  
 
-Code Example
-^^^^^^^^^^^^
+Code Example and Variable Names
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following short example program demonstrates basic principles for declaring and assigning variables, as well as some information on formatting output for **Console.printLine().**
+
 
 .. code-block:: shadow
  
@@ -109,6 +112,83 @@ Code Example
 	}
 	
     }
+
+The output is as follows: 
+
+.. image:: _static/variableoutput.jpeg
+    :width: 800px
+    :align: left
+    :height: 150px
+
+
+To analyze this code, let's break it up into sections. 
+
+1) **CamelCase Notation**
+
+.. code-block:: shadow
+
+    String restaurantName = "Taco Tuesday"; 
+    boolean isHungry = true; 
+
+The most important thing to note here is how the variables are named. For example, **restaurantName** is a String variable. Notice how I did not name it RestaurantName or restaurantname. Although using these names would not cause a compile error, it is good programming practice to use **CamelCase** notation: where the first word in a sequence of words (that are not separated by spaces) begins with a lowercase letter and the rest begin with uppercase letters. The same goes for the boolean variable **isHungry**. In addition to using CamelCase notation, it is also a good idea to make sure your variable names are descriptive of their purpose. In this case, if this was a program for a Restaurant, **isHungry** would be used to tell if a certain customer is hungry -- as can be inferred from the variable's name. 
+  
+.. note:: Your code will not compile if you have spaces in variable names, i.e. **restaurant name**
+ 
+2) **More Naming Conventions**
+
+.. code-block:: shadow
+
+    String meal = "Meat and Bean Burrito"; 
+    int quantity = 2; 
+    double price = 5.50; 
+
+
+There are a few more key naming conventions for Shadow. 
+
+    * Starting a variable name with a number will cause a compile error (but ending it with a number is acceptable) 
+    * Single-word names should be all lowercase (i.e. price, meal, or quantity), but is not a compile error 
+    * Starting a variable name with a special symbol (i.e. #, @, % +, etc.) will cause a compile error 
+    * Variable names cannot be **reserved words** (see next section). 
+
+.. note:: If you start a variable name with a "_", it will compile, but it is not always best practice to do so. 
+
+3) **Formating Output** 
+
+.. code-block:: shadow 
+
+    Console.printLine("I love eating at " # restaurantName # "."); 
+    Console.printLine("I would like " # quantity # " " # meal # "(s).");
+    
+As explained in a previous section "Printing text", **Console.printLine()** is used to display text on the console. Literal text goes in " ", but you are also able to print variable values as well. For example, as seen in the above segment of code, say you want to output "I love eating at Taco Tuesday." You could easily just type out "Taco Tuesday" in between the " ". However, you could also use the variable restaurantName and print its literal value, which is also "Taco Tuesday". To do so, use the **octothorpe** (#) on either side of the variable’s name outside of the " " (see above).  Thus, in place of **# restaurantName #**, Taco Tuesday will be printed. 
+
+Since these two methods result in the same output, what is the advantage of using the **#**? Let’s say in the line after you declare restaurantName you decide you want to eat at a different restaurant and write 
+
+.. code-block:: shadow
+
+    restaurantName = "Taco Wednesday"; 
+
+If you still wanted to use **Console.printLine("I love eating at " # restaurantName # ".");** to output "I love eating at Taco Wednesday", now you do not have to change any code because **# restaurantName #** will retrieve the most "recent" value for restaurantName.  
+
+
+Reserved Words
+^^^^^^^^^^^^^^
+
+In Shadow, and with most programming languages, there are **reserved words.** Reserved words inherently have meaning in Shadow. For example, "double" is a **reserved word** because Shadow recognizes this as a primitive type -- it has meaning. *Thus, you will get a compile error if you try to name a variable with a reserved word.* See the chart below for a full list of reserved words in Shadow. 
+
+.. image:: _static/reserved.jpeg
+    :width: 700px
+    :align: center
+    :height: 550px
+
+
+
+
+
+
+
+
+
+ 
 
 
 

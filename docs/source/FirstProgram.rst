@@ -37,7 +37,7 @@ In practice, comments are used to describe the function of a segment of code or 
 
 Comments are only present within the source code of a program. Neither the compiler nor the end-product executable will be impacted by comments. The third kind of comment is a documentation comment which contains specially marked-up information about code that can be used to automatically generate documentation. A documentation comment looks like the second kind of comment except that it begins with /** instead of /*.
 
-Importing packages with import
+Importing Packages with Import
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: shadow
 
@@ -52,7 +52,7 @@ To import all classes within a particular package, you can leave off a particula
 
     import shadow:io;
 
-Defining a class
+Defining a Class
 ^^^^^^^^^^^^^^^^
 .. code-block:: shadow
 
@@ -63,7 +63,7 @@ Defining a class
 
 The first line in this segment declares a class named **HelloWorld**. The definition of **HelloWorld** begins on the following line with a left brace (**{**) and ends several lines later with a corresponding right brace (**}**). All methods and variables declared in this space become members of **HelloWorld**. All code in Shadow must be encapsulated within a class.
 
-The main method
+The Main Method
 ^^^^^^^^^^^^^^^
 .. code-block:: shadow
 
@@ -80,7 +80,7 @@ The statement **public main( String[] args ) => ()** specifies a number of attri
 
 Aside from being a member method of **HelloWorld, main()** serves a unique purpose. In order to compile an executable program, a **main()** method must be present somewhere within the program. The execution of a program always begins within its **main()** method, from which other methods may be called. Put simply, it's the starting point of the program.
 
-Printing text
+Printing Text
 ^^^^^^^^^^^^^
 .. code-block:: shadow
 

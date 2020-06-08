@@ -35,7 +35,104 @@
 <p>Shadow is a type-safe, general purpose, systems language intended to be compiled to machine code. The reference implementation for Shadow uses LLVM, the same infrastructure that the C-family compiler Clang is built on, and targets the x86 architecture for the Linux, Mac, and Windows operating systems.
 Shadow comes out of the C-like family of languages and shares some syntax with C and C++ but even more with Java and C#. It’s a statically-typed language that emphasizes clarity. Don’t get us wrong: Dynamically typed languages like Python, Ruby, and JavaScript are great for productivity, but sometimes you want stronger guarantees that a program does what you think it does. Ultimately, it’s a question of the right tool for the right job.</p>
 </div>
-<span id="document-compiler"></span><span id="document-FirstProgram"></span><div class="section" id="getting-started-your-first-shadow-program">
+<span id="document-compiler"></span><div class="section" id="using-the-shadow-compiler">
+<h2>Using the Shadow Compiler<a class="headerlink" href="#using-the-shadow-compiler" title="Permalink to this headline">¶</a></h2>
+<p><em>Note: This tutorial is for version 0.7.5 of the Shadow compiler and may not be accurate for other versions.</em></p>
+<p>The Shadow compiler is required in order to transform written Shadow programs into their executable counterparts. It provides a number of helpful features, including descriptive error-messages and a simple, automated build system. The compiler, along with detailed installation instructions, is available on the <strong>Downloads</strong> page.</p>
+<div class="section" id="getting-started">
+<h3>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h3>
+<p>Like many utilities, the Shadow compiler is operated via the command-line. Access to the command-line varies by platform, but is usually available through a terminal emulator. Running the install script included with the Shadow compiler adds its location to the system’s <strong>PATH</strong> variable, allowing it to be run from any directory with the command <strong>shadowc.</strong></p>
+<p>For simple programs, compilation can be invoked with the following command:</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>shadowc Main.shadow
+</pre></div>
+</div>
+<p>In this case, <strong>Main.shadow</strong> is a Shadow source file containing a <strong>main</strong> method. This <strong>main</strong> method will become the entry point of the program in the resulting executable. The compiler will automatically attempt to resolve any dependencies, both locally and within the standard library.</p>
+<p>By default, the resulting executable will bear the same name as the source file (in this case <strong>Main.exe</strong> on Windows and <strong>Main</strong> on other systems). The executable name can be specified using the <strong>-o</strong> option:</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>shadowc Main.shadow -o UsefulProgrgam.exe
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-options">
+<h3>Additional Options<a class="headerlink" href="#additional-options" title="Permalink to this headline">¶</a></h3>
+<p>When run with the option <strong>-h</strong> (or <strong>–help</strong>), the compiler will print a list of all available options and their descriptions. This will also occur if an invalid option or argument is specified, along with a corresponding error message. For reference, the help printout is reproduced below:</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>usage: shadowc &lt;mainSource.shadow&gt; [-o &lt;output&gt;] [-c &lt;config.xml&gt;]
+-c,--config &lt;config.xml&gt;   Specify optional configuration file
+                       If shadow.xml exists, it will be checked
+-f,--force-recompile       Recompile all source files, even if
+                       unnecessary
+-h,--help                  Display command line options and exit
+-i,--information           Display information about the compiler and
+                       exit
+-n,--nolink                Compile Shadow files but do not link
+-o,--output &lt;file&gt;         Place output into &lt;file&gt;
+-r,--human-readable        Generate human-readable IR code
+-t,--typecheck             Parse and type-check the Shadow files
+-v,--verbose               Print detailed information about the
+                       compilation process
+-w,--warning &lt;flag&gt;        Specify warning flags
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration-files">
+<h3>Configuration Files<a class="headerlink" href="#configuration-files" title="Permalink to this headline">¶</a></h3>
+<p><strong>The Shadow compiler ships with tested configuration files. Outside of special cases, most users will not need to worry about creating their own configuration files. If the compiler works as desired on your platform, this section can safely be ignored.</strong></p>
+<p>In some cases, it is necessary or convenient to specify additional options in a configuration file. Such cases include cross-compiling (compiling for another platform) and the addition of non-typical include paths (those which the compiler won’t look through on its own). When no configuration file is present, the compiler makes assumptions (either through default values or automatic detection) about the appropriate settings for the given platform. If the file is present but does not make use of all possible options, the same process will be applied to the unspecified fields.</p>
+<p>Configuration files are XML-based, and may be passed to the compiler following the option <strong>-c</strong> (or <strong>–config</strong>). If the option is not used, the compiler will check for the file <strong>shadow.xml</strong>, first in the directory of the given source file and then in the compiler executable’s directory. If neither file exists, the compiler will fall back on default settings. The following is a complete description of all legal tags and attributes within a Shadow configuration file:</p>
+<dl class="simple">
+<dt><strong>Tags:</strong></dt><dd><ul class="simple">
+<li><p><strong>&lt;shadow&gt;</strong> - The outermost tag of the file, used to specify platform information for the compilation process. (<em>required</em>)</p></li>
+<li><p><strong>&lt;system&gt;</strong> - Used to specify the location of the Shadow standard libraries. Only one standard path may be specified. (<em>optional</em>)</p></li>
+<li><p><strong>&lt;include&gt;</strong> - Used to define additional search paths for resolving dependencies (<strong>import</strong> statements). If any include paths are specified, the path <strong>&lt;include&gt;.&lt;/include&gt;</strong> must also be. (<em>optional</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes of the &lt;shadow&gt; tag:</strong> <em>Note: All of the following attributes are entirely optional, and will be determined by the compiler if absent. The default values are generally accurate, and should not be overridden unless necessary.</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>os</strong> - The operating system on which the program is being compiled and on which it will run. This determines the choice of system calls to be used by the standard libraries, and may also determine the linker to be used by the compiler (<strong>gcc</strong> or <strong>clang</strong>). Any name may be specified, but only those containing the text “Windows”, “Mac”, and “Linux” currently receive special treatment. All others are interpreted as “Linux”.</p></li>
+<li><p><strong>arch</strong> - The addressing mode (32 or 64) used by the target platform’s processor. This information determines pointer size and is used by Shadow’s exception handling system.</p></li>
+<li><p><strong>target</strong> - The target triple used by the LLVM component of the Shadow compiler. See the <strong>LLVM Target Triples</strong> section for more information</p></li>
+<li><p><strong>link</strong> - The parameters to be passed to the linker.</p></li>
+</ul>
+</div></blockquote>
+<p>The following example demonstrates the general structure of a Shadow configuration file:</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;shadow os=&quot;Linux&quot; arch=&quot;64&quot; target=&quot;x86_64-unknown-linux-gnu&quot;&gt;
+  &lt;system&gt;/home/dave/standardlibs&lt;/system&gt;
+  &lt;import&gt;.&lt;/import&gt;
+  &lt;import&gt;/usr/local/lib/extralibs&lt;/import&gt;
+&lt;/shadow&gt;
+</pre></div>
+</div>
+<p>In the example above, the user has explicitly specified some platform and directory information. Within the <strong>&lt;shadow&gt;</strong> tag, the <strong>os=”Linux”</strong> attribute ensures that the compiler will use Linux-compliant system calls for standard library functions. The attribute <strong>arch=”64”</strong> ensures that 64-bit addressing is used. Although the <strong>target</strong> attribute seems to contain redundant information, it represents a special set of information used by the compiler’s LLVM backend (specifically, the last stages of compilation which output platform-specific machine code). See the section on <strong>LLVM Target Triples</strong> for more information.</p>
+<p>The <strong>&lt;system&gt;</strong> tag is used to explicitly specify that the Shadow standard library is located in <strong>/home/dave/standardlibs/.</strong> Within this directory, the compiler looks for the directory <strong>shadow/</strong> containing the libraries in question. The tag <strong>&lt;import&gt;.&lt;/import&gt;</strong> tells the compiler to resolve import statements by searching directories relative to the file being compiled. This tag must always be specified <strong>if</strong> any other include paths are specified, or the standard libraries (and presumably most user programs) will fail to resolve dependencies. Additional paths, such as the one specified in <strong>&lt;import&gt;/usr/local/lib/extralibs&lt;/import&gt;</strong> will also be searched when resolving dependencies.</p>
+<p><strong>Configuration for Microsoft Windows</strong></p>
+<p>The configuration file below describes the platform attributes for compiling on (and for) Microsoft Windows. Because MinGW does not support 64-bit compilation, it is important to prevent the compiler from attempting to do so.</p>
+<p><strong>LLVM Target Triples</strong></p>
+<p>During compilation, the Shadow compiler uses a third party tool, the LLVM compiler, to generate the final, platform-specific machine code of an executable. Because the LLVM compiler is an external tool, it requires its own set of platform information to generate valid machine code. During compilation, the contents of the <strong>target</strong> attribute (either taken from a configuration file or automatically determined) are handed directly to the LLVM compiler. Thus, the attribute must follow the formatting of an LLVM target “triple”. The following information provides some explanation of how to format these triples:</p>
+<p>The canonical form of LLVM target triple is either <strong>Architecture-Vendor-OperatingSystem or Architecture-Vendor-OperatingSystem-Environment.</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Architecture: <strong>arm, mips, sparc, x86, x86_64</strong>, etc.</p></li>
+<li><p>Vendor: <strong>apple, pc, nvidia</strong>, etc.</p></li>
+<li><p>Operating System: <strong>freebsd, ios, linux, macosx, win32, windows</strong>, etc.</p></li>
+<li><p>Environment: <strong>gnu, android, msvc</strong>, etc.</p></li>
+</ul>
+</div></blockquote>
+<p><em>Note: **unknown*</em> is a valid entry in any of these fields. The most critical fields to fill in are those for architecture and operating system.*</p>
+<p>Many additional, arguably more obscure options exist for each field. See the beginning of the <strong>header file</strong> from LLVM’s triple-handling code for a more complete listing. Unfortunately, the document seems to provide incomplete information (for example, the <strong>mingw32</strong> operating system attribute is not listed).</p>
+<p><strong>Examples:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>x86-unknown-Win32</strong></p></li>
+<li><p><strong>x86_64-unknown-Linux-GNU</strong></p></li>
+<li><p><strong>x86_64-Apple-MacOSX</strong></p></li>
+</ul>
+</div></blockquote>
+<p>All LLVM tools are capable of automatically detecting the correct triple for a given platform. If LLVM is properly installed, the command <strong>llc –version</strong> will display information including the default triple. A compiled version of this tool comes with the Windows installation of Shadow, and can be run from the associated directory. However, the Windows platform currently has limitations. See the <strong>Windows</strong> section for details.</p>
+</div>
+</div>
+<span id="document-FirstProgram"></span><div class="section" id="getting-started-your-first-shadow-program">
 <h2>Getting Started - your first Shadow program<a class="headerlink" href="#getting-started-your-first-shadow-program" title="Permalink to this headline">¶</a></h2>
 <p>In accordance with programming tradition, the first program demonstrated will print the message <strong>“Hello, World!”</strong></p>
 <div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>// This program prints out &quot;Hello, World!&quot;
@@ -112,9 +209,85 @@ In practice, comments are used to describe the function of a segment of code or 
 <p><strong>Console</strong>, however, is a special kind of class called a singleton. This means that only one <strong>Console</strong> object can exist within the entire program (in reality, within an individual thread of the program). Normally, an object is created using the <strong>create</strong> keyword. However, a singleton is created in the first method that uses it. Any later uses of the singleton will retrieve the existing object. In this case, the <strong>Console</strong> command gives us access to the <strong>Console</strong> object which has the ability to print out information using its <strong>printLine()</strong> method described above. Shadow syntax requires that the name of an object and the name of the method that is being called are separated by a dot.</p>
 </div>
 </div>
-<span id="document-variables"></span><div class="section" id="variables">
-<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
-<p>This is where I will talk about variables in Shadow!!</p>
+<span id="document-variables"></span><div class="section" id="variables-and-strings-introduction">
+<h2>Variables and Strings Introduction<a class="headerlink" href="#variables-and-strings-introduction" title="Permalink to this headline">¶</a></h2>
+<p>One key concept common for almost every programming language is called a variable. Just like in mathematics where you might say 3x = 24 (where x is the variable), variables in Shadow hold values.</p>
+<div class="section" id="numeric-types">
+<h3>Numeric Types<a class="headerlink" href="#numeric-types" title="Permalink to this headline">¶</a></h3>
+<p>Key <strong>numeric type</strong> variables, which are examples of <strong>primitive variables</strong> and store <strong>literal values</strong>, are listed with their sizes and ranges below:</p>
+<a class="reference internal image-reference" href="_images/primitives.jpeg"><img alt="_images/primitives.jpeg" class="align-center" src="_images/primitives.jpeg" style="width: 700px; height: 250px;" /></a>
+<p>In addition to the above integer-like types, Shadow also has two types of variables for storing <strong>floating-point values</strong> (i.e. 10.4 or 12.3564): <strong>double</strong> and <strong>float.</strong></p>
+<p>Unlike Java, Shadow has <strong>unsigned types</strong> for primitive variables as well. For example, an unsigned “int” is represented as “uint”. However, casting is still needed if you want to store an uint in an int, or vice versa. Due to strict Shadow type-checking, exercise caution when using unsigned variables.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is no udouble or ufloat class!</p>
+</div>
+<a class="reference internal image-reference" href="_images/unsigned2.jpeg"><img alt="_images/unsigned2.jpeg" class="align-center" src="_images/unsigned2.jpeg" style="width: 700px; height: 250px;" /></a>
+<p>As an example, a basic variable declaration of type <strong>int</strong> looks like this:</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>int age = 20;
+</pre></div>
+</div>
+<p>The <strong>variable</strong> age is of <strong>primitive</strong> type <strong>int</strong> and holds the <strong>literal value</strong> 20.</p>
+</div>
+<div class="section" id="boolean">
+<h3>Boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h3>
+<p>There is one other primitive type: <strong>boolean</strong>.  A boolean variable can hold one of two values – <strong>true</strong> or <strong>false</strong>.</p>
+<p>For example,</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>boolean isBeautiful = true;
+</pre></div>
+</div>
+<p>The <strong>variable</strong> isBeautiful is of <strong>primitive</strong> type boolean and holds the value “true.”</p>
+</div>
+<div class="section" id="strings-and-immutability">
+<h3>Strings and Immutability<a class="headerlink" href="#strings-and-immutability" title="Permalink to this headline">¶</a></h3>
+<p>Although Strings will be discussed more in-depth in a later tutorial, the basics are outlined here.</p>
+<p>While it appears that a Shadow variable can be declared of type <strong>String</strong>, you are actually creating an object of the String class (see “Shadow Classes”). This means that unlike a numeric variable which holds a literal value (like the number 20), String variables hold <strong>references</strong> (a location in memory) to an object.</p>
+<p>For example,</p>
+<p>Let’s use our age variable again (int age = 20;). If you had a birthday and wanted to update your age, you could write the following line of code:</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>age = 21;
+</pre></div>
+</div>
+<p>Now the variable age is updated and holds the literal value of 21. Notice how I did not write</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>int age = 21;
+</pre></div>
+</div>
+<p>This code would not compile because the age variable is already declared and <strong>cannot be declared twice</strong>. You are not trying to create a whole new age variable; you are simply changing its value.</p>
+<p>However, now consider the following String variable.</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>String name = &quot;Olivia&quot;; // note: you must put the characters in quotes
+</pre></div>
+</div>
+<p>Let’s say you wanted to change your name to “Stephanie.” :</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>name = &quot;Stephanie&quot;;
+</pre></div>
+</div>
+<p>While this statement is legal and would compile, it is important to note that you are not changing the literal value of the name variable. Because Strings hold references to an object, you are actually creating a new reference to a new object that the variable name now points to. Thus, we say that Strings are <strong>immutable</strong>.</p>
+</div>
+<div class="section" id="code-example">
+<h3>Code Example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>import shadow:io@Console;
+
+/*This is a short bit of code the demonstrates how to the declare the variable
+types defined above. */
+
+class VariableExample
+{
+    public main( String[] args ) =&gt; ()
+    {
+            String restaurantName = &quot;Taco Tuesday&quot;;
+            boolean isHungry = true;
+
+            String meal = &quot;Meat and Bean Burrito&quot;;
+            int quantity = 2;
+            double price = 5.50;
+
+            Console.printLine(&quot;I love eating at &quot; # restaurantName # &quot;.&quot;);
+            Console.printLine(&quot;I would like &quot; # quantity # &quot; &quot; # meal # &quot;(s).&quot;);
+    }
+
+}
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -129,6 +302,12 @@ In practice, comments are used to describe the function of a segment of code or 
   <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html#document-ShadowIntro">What is Shadow?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-compiler">Using the Shadow Compiler</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#additional-options">Additional Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#configuration-files">Configuration Files</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#document-FirstProgram">Getting Started - your first Shadow program</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="index.html#comments">Comments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#importing-packages-with-import">Importing packages with import</a></li>
@@ -137,7 +316,13 @@ In practice, comments are used to describe the function of a segment of code or 
 <li class="toctree-l2"><a class="reference internal" href="index.html#printing-text">Printing text</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-variables">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-variables">Variables and Strings Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#numeric-types">Numeric Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#boolean">Boolean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#strings-and-immutability">Strings and Immutability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#code-example">Code Example</a></li>
+</ul>
+</li>
 </ul>
 
         </div>

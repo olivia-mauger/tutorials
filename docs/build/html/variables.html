@@ -14,6 +14,7 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Operators and Expressions" href="operators.html" />
     <link rel="prev" title="Getting Started - your first Shadow program" href="FirstProgram.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -22,6 +23,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="operators.html" title="Operators and Expressions"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="FirstProgram.html" title="Getting Started - your first Shadow program"
              accesskey="P">previous</a> |</li>
@@ -41,7 +45,7 @@
 <h2>Numeric Types<a class="headerlink" href="#numeric-types" title="Permalink to this headline">¶</a></h2>
 <p>Key <strong>numeric type</strong> variables, which are examples of <strong>primitive variables</strong> and store <strong>literal values</strong>, are listed with their sizes and ranges below:</p>
 <a class="reference internal image-reference" href="_images/primitives.jpeg"><img alt="_images/primitives.jpeg" class="align-center" src="_images/primitives.jpeg" style="width: 700px; height: 250px;" /></a>
-<p>In addition to the above integer-like types, Shadow also has two types of variables for storing <strong>floating-point values</strong> (i.e. 10.4 or 12.3564): <strong>double</strong> and <strong>float.</strong></p>
+<p>In addition to the above integer-like types, Shadow also has two types of primitive variables for storing <strong>floating-point values</strong> (i.e. 10.4 or 12.3564): <strong>double</strong> and <strong>float.</strong></p>
 <p>Unlike Java, Shadow has <strong>unsigned types</strong> for primitive variables as well. For example, an unsigned “int” is represented as “uint”. However, casting is still needed if you want to store an uint in an int, or vice versa. Due to strict Shadow type-checking, exercise caution when using unsigned variables.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -56,7 +60,7 @@
 </div>
 <div class="section" id="boolean">
 <h2>Boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h2>
-<p>There is one other primitive type: <strong>boolean</strong>.  A boolean variable can hold one of two values – <strong>true</strong> or <strong>false</strong>.</p>
+<p>There is one other primitive type: <strong>boolean</strong>.  A boolean variable can hold one of two values -- <strong>true</strong> or <strong>false</strong>.</p>
 <p>For example,</p>
 <div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>boolean isBeautiful = true;
 </pre></div>
@@ -87,8 +91,9 @@
 </div>
 <p>While this statement is legal and would compile, it is important to note that you are not changing the literal value of the name variable. Because Strings hold references to an object, you are actually creating a new reference to a new object that the variable name now points to. Thus, we say that Strings are <strong>immutable</strong>.</p>
 </div>
-<div class="section" id="code-example">
-<h2>Code Example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="code-example-and-variable-names">
+<h2>Code Example and Variable Names<a class="headerlink" href="#code-example-and-variable-names" title="Permalink to this headline">¶</a></h2>
+<p>The following short example program demonstrates basic principles for declaring and assigning variables, as well as some information on formatting output for <strong>Console.printLine().</strong></p>
 <div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>import shadow:io@Console;
 
 /*This is a short bit of code the demonstrates how to the declare the variable
@@ -112,6 +117,60 @@ class VariableExample
 }
 </pre></div>
 </div>
+<p>The output is as follows:</p>
+<a class="reference internal image-reference" href="_images/variableoutput.jpeg"><img alt="_images/variableoutput.jpeg" class="align-left" src="_images/variableoutput.jpeg" style="width: 800px; height: 150px;" /></a>
+<p>To analyze this code, let's break it up into sections.</p>
+<ol class="arabic simple">
+<li><p><strong>CamelCase Notation</strong></p></li>
+</ol>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>String restaurantName = &quot;Taco Tuesday&quot;;
+boolean isHungry = true;
+</pre></div>
+</div>
+<p>The most important thing to note here is how the variables are named. For example, <strong>restaurantName</strong> is a String variable. Notice how I did not name it RestaurantName or restaurantname. Although using these names would not cause a compile error, it is good programming practice to use <strong>CamelCase</strong> notation: where the first word in a sequence of words (that are not separated by spaces) begins with a lowercase letter and the rest begin with uppercase letters. The same goes for the boolean variable <strong>isHungry</strong>. In addition to using CamelCase notation, it is also a good idea to make sure your variable names are descriptive of their purpose. In this case, if this was a program for a Restaurant, <strong>isHungry</strong> would be used to tell if a certain customer is hungry -- as can be inferred from the variable's name.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your code will not compile if you have spaces in variable names, i.e. <strong>restaurant name</strong></p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>More Naming Conventions</strong></p></li>
+</ol>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>String meal = &quot;Meat and Bean Burrito&quot;;
+int quantity = 2;
+double price = 5.50;
+</pre></div>
+</div>
+<p>There are a few more key naming conventions for Shadow.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Starting a variable name with a number will cause a compile error (but ending it with a number is acceptable)</p></li>
+<li><p>Single-word names should be all lowercase (i.e. price, meal, or quantity), but is not a compile error</p></li>
+<li><p>Starting a variable name with a special symbol (i.e. #, &#64;, % +, etc.) will cause a compile error</p></li>
+<li><p>Variable names cannot be <strong>reserved words</strong> (see next section).</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you start a variable name with a &quot;_&quot;, it will compile, but it is not always best practice to do so.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Formating Output</strong></p></li>
+</ol>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>Console.printLine(&quot;I love eating at &quot; # restaurantName # &quot;.&quot;);
+Console.printLine(&quot;I would like &quot; # quantity # &quot; &quot; # meal # &quot;(s).&quot;);
+</pre></div>
+</div>
+<p>As explained in a previous section &quot;Printing text&quot;, <strong>Console.printLine()</strong> is used to display text on the console. Literal text goes in &quot; &quot;, but you are also able to print variable values as well. For example, as seen in the above segment of code, say you want to output &quot;I love eating at Taco Tuesday.&quot; You could easily just type out &quot;Taco Tuesday&quot; in between the &quot; &quot;. However, you could also use the variable restaurantName and print its literal value, which is also &quot;Taco Tuesday&quot;. To do so, use the <strong>octothorpe</strong> (#) on either side of the variable’s name outside of the &quot; &quot; (see above).  Thus, in place of <strong># restaurantName #</strong>, Taco Tuesday will be printed.</p>
+<p>Since these two methods result in the same output, what is the advantage of using the <strong>#</strong>? Let’s say in the line after you declare restaurantName you decide you want to eat at a different restaurant and write</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>restaurantName = &quot;Taco Wednesday&quot;;
+</pre></div>
+</div>
+<p>If you still wanted to use <strong>Console.printLine(&quot;I love eating at &quot; # restaurantName # &quot;.&quot;);</strong> to output &quot;I love eating at Taco Wednesday&quot;, now you do not have to change any code because <strong># restaurantName #</strong> will retrieve the most &quot;recent&quot; value for restaurantName.</p>
+</div>
+<div class="section" id="reserved-words">
+<h2>Reserved Words<a class="headerlink" href="#reserved-words" title="Permalink to this headline">¶</a></h2>
+<p>In Shadow, and with most programming languages, there are <strong>reserved words.</strong> Reserved words inherently have meaning in Shadow. For example, &quot;double&quot; is a <strong>reserved word</strong> because Shadow recognizes this as a primitive type -- it has meaning. <em>Thus, you will get a compile error if you try to name a variable with a reserved word.</em> See the chart below for a full list of reserved words in Shadow.</p>
+<a class="reference internal image-reference" href="_images/reserved.jpeg"><img alt="_images/reserved.jpeg" class="align-center" src="_images/reserved.jpeg" style="width: 700px; height: 550px;" /></a>
 </div>
 </div>
 
@@ -127,7 +186,8 @@ class VariableExample
 <li><a class="reference internal" href="#numeric-types">Numeric Types</a></li>
 <li><a class="reference internal" href="#boolean">Boolean</a></li>
 <li><a class="reference internal" href="#strings-and-immutability">Strings and Immutability</a></li>
-<li><a class="reference internal" href="#code-example">Code Example</a></li>
+<li><a class="reference internal" href="#code-example-and-variable-names">Code Example and Variable Names</a></li>
+<li><a class="reference internal" href="#reserved-words">Reserved Words</a></li>
 </ul>
 </li>
 </ul>
@@ -135,6 +195,9 @@ class VariableExample
   <h4>Previous topic</h4>
   <p class="topless"><a href="FirstProgram.html"
                         title="previous chapter">Getting Started - your first Shadow program</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="operators.html"
+                        title="next chapter">Operators and Expressions</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -162,6 +225,9 @@ class VariableExample
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="operators.html" title="Operators and Expressions"
+             >next</a> |</li>
         <li class="right" >
           <a href="FirstProgram.html" title="Getting Started - your first Shadow program"
              >previous</a> |</li>

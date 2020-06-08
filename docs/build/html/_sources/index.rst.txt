@@ -14,6 +14,7 @@ Welcome to the Shadow Tutorials!
    compiler
    FirstProgram
    variables
+   operators
 
 
 

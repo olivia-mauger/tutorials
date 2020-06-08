@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Operators and Expressions &#8212; Shadow Tutorials 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Variables Introduction" href="variables.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="variables.html" title="Variables Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Shadow Tutorials 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="operators-and-expressions">
+<h1>Operators and Expressions<a class="headerlink" href="#operators-and-expressions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="assignment">
+<h2>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">¶</a></h2>
+<p>In the &quot;Variables Introduction&quot; section, assigning a variable a particular value is briefly touched on. For example, consider the following line of code:</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>double height = 5.4;
+</pre></div>
+</div>
+<p>In this instance, the variable <strong>height</strong> is <em>assigned</em> the value 5.4. Another example would be</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>int total = 6 + 6;
+</pre></div>
+</div>
+<p>The variable <strong>total</strong> is <em>assigned</em> the result of the evaluated <strong>expression</strong> 6 + 6, which is 12.</p>
+<p>While these two examples constitute the basics of assignment, Shadow also has some unique features that help streamline the more complicated examples of assignment. See below.</p>
+<div class="highlight-shadow notranslate"><div class="highlight"><pre><span></span>int x; //Line 1
+int y; //Line 2
+int z; //Line 3
+(x, y) = (3, 6); //Line 4
+(x, y) = (y, x); //Line 5
+(x, y, z) = 10; //Line 6
+</pre></div>
+</div>
+<p>The above section of code demonstrates a few Shadow syntactic structures: <strong>sequences</strong> and two of its subtypes, <strong>swaps</strong> and <strong>splats</strong>. In the first three lines of code, the variables <strong>x</strong>, <strong>y</strong>, and <strong>z</strong>  are declared but not <strong>initialized</strong>. However, in Line 4, variables <strong>x</strong> and <strong>y</strong> are initiated in a single line. This is a basic <strong>sequence</strong>. Line 5 is an example of a <strong>swap</strong> because now <strong>x</strong> has a value  6 and <strong>y</strong> has value 3. Lastly, Line 6 is called a <strong>splat</strong> because all three variables are set to 10 in the same line.</p>
+</div>
+<div class="section" id="arithmetic-operators">
+<h2>Arithmetic Operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h2>
+<p>Arithmetic operators in Shadow appear mostly as they would in an elementary math class. See the list below (in order of precedence).</p>
+<ul class="simple">
+<li><p>&quot;*&quot; is used for multiplication</p></li>
+<li><p>&quot;/&quot; is used for division</p></li>
+<li><p>&quot;%&quot; is used for modular division</p></li>
+<li><p>&quot;+&quot; is used for addition</p></li>
+<li><p>&quot;-&quot; is used for subtraction</p></li>
+</ul>
+<p><strong>Precedence with Arithmetic Operators Example</strong></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Operators and Expressions</a><ul>
+<li><a class="reference internal" href="#assignment">Assignment</a></li>
+<li><a class="reference internal" href="#arithmetic-operators">Arithmetic Operators</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="variables.html"
+                        title="previous chapter">Variables Introduction</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/operators.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="variables.html" title="Variables Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Shadow Tutorials 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Dr. Barry Wittman and Olivia Mauger.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>
