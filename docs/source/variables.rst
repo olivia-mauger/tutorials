@@ -223,6 +223,9 @@ In all examples in this section, the variables are declared with a **specific** 
 
     var marathonCity = "Boston" 
 
+As you can see, ``milesRun`` is clearly a ``double``, and ``marathonCity`` is a ``String``. Going forward with the tutorials, variables will be declared using ``var`` in examples. 
+
+
 
 
 

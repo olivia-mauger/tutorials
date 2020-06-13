@@ -140,8 +140,7 @@ Relational operators in Shadow are used to make comparisons and when used in exp
 * ``<`` "less than"
 * ``>=`` "greater than or equal to" 
 * ``<=`` "less than or equal to" 
-* ``and`` "AND"
-* ``or`` "OR"
+
 
 **A note on** ``==``
 
@@ -228,7 +227,7 @@ The console output is here for reference.
 Logical Operators
 ^^^^^^^^^^^^^^^^^
 
-Logical operators in Shadow, like relational operators, evaluate to either ``true`` or ``false`` when used in expressions. They are commonly used in ``if``/ ``else`` statements, which are discussed in detail on the next page. See the below for a list of logical operators: 
+Logical operators in Shadow, like relational operators, evaluate to either ``true`` or ``false`` when used in expressions. They are commonly used in ``if``/ ``else`` statements, which are discussed in detail on the next page. See below for a list of logical operators: 
 
 * ``and``
 * ``or`` 
@@ -242,7 +241,8 @@ The following basic program outlines how to use these logical operators:
 
     class LogicalOperators
     {
-	public main( String[] args ) => () { 
+	public main( String[] args ) => () 
+        { 
              /* 
               *The following code provides examples of how to use 
 	      * "and",  "or", and "!". 
@@ -299,6 +299,8 @@ To conclude our analysis of the major types of operators in Shadow, we will disc
 
 **Unary Operators**
 
+This type of operator has only one operand. 
+
 * ``-`` negative value
 * ``+`` positive value 
 * ``!`` can also be considered a unary operator 
@@ -307,12 +309,41 @@ To conclude our analysis of the major types of operators in Shadow, we will disc
 
 .. code-block:: shadow
     
-    int x = 6; 
+    var x = 6; 
     x = -x; 
     //Now the variable x holds the value -6 
 
 
 **Assignment Operators** 
+
+When you think of assignment operators, the ``=`` probably comes to mind. The ``=`` is, of course, an assignment operator. In a statement such as ``int x = 7;``, the variable ``x`` is **assigned** the literal value 7. However, in addition to the ``=``, there are a handful of other operators that help simplify (or give shortcuts) for assignment. See the list below: 
+
+* ``+=``
+* ``-=``
+* ``*=``
+* ``/=``
+* ``%=``
+
+Let’s examine the following segments of code to see why these operators are useful. 
+
+
+.. code-block:: shadow
+    :linenos: 
+
+    var x = 10; 
+    x %= 2;
+    //Now x = 0  
+	 
+		
+    var y = 10; 
+    y = y % 10; 
+    // Now y = 0 
+
+
+Although lines 2 and 7 effectively do the same thing, line 2 is a more simple way to get to the same answer. 
+
+
+
 
 
 

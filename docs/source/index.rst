@@ -7,7 +7,7 @@ Welcome to the Shadow Tutorials!
 ================================
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 7
    :caption: Contents:
    
    intro
@@ -15,6 +15,7 @@ Welcome to the Shadow Tutorials!
    first-program
    variables
    operators
+   flow-control
 
 
 
