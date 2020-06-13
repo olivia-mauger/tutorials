@@ -55,8 +55,8 @@ As an example, a basic variable declaration of type ``int`` looks like this:
 
 The **variable** ``age`` is of **primitive** type ``int`` and holds the **literal value** ``20``.
 
-Boolean
-^^^^^^^
+``boolean``
+^^^^^^^^^^^
 
 There is one other primitive type: ``boolean``.  A boolean variable can hold one of two values -- ``true`` or ``false``. 
 
@@ -116,7 +116,8 @@ The following short example program demonstrates basic principles for declaring 
     import shadow:io@Console;  
 
     /*This is a short bit of code the demonstrates how to the declare the variable 
-    types defined above. */
+     *types defined above. 
+     */
 
     class VariableExample
     {
@@ -209,6 +210,18 @@ In Shadow, and with most programming languages, there are **reserved words.** Re
 ``super``      ``switch``     ``this``      ``throw``      ``true``       ``try``        ``ubyte``
 ``unit``       ``ulong``      ``ushort``    ``var``        ``weak``       ``while``      ``xor``
 ============  ==============  ============  =============  =============  =============  =============  
+
+
+A Note on ``var`` 
+^^^^^^^^^^^^^^^^^
+
+In all examples in this section, the variables are declared with a **specific** type and name. (i.e. ``int num = 4;``). Like C# (and similar to the ``auto`` keyword in C++11), Shadow provides a ``var`` keyword that can be used to declare local variables that have an initializer. This can be done because a variable's type is generally obvious, as you would probably not easily confuse an ``double`` versus a literal ``String`` in " ". 
+
+.. code-block:: shadow
+
+    var milesRun = 26.2; 
+
+    var marathonCity = "Boston" 
 
 
 
