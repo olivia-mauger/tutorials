@@ -16,6 +16,7 @@ Welcome to the Shadow Tutorials!
    variables
    operators
    flow-control
+   arrays
 
 
 

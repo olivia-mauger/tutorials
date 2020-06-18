@@ -411,7 +411,7 @@ A ``switch`` statement is useful when you have input, whether it is user or prog
 .. code-block:: Shadow
     :linenos:
 
-    String genre = "rock"; 
+    var genre = "rock"; 
     switch( genre )
     {
         case( "pop" )Console.printLine("Listen to \"Firework\" by Katy Perry!");					
@@ -437,11 +437,11 @@ The ``switch`` statement works by going through the cases, checking to see if on
 Notice the ``default case`` on **Line 9**. If none of the cases had equaled “rock”, then the ``default`` statement would have printed. However, a ``default`` **is not required.** If no cases had matched, and there was no ``default`` provided, the program would exit the ``switch`` without executing anything. 
 
 
-Below are some important takeaways for ``switch`` statements
+Below are some important takeaways for ``switch`` statements. 
 
 * Any type of variable may be used in a ``switch`` statement 
 * There is no limit to the number of cases 
-* A ``default`` is not required 
+* A ``default`` is not required, but there can only be one. 
 * ``switch`` statements may be included inside loops (usually a ``for`` or a ``while`` loop)
 * You may include multiple cases in one statements i.e. ``case( 1, 2, 3 )``
 * The ``default`` does not have to be the last statement in the body of the ``switch`` 
