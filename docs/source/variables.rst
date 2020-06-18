@@ -112,11 +112,12 @@ The following short example program demonstrates basic principles for declaring 
 
 
 .. code-block:: shadow
+    :linenos: 
  
     import shadow:io@Console;  
 
-    /*This is a short bit of code the demonstrates how to the declare the variable 
-     *types defined above. 
+    /* This is a short bit of code the demonstrates how to the declare the variable 
+     * types defined above. 
      */
 
     class VariableExample

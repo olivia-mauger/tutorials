@@ -39,7 +39,7 @@ Arithmetic Operators
 
 Arithmetic operators in Shadow appear mostly as they would in an elementary math class. See the list below (in order of precedence).
 
-* ``\*`` is used for multiplication
+* ``*`` is used for multiplication
 * ``/`` is used for division 
 * ``%`` is used for modular division
 * ``+`` is used for addition
@@ -55,6 +55,7 @@ First, let's examine some nuances of **Shadow division**.
 
 
 .. code-block:: shadow 
+    :linenos: 
 
     import shadow:io@Console;  
 
@@ -63,30 +64,33 @@ First, let's examine some nuances of **Shadow division**.
 	 public main( String[] args ) => () 
          {
 	 	
-	 	var divide = 7.0/2; 
-	 	Console.printLine("Result 1: " # divide); 
 	 	/*
-                 *When using the "/" for division, if either the operator or operand is a 
-	 	 *double, the result will be a double (double division). 
+                 * When using the "/" for division, if either the operator or operand is a 
+	 	 * double, the result will be a double (double division). 
                  */
+                var divide = 7.0/2; 
+	 	Console.printLine("Result 1: " # divide); 
 	 	
-	 	var divide2 = 7/2; 
+	 	
+	        /* 
+                 * If the operator and operand are both ints, then the result will 
+	 	 * by a non-rounded whole number (decimal point is "cut off"). 
+	 	 */
+                var divide2 = 7/2; 
 	 	Console.printLine("Result 2: " # divide2); 
-	 	/* 
-                 *If the operator and operand are both ints, then the result will 
-	 	 *by a non-rounded whole number (decimal point is "cut off"). 
-	 	 */
+	 
 	 	
-	 	var divide3 = 7/2; 
-	 	Console.printLine("Result 3: " # divide3); 
 	 	/* 
-                 *Although both the operator and operand are ints, the variable
-	 	 *divide3 is a double. What happens? First, the expression to the right 
-	 	 *of the equals sign is evaluated. Since both numbers are ints, 
-	   	 *the result is also an int: 3. Assignment happens SECOND. Shadow recognizes
-	 	 *that the result must be stored as a double, so now divide3 holds the value 3.0, 
-	 	 *not 3.5 -- which is a common mistake. 
+                 * Although both the operator and operand are ints, the variable
+	 	 * divide3 is a double. What happens? First, the expression to the right 
+	 	 * of the equals sign is evaluated. Since both numbers are ints, 
+	   	 * the result is also an int: 3. Assignment happens SECOND. Shadow recognizes
+	 	 * that the result must be stored as a double, so now divide3 holds the value 3.0, 
+	 	 * not 3.5 -- which is a common mistake. 
 	 	 */
+                var divide3 = 7/2; 
+	 	Console.printLine("Result 3: " # divide3); 
+	 	
 	 	 
 	 }
     }
@@ -107,6 +111,7 @@ Below is the console output for the above program:
 Lastly, this program below provides a few extra examples of using the arithmetic operators. 
 
 .. code-block:: shadow 
+    :linenos:
 
     import shadow:io@Console;  
 
@@ -153,6 +158,7 @@ When comparing two numeric values, ``==`` works in the way you would expect. For
 The variable ``test`` is assigned ``true``. However, suppose you wanted to compare two ``String`` variables using ``==``. What would the result be?  Consider: 
 
 .. code-block:: shadow 
+    :linenos:
 
     var want = "coffee"; 
     var need = "coffee";
@@ -175,6 +181,7 @@ The following short program provides examples and explanations for the remaining
 
 
 .. code-block:: shadow 
+    :linenos:
 
     import shadow:io@Console;  
 
@@ -182,10 +189,11 @@ The following short program provides examples and explanations for the remaining
     {
 	public main( String[] args ) => () 
 	{ 
-		/*The following code illustrates the use of "not equal to", or !=. 
-		 *You may use this operator to compare Strings or numeric values (and 
-		 *even objects). If the values being compared are not equal, 
-                 *"true" is returned. 
+		/* 
+                 * The following code illustrates the use of "not equal to", or !=. 
+		 * You may use this operator to compare Strings or numeric values (and 
+		 * even objects). If the values being compared are not equal, 
+                 * "true" is returned. 
                  */
 		
 		var sport1 = "polo"; 
@@ -195,9 +203,10 @@ The following short program provides examples and explanations for the remaining
 
 
 		
-		/*The following code uses >= to make comparisons. Implementing >, <, and <=
-		 *follows the same guidelines as shown below. If the the variable 
-                 *yourAge is greater than or equal to myAge, true will be printed.
+		/* 
+                 * The following code uses >= to make comparisons. Implementing >, <, and <=
+		 * follows the same guidelines as shown below. If the the variable 
+                 * yourAge is greater than or equal to myAge, true will be printed.
                  */
 	
 		var myAge = 20; 
@@ -205,8 +214,9 @@ The following short program provides examples and explanations for the remaining
 		Console.printLine("You are older or the same age as me: " # (yourAge >= myAge));
                 //"false" should be printed, as 19 is NOT >= 20
 		
-	        /*Note: When you compare Strings with these relational operators, 
-	         *they are compared **lexicographically.**
+	        /* 
+                 * Note: When you compare Strings with these relational operators, 
+	         * they are compared **lexicographically.**
                  */ 
                 
                 Console.printLine("a is less than b: " # ("a" < "b")); 
@@ -236,6 +246,7 @@ Logical operators in Shadow, like relational operators, evaluate to either ``tru
 The following basic program outlines how to use these logical operators: 
 
 .. code-block:: shadow
+    :linenos:
 
     import shadow:io@Console;  
 
@@ -244,10 +255,19 @@ The following basic program outlines how to use these logical operators:
 	public main( String[] args ) => () 
         { 
              /* 
-              *The following code provides examples of how to use 
-	      * "and",  "or", and "!". 
+	      * As seen below, in order for the expression "withCream and !withSugar" 
+	      * to evaluate to true, each operand must also be true. In this case, we 
+	      * can see that withCream was declared to be true. Then we look at the 
+	      * second statement. 
+	      *
+	      * Although withSugar is declared to be false, in the 
+	      * expression, there is a "!" in front of withSugar. This is commonly 
+	      * called the logical NOT, which evaluates to the opposite of a given
+	      * expression. Since withSugar is false intially, the ! then evaulates 
+	      * to true. Thus, since both operands are true, the statement "I like my
+	      * coffee with cream but NOT sugar!" is printed.
 	      */
-	     
+          
 	     var withCream = true; 
 	     var withSugar = false; 
 	    
@@ -256,33 +276,21 @@ The following basic program outlines how to use these logical operators:
 	     	Console.printLine("I like my coffee with cream but NOT sugar!" ); 
 	     }
 	      
-	     /* 
-	      * As seen above, in order for the expression "withCream and !withSugar" 
-	      *to evaluate to true, each operand must also be true. In this case, we 
-	      *can see that withCream was declared to be true. Then we look at the 
-	      *second statement. 
-	      *
-	      *Although withSugar is declared to be false, in the 
-	      *expression, there is a "!" in front of withSugar. This is commonly 
-	      *called the logical NOT, which evaluates to the opposite of a given
-	      *expression. Since withSugar is false intially, the ! then evaulates 
-	      *to true. Thus, since both operands are true, the statement "I like my
-	      *coffee with cream but NOT sugar!" is printed.
-	      *
+	    
+             /* 
+              * In the above lines of code, we see how to use "or." In order for the 
+	      * expression "withCream or withSugar" to evaluate to true, only ONE of the 
+	      * operands needs to be true. Although withSugar is declared to be false, 
+	      * withCream is declared true, so the statement "I like cream OR sugar in my 
+	      * coffee. Surprise me!" is printed. 
 	      */
-	     
-	     
+
 	     if(withCream or withSugar) 
 	     { 
 	     	Console.printLine("I like cream OR sugar in my coffee. Surprise me! "); 
 	     }
 	     
-	     /*In the above lines of code, we see how to use "or." In order for the 
-	      * expression "withCream or withSugar" to evaluate to true, only ONE of the 
-	      * operands needs to be true. Although withSugar is declared to be false, 
-	      * withCream is declared true, so the statement "I like cream OR sugar in my 
-	      *coffee. Surprise me!" is printed. 
-	      */
+	   
 	}    	      
     }
 

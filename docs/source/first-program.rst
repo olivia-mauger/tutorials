@@ -4,7 +4,8 @@ Getting Started - Your First Shadow Program
 In accordance with programming tradition, the first program demonstrated will print the message ``"Hello, World!"``
 
 .. code-block:: shadow 
-
+    :linenos: 
+	
     // This program prints out "Hello, World!"
     import shadow:io@Console;
 
@@ -28,6 +29,7 @@ In practice, comments are used to describe the function of a segment of code or 
 * Anything between /* and */ will be ignored - even across multiple lines
 
 .. code-block:: shadow
+    :linenos: 
 
     /*
      * None of this text will be compiled.
@@ -55,6 +57,7 @@ To import all classes within a particular package, you can leave off a particula
 Defining a Class
 ^^^^^^^^^^^^^^^^
 .. code-block:: shadow
+    :linenos: 
 
     class HelloWorld 
     {
@@ -64,8 +67,9 @@ Defining a Class
 The first line in this segment declares a class named ``HelloWorld``. The definition of ``HelloWorld`` begins on the following line with a left brace (``{``) and ends several lines later with a corresponding right brace (``}``). All methods and variables declared in this space become members of ``HelloWorld``. All code in Shadow must be encapsulated within a class.
 
 The ``main`` Method
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 .. code-block:: shadow
+    :linenos: 
 
     public main( String[] args ) => ()
     {

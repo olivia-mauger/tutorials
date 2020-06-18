@@ -2,7 +2,7 @@ Flow Control and Looping
 ------------------------
 So far, we have learned how to create a basic program in **Shadow**, declare and use variables, and write expressions with different kinds of operators. In the simple example programs we have analyzed thus far, it is easy to see how **control flows**. Execution starts with the first statement in the program (a variable declaration, ``Console.printLine()``, etc.) and continues to the second and third and so on. Nothing is skipped and no action repeated. Straightforward. 
 
-However, **control flow** becomes more interesting as we begin to introduce new statements: ``if``, ``else``, ``break``, ``continue``, ``switch``, and different kinds of loops. These statements have the power to manipulate/direct the flow of a program, thus opening the door for more powerful programs. 
+However, **flow control** becomes more interesting as we begin to introduce new statements: ``if``, ``else``, ``break``, ``continue``, ``switch``, and different kinds of loops. These statements have the power to manipulate/direct the flow of a program, thus opening the door for more powerful programs. 
 
 
 ``if`` and ``else`` Statements
@@ -14,6 +14,7 @@ Below is the basic structure for an ``if``/``else`` statement.
 
 
 .. code-block:: shadow 
+
 
     if( ) //some expression that evaluates to true or false 
     { 
@@ -38,6 +39,7 @@ Another important concept is nested ``if``/``else`` statements. There are many d
 Below are some possible examples: 
 
 .. code-block:: shadow  
+    :linenos: 
 
     //Here is a example of a nested if/else statement (inside a larger if)
     var numDonuts = 4; 
@@ -73,9 +75,9 @@ Lastly, here is an example of ``else if``.
     :linenos:
 
     /*
-     *For his 25th Birthday, Surya and his friends decide to go to an amusement
-     *park with 3 rides. Surya has never been to an amusement park before, so it is your 
-     *job to determine which ride Surya would enjoy based off of his list of 
+     * For his 25th Birthday, Surya and his friends decide to go to an amusement
+     * park with 3 rides. Surya has never been to an amusement park before, so it is your 
+     * job to determine which ride Surya would enjoy based off of his list of 
      * attributes. Good luck!
      */
 		 
@@ -209,7 +211,7 @@ Lastly, **Line 16** increments ``count`` by 1 for each iteration of the ``while`
 
 This section covers another major type of loop, called the ``do while`` loop. The basic structure of this loop is outlined below:
 
-.. code-block:: shadow
+.. code-block:: shadow 
 
     var count = 0; 
     do 
@@ -225,12 +227,13 @@ Although very similar in structure and concept to the ``while`` loop, there are 
 
     
 .. code-block:: shadow 
+    :linenos: 
 
-    /*Imagine you are at an arcade and have a gift card 
-     *with a certain number of points left to play
-     *pinball. Every time you swipe the card to activate the
-     *game, you lose one point. This short program mimicks the 
-     *messages the game would give. 
+    /* Imagine you are at an arcade and have a gift card 
+     * with a certain number of points left to play
+     * pinball. Every time you swipe the card to activate the
+     * game, you lose one point. This short program mimicks the 
+     * messages the game would give. 
      */
 		
     var points = 5; 
@@ -342,21 +345,114 @@ Does declaring the variable *outside* of the loop change the output? **No.**  �
 
 ``i <= 5;``
 
+The second step when creating a ``for`` loop is to define the condition that determines when the loop will end. In this example, since I want to print the message 5 times, and ``i`` starts at 1, ``i <= 5;`` is the appropriate expression. If I had initialized ``i`` to be 0, then the condition would need to be ``i < 5;`` 
+
+.. note:: Although ``<`` , ``>`` , ``<=``, ``>=`` are probably the most common operators used in ``for`` loops, others may be used if a programer deems fit (i.e. ``!=``). 
+
+As long as this condition is eventually reached (in order to avoid an **ifinite loop**) it is up to you to decide what that condition will be based on the problem you want to solve. 
 
 
+3. **Updating the Counter Variable** 
+
+Finally, when writing a ``for`` loop, the last expression inside the parentheses is where you update the counter variable. In this example, we said that ``i += 1;``. This means that for each pass through the loop, ``i`` will increase by 1. If we had declared ``i`` outside of the loop and then printed the value of ``i`` after the loop, it would be 6. This is because after the last fifth “Hey you! Wake Up!! “ is printed, ``i`` is incremented by 1 and becomes 6, which causes the condition ``i <= 5;`` to be ``false`` and thus end the loop. 
 
 
+Lastly, there are two final notes to consider: 
 
 
+* Similar to ``if``/``else`` statements, a ``for`` loop does not technically need braces if the body of the loop is only one line (like in our example). However, it is always good programming practice to include them. 
+
+* Although in the given example we **increment** the **counter variable** ``i``, it is also just as acceptable/correct to **decrement** the counter variable. We could have just as easily set ``i`` equal to 5 and changed the condition to ``i >= 1`` to achieve the same end result. 
 
 
+Nested ``for`` Loops
+^^^^^^^^^^^^^^^^^^^^
 
-   
+In this brief section, we will examine **nested** ``for`` loops and their applications. The general structure of this kind of loop is shown below: 
+
+.. code-block:: Shadow
+    :linenos:
+
+    for (int i = 5; i > 0; i -= 1) //this is the outer loop
+    {
+        for (int k = 5; k >= i; k -= 1) //this is the inner loop
+	{
+	    Console.print("@"); 
+	}
+	Console.printLine();  
+     }
+
+The ouput is as follows: 
+
+.. code-block:: console
+
+    @
+    @@@
+    @@@@@
+    @@@@@@@
+    @@@@@@@@@
 
 
+There are two important aspects of the nested ``for`` loop: the **outer loop** and the **inner loop**. Let’s trace through the example to see how control flows between the outer and inner loops. 
+
+The outer loop is the “driver” of the nested ``for`` loop. For example, the goal of the block of code above is to output a 5 ``@`` tall right triangle. Since we will need five separate lines of varying length to do so, the outer loop needs to run a total of 5 times. Thus, the statement on Line 1 ensures that will happen. 
+
+But how do we get the different numbers of ``@`` symbols on each of the 5 lines? That is controlled by the **inner** loop. Initially, the outer loop counter variable, ``i``,  is  equal to 5. Before ``i`` is decremented by 1, control is passed to the inner loop. ``k`` is initialized to 5, so the condition that ``k >= i;``  is ``true``. Then a ``@`` is printed and ``k`` is decremented by 1, so ``k``` is no longer greater than or equal to ``i``. Once the **inner loop** has completely executed, then control flows to the statement outside the inner loop -- the empty ``Console.printLine()`` that starts the next line of ``@``’s. (If we had forgotten Line 7, all the ``@``’s would have been printed on the same line). 
+
+Now, control flows back the **outer loop**, and ``i`` is decreased by one (so now ``i`` equals 4). It is important to note that when the inner loop is executed again, it is in essence “reset”, so ``k`` starts as equal to 5 and two ``*``’s will be printed before ``i >= k`` becomes ``false``. This process continues until the fifth line of 5 ``*``’s is printed and ``i`` becomes 0, which causes the program to exit the outer loop. The triangle is now complete! 
+
+``switch`` Statements
+^^^^^^^^^^^^^^^^^^^^^
+
+We will conclude this section with a discussion on ``switch`` statements, which are similar in concept to ``if``/``else`` statements but syntactically very different. 
+
+A ``switch`` statement is useful when you have input, whether it is user or program defined, and different actions to take based on the value of the input. In other words, there are many different **cases** of input that correspond to disticnt actions. For example, say you have a ``String`` variable that holds a genre of music. There are many different genres of music: hip-hop, rock, pop, alternative, etc. These different genres are called **cases**, and based on the case given, the program will recommend a specific song (i.e. a pop song for the pop genre). This example is coded below, demonstrating the general structure of a ``switch`` statement. 
+
+.. code-block:: Shadow
+    :linenos:
+
+    String genre = "rock"; 
+    switch( genre )
+    {
+        case( "pop" )Console.printLine("Listen to \"Firework\" by Katy Perry!");					
+	case( "alternative" )Console.printLine("Listen to \"Call Me\" by Blondie");			
+	case( "rock" )Console.printLine("Listen to \"We are the Champions\" by Queen");				
+	case( "country" )Console.printLine("Listen to \"Need You Now\" by Lady Antebellum");
+	case( "hip-hop/rap" )Console.printLine("Listen to \"Hey Ya!\" by Outkast");
+	default Console.printLine("Hmm, we don't have recomendations for that genre.");			
+    }
+
+Here the output will be, 
 
 
+.. code-block:: console
 
+    Listen to "We are the Champions" by Queen!
+
+
+Why? First consider **Line 2**. Here we see the ``switch`` statement, which is being sent the ``String`` variable genre. In general, you can use any type of variable in a ``switch`` statement. In this case, the literal value of ``genre`` will be compared to 5 different cases. These cases in **Lines 4-8** represent other possible genres of music. 
+
+The ``switch`` statement works by going through the cases, checking to see if one of the cases matches the literal value of ``genre``, which is “rock.” The program stops searching when a match is found, which is on **Line 6**. Then, the ``Console.printLine()`` statement on this same line is printed and control is passed to the next line outside of the ``switch``. 
+
+Notice the ``default case`` on **Line 9**. If none of the cases had equaled “rock”, then the ``default`` statement would have printed. However, a ``default`` **is not required.** If no cases had matched, and there was no ``default`` provided, the program would exit the ``switch`` without executing anything. 
+
+
+Below are some important takeaways for ``switch`` statements
+
+* Any type of variable may be used in a ``switch`` statement 
+* There is no limit to the number of cases 
+* A ``default`` is not required 
+* ``switch`` statements may be included inside loops (usually a ``for`` or a ``while`` loop)
+* You may include multiple cases in one statements i.e. ``case( 1, 2, 3 )``
+* The ``default`` does not have to be the last statement in the body of the ``switch`` 
+* Enclose multiple statements for one ``case`` in braces (see below)  
+
+.. code-block:: shadow
+
+    case (// some case) 
+    {
+        //multiple statements
+    }
 
 
 
