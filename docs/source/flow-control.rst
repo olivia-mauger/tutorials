@@ -43,10 +43,10 @@ Below are some possible examples:
 
     //Here is a example of a nested if/else statement (inside a larger if)
     var numDonuts = 4; 
-    if(numDonuts > 0)
+    if( numDonuts > 0 )
     { 
         //pay attention to how the use of brackets directs program flow
-	if (numDonuts % 2 == 0)
+	if ( numDonuts % 2 == 0 )
 	{
 	    Console.printLine("You have an even number of donuts left!"); 
 	    Console.printLine("Now you have to share."); 
@@ -86,15 +86,15 @@ Lastly, here is an example of ``else if``.
     var noLoops = true; 
     var idealRideSpeed = 100; 
 		 
-    if(scaredOfHeights and noLoops) 
+    if( scaredOfHeights and noLoops ) 
     {
         Console.printLine("Sorry, there aren't any rides without loops and heights."); 
     }
-    else if(!scaredOfHeights and idealRideSpeed >= 110) 
+    else if( !scaredOfHeights and idealRideSpeed >= 110 ) 
     {
-        Console.printLine("You would love the Super Speedy Plunge!"); 
+        Console.printLine( "You would love the Super Speedy Plunge!" ); 
     } 
-    else if(!noLoops or idealRideSpeed < 80) 
+    else if( !noLoops or idealRideSpeed < 80 ) 
     {
         Console.printLine("Get in line for the Loop Dee Loop"); 
     }
@@ -125,7 +125,7 @@ Technically, if an ``if`` statement is followed by a single line of code, braces
 
 .. code-block:: shadow
 
-    if(1 > 2)
+    if( 1 > 2 )
         Console.printLine("hey"); 
         Console.printLine("hi"); 
 
@@ -156,7 +156,7 @@ For example, let’s examine this block of code:
 .. code-block:: shadow
 
     var favoriteNumber = 13; 
-    while (favoriteNumber > 0)
+    while ( favoriteNumber > 0 )
     {
         Console.printLine("Your favorite number is " # favoriteNumber); 
     }
@@ -179,7 +179,7 @@ You want to create some basic programming art, so you will start by "drawing" a 
 		
 	while(count <= 10) //boolean expression
 	{
-	    if(count % 2 == 0) 
+	    if( count % 2 == 0 ) 
 	    {
 	        Console.print("$"); 
 	    }
@@ -239,7 +239,7 @@ Although very similar in structure and concept to the ``while`` loop, there are 
     var points = 5; 
     do 
     {
-        if (points <= 0) 
+        if ( points <= 0 ) 
         {
              Console.printLine("I'm sorry, you don't have enough points to play!"); 
 	     points -= 1; 
@@ -252,7 +252,7 @@ Although very similar in structure and concept to the ``while`` loop, there are 
 	     Console.printLine("~~~~~~~~~~~~~~~~~~~~~~"); 
 	}
 
-     } while (points >= 0); 
+     } while ( points >= 0 ); 
 
 
 Before you look at the consol output below, see if you can predict it!
@@ -301,7 +301,7 @@ Below is a very basic example of a ``for`` loop that we will break down piece-by
 
 .. code-block:: Shadow
 
-    for(int i = 1; i <= 5; i += 1)  
+    for( int i = 1; i <= 5; i += 1 )  
     {
         Console.printLine("Hey you! Wake up!!"); 
     }
@@ -330,7 +330,7 @@ However, ``i`` does not *have* to be initialized inside the ``for`` loop. It cou
 .. code-block:: Shadow
 
     int c; 
-    for(c = 1; c <= 5; c += 1)  
+    for( c = 1; c <= 5; c += 1 )  
     {
         Console.printLine("Hey you! Wake up!!"); 
     }
@@ -373,9 +373,9 @@ In this brief section, we will examine **nested** ``for`` loops and their applic
 .. code-block:: Shadow
     :linenos:
 
-    for (int i = 5; i > 0; i -= 1) //this is the outer loop
+    for ( int i = 5; i > 0; i -= 1 ) //this is the outer loop
     {
-        for (int k = 5; k >= i; k -= 1) //this is the inner loop
+        for ( int k = 5; k >= i; k -= 1 ) //this is the inner loop
 	{
 	    Console.print("@"); 
 	}
@@ -455,10 +455,72 @@ Below are some important takeaways for ``switch`` statements.
     }
 
 
+``break`` and ``continue``
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Two statements that can alter the flow of control in a Shadow program are ``break`` and ``continue``. These statements can be useful to either exit a loop or skip statements in the body of the loop. 
+
+First, let’s discuss ``break``. When a program reaches a break statement, it will immediately terminate the current loop, and control will flow to the next statement outside of the loop. For example, see the short block of code below: 
+
+.. code-block:: shadow
+    :linenos: 
+    
+     for( int i = 1; i < 5; i += 1 )
+     {
+         if( i * 2 > 5 )
+	 {
+	     break;
+	 } 
+	 Console.printLine(i); 	
+     }
+     Console.printLine("Yay! The loop is complete!"); 
+
+Here is the console output: 
+
+.. code-block:: console
+
+    1
+    2
+    Yay! The loop is complete!
 
 
+When ``i`` is 3, the statement ``i * 2 > 5`` becomes ``true``, and the ``break`` statement is executed. Thus, the program exits the loop and control is passed to **Line 9**. It is important to note that a ``break`` statement *must* be located inside of a loop, or you will get a **compile time error**. 
+
+**Lastly, there is the**  ``continue`` **statement**. Just like with the ``break`` statement, ``continue`` must also be placed inside of a loop to avoid a compile time error. When the program reaches a ``continue`` statement, the current iteration of the loop ends, and control flows back to the conditional statement. For example, in a ``for`` loop, any statements after ``continue`` would be skipped, and the program would go straight to the incrementation/decrementation of the counter variable. A ``while`` loop would behave in much the same way -- any statements after ``continue`` would be skipped, and control would flow to the conditional statement. 
+
+An example of a ``while`` loop with a ``continue`` statement is provided. 
 
 
+.. code-block:: shadow
+    :linenos: 
+    
+
+    int i = 0; 
+    Console.printLine("Odd Numbers");
+		
+    while( i < 10 )
+    {
+        if (i % 2 == 0) 
+	{ 
+	    i += 1; 
+	    continue; 
+	}
+	
+        Console.print(i # " ");
+	i += 1;  
+     }
+
+
+The following output is produced: 
+
+.. code-block:: console
+
+    Odd Numbers
+    1 3 5 7 9 
+
+As seen in the program above, when ``i`` is even (i.e. when ``i % 2 == 0``), the program hits a ``continue`` statement. From there, **Lines 12 and 13** are skipped, and control flows back to the initial condition. Thus, only odd numbers are printed. 
+
+As a final note: Although ``break`` and ``continue`` can be useful for quick solutions, it is not good programming practice to rely on them. If a ``break`` or ``continue`` statement happens to be used, there should always be another way to get to the same solution. For example, in the previous example with odd numbers, a simple ``if`` statement checking if a number is odd with ``%`` would be a valid (and more efficient) solution. 
 
 
 

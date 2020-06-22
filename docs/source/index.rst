@@ -7,7 +7,7 @@ Welcome to the Shadow Tutorials!
 ================================
 
 .. toctree::
-   :maxdepth: 7
+   :maxdepth: 9
    :caption: Contents:
    
    intro
@@ -16,7 +16,11 @@ Welcome to the Shadow Tutorials!
    variables
    operators
    flow-control
+   methods
    arrays
+   read-from-console
+   
+   
 
 
 

@@ -85,7 +85,7 @@ Thus, the array ``golfScores`` holds five 0’s. Now you may ask, how do we inpu
 	 */
 		 
 	var index = 0; 
-	for(int i = 102; i <= 110; i += 2) 
+	for( int i = 102; i <= 110; i += 2 ) 
 	{ 
 	    golfScores[index] = i; 
 	    index += 1; 
@@ -109,7 +109,7 @@ Both of these examples achieve the desired result of putting the golf scores int
 
 Suppose you have an array called ``randomness`` and you want to implement a ``for`` loop that traverses the entire array. First, you must know the length of ``randomness``. Luckily, the ``Array`` class has a “built in” method called ``size`` which returns the length of a given array. Below is the syntax for using ``size``: 
 
-``var lenght = randomness->size;``	
+``var length = randomness->size;``	
 
 Let’s say ``randomness`` has 4 elements. Now the variable ``length`` is equal to 4. 
 
@@ -222,7 +222,7 @@ The array we are making a subarray from, ``a``, has three elements. Using ``suba
 	*/
 		 
 	double[] temperature = double:create[6]; 
-        for(int i = 0; i < temperature-> size; i += 1)
+        for( int i = 0; i < temperature-> size; i += 1 )
 	{
 	    temperature[i] = 40 + (i * 2.1); 
 	}
@@ -304,11 +304,11 @@ In both examples, each grouping of words is like its own array. In the first exa
 
     int[][] speeding = int:create[4][5]; 
 		
-    for(int i = 0; i < speeding->size; i += 1)
+    for( int i = 0; i < speeding->size; i += 1 )
     {
-        for(int k = 0; k < speeding[0]->size; k += 1)
+        for( int k = 0; k < speeding[0]->size; k += 1 )
 	{
-	    speeding[i][k] = i + k;  
+	    speeding[i][k] =  i + k + 60; 
 	}
     }
 		
@@ -326,12 +326,12 @@ Lastly, notice how in **Line 7** we wrote ``speeding[i][k]`` in order to set the
 
 .. note:: The ``copy`` method also works for 2-D arrays. 
 
-A final note: In Shadow it is possible to have 3-D arrays and really, in theory, an infinite number of dimensions. However, in practice they are not often as the syntax can become quite tedious and complicated. 
+A final note: In Shadow it is possible to have 3-D arrays and really, in theory, an infinite number of dimensions. However, in practice they are not often used, as the syntax can become quite tedious and complicated. 
 
 ``foreach`` Loops
 ^^^^^^^^^^^^^^^^^^
 
-For the last array topic, we will examine the ``for each`` loop. In basic terms, a ``for each`` loop provides an efficient way to iterate through an array (or 2-D array), and often easier/quicker to implement than a ``for`` or nested ``for`` loop.  An example is below: 
+For the last array topic, we will examine the ``foreach`` loop. In basic terms, a ``for each`` loop provides an efficient way to iterate through an array (or 2-D array), and often easier/quicker to implement than a ``for`` or nested ``for`` loop.  An example is below: 
 
 
 .. code-block:: shadow 
@@ -339,7 +339,7 @@ For the last array topic, we will examine the ``for each`` loop. In basic terms,
 
      String[] a = String:create[5]:default("Kerfuffle");
 		
-     foreach ( String value in a)
+     foreach ( String value in a )
          Console.printLine( value );
 
 Console: 
@@ -354,7 +354,7 @@ Console:
 
 
 
-The key statement in this block of code is in **Line 3**: ``foreach ( String value in a)``. This means that the program will trace through every single element in the array, starting at the first index. The statement inside the loop will be executed for each element. 
+The key statement in this block of code is **Line 3**: ``foreach ( String value in a)``. This means that the program will trace through every single element in the array, starting at the first index. The statement inside the loop will be executed for each element. 
 
 What if my array is of a different type, and a different name than the example? The answer is simple: replace ``String`` with your array’s type, and ``a`` with your array’s name. 
 
