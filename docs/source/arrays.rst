@@ -331,7 +331,7 @@ A final note: In Shadow it is possible to have 3-D arrays and really, in theory,
 ``foreach`` Loops
 ^^^^^^^^^^^^^^^^^^
 
-For the last array topic, we will examine the ``foreach`` loop. In basic terms, a ``for each`` loop provides an efficient way to iterate through an array (or 2-D array), and often easier/quicker to implement than a ``for`` or nested ``for`` loop.  An example is below: 
+For the last array topic, we will examine the ``foreach`` loop. In basic terms, a ``foreach`` loop provides an efficient way to iterate through an array (or 2-D array), and often easier/quicker to implement than a ``for`` or nested ``for`` loop.  An example is below: 
 
 
 .. code-block:: shadow 

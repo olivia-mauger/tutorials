@@ -10,9 +10,40 @@ How is this done? There are 4 main methods used for reading input as seen in the
 * ``readLine``, which returns the next line of text
 * ``readString``, which returns the next white-spaced delimited text 
 
-The following example illustrates some basic implementations of these methods. 
+In addition to what is listed above, all 4 methods also return a ``boolean`` that indicates if the end of a file being read from is reached or not. This can be ignored for user input, as it will never be true when reading input from the keyboard. 
+
+Example
+^^^^^^^
+
+Now, let’s analyze an example. 
 
 .. code-block:: shadow
     :linenos: 
+	
+	public main( String[] args ) => () 
+	{
+		Console.print("Enter your Zodiac sign: "); 
+		(String sign, ) = Console.readString(); 
+		Console.printLine("Your Zodiac sign is " # sign # '!'); 	
+	}
+	
+
+Here is the output based on my input!
+
+.. code-block:: console 
+
+     Enter your Zodiac sign: Aquarius
+	 Your Zodiac sign is Aquarius!
+
+
+There are a couple of important things to note syntax-wise with the code above. As you can see in **Line 3**, the first step in getting user input is some sort of prompt. Here we are asking the user to enter their Zodiac sign. Then, in order to let the program know you need the user to enter a value, **Line 4** is critical. 
+
+As discussed in the previous section, “Methods”, methods in Shadow can return multiple values. This is the case with the 4 aforementioned methods. Since we want to store our user input in a variable, that is why we say ``(String sign, )`` with an empty space for the second return value (a ``boolean``) to indicate we want to ignore it. Then, on the right side of the equals sign you have the ``Console.readString();``. Depending on the value you want the user to enter, substitute in any of the other four methods after ``Console.``.  Once the user types in their answer and hits the enter key, the value is stored in ``sign``. Then, we can use the variable as we choose -- like in **Line 5**. 
+
+A note on ``readString()`` vs ``readLine()``: 
+
+Although using either of these two methods requires you to assign the input to a ``String`` variable, ``readLine()`` will read the entire line of text (including spaces) while ``readString`` will include everything up until a space, a tab, a new line, or a line feed character is reached. Thus, if I entered "Aquarius I think" as my Zodiac sign, the variable ``sign`` will be equal to "Aquarius" and not "Aquarius I think". 
+	
+	
 	
 

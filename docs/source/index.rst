@@ -17,8 +17,9 @@ Welcome to the Shadow Tutorials!
    operators
    flow-control
    methods
-   arrays
    read-from-console
+   arrays
+   
    
    
 
