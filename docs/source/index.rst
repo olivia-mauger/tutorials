@@ -7,7 +7,7 @@ Welcome to the Shadow Tutorials!
 ================================
 
 .. toctree::
-   :maxdepth: 9
+   :maxdepth: 10
    :caption: Contents:
    
    intro
@@ -19,6 +19,7 @@ Welcome to the Shadow Tutorials!
    methods
    read-from-console
    arrays
+   classes-basics
    
    
    

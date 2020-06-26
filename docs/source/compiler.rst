@@ -71,7 +71,7 @@ Configuration files are XML-based, and may be passed to the compiler following t
 
 The following example demonstrates the general structure of a Shadow configuration file:
 
-.. code-block:: shadow
+.. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
     <shadow os="Linux" arch="64" target="x86_64-unknown-linux-gnu">

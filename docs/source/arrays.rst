@@ -6,7 +6,7 @@ This page introduces and analyzes **arrays** in Shadow. An array is a very usefu
 |    0    |    1    |    2    |    3    |    4    |
 +---------+---------+---------+---------+---------+
 
-Each “box”  represents the location of the data being stored in the array. The numbers demonstrate how arrays are **indexed**. *It is important to remember that the first position is indexed at 0, NOT 1.*  In the dog breed example, each numbered location would correspond to a different dog breed (i.e. At location 0, it could hold “Beagle”). 
+Each "box"  represents the location of the data being stored in the array. The numbers demonstrate how arrays are **indexed**. *It is important to remember that the first position is indexed at 0, NOT 1.*  In the dog breed example, each numbered location would correspond to a different dog breed (e.g. At location 0, it could hold "Beagle"). 
 
 Initializing and Displaying an Array
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -15,12 +15,10 @@ There are multiple ways to **declare** and **fill** an array in Shadow.  If you 
 .. code-block:: shadow 
     :linenos:   
 		
-	var favoriteBreed = "Beagle"; 
-	String[] dogBreeds = {favoriteBreed, "Chihuahua", "Poodle", "Pomeranian", "Maltese"}; 
+    var favoriteBreed = "Beagle"; 
+    String[] dogBreeds = {favoriteBreed, "Chihuahua", "Poodle", "Pomeranian", "Maltese"}; 
 		
-	Console.printLine(dogBreeds.toString());
-	Console.printLine(dogBreeds); 
-
+    Console.printLine(dogBreeds); 
 
 Console output: 
 
@@ -38,7 +36,7 @@ Console output:
 
 **Displaying an Array** 
 
-Finally, **Lines 4 and 5** show two easy ways to nicely format and print out an array. The ``Array`` class has a ``toString()`` method (more on methods for the next topic) that takes an array and outputs its contents in between ``[]``. Although **Line 4** is a valid way to use the method, **Line 5** is a shortcut that produces the same results, as seen in the console output above. 
+Finally, **Line 4** shows an easy way to nicely format and print out an array, as seen in the console output above. The ``Array`` class has a ``toString()`` method that takes an array and outputs its contents in between ``[ ]``. The statement in **Line 4** automatically invokes this ``toString()`` method. 
 
 
 **Other Methods of Initialization** 
@@ -57,9 +55,9 @@ Here, we have created an array called ``golfScores`` that can hold 5 values. *On
 * ``double``: ``0.0``
 * ``String``: ``""`` (empty ``String``)
 * ``boolean``: ``false``
-* ``code``: ``''``
+* ``code``: ``'\0'``
 
-*A Brief Side Note: At this point, you may be wondering why we used the reserved word* ``create`` *when initializing the array. This is because in Shadow, arrays are designed to be “object-like.” Although we will be covering objects later in the tutorials, all you need to know for now is the syntax.* 
+*A Brief Side Note: At this point, you may be wondering why we used the reserved word* ``create`` *when initializing the array. This is because in Shadow, arrays are designed to be "object-like." Although we will be covering objects later in the tutorials, all you need to know for now is the syntax.* 
 
 
 Thus, the array ``golfScores`` holds five 0’s. Now you may ask, how do we input the golf scores? Although you cannot change the size of the array once it is created, you can change/update the values of individual elements. The following examples illustrate two possible ways to do so: 
@@ -67,47 +65,47 @@ Thus, the array ``golfScores`` holds five 0’s. Now you may ask, how do we inpu
 .. code-block:: shadow 
     :linenos:   
 
-        /*
-	 * You and your friends, who are extremely novice golfers, decide to go 
-	 * play a round of golf one afternoon. Now, you want to
-	 * record their scores. 
-	 * 
-	 * You: 102
-	 * Zizi: 104
-	 * Omar: 106
-	 * Chris: 108
-	 * Daphne: 110
-	 */
+    /*
+     * You and your friends, who are extremely novice golfers, decide to go 
+     * play a round of golf one afternoon. Now, you want to
+     * record their scores. 
+     * 
+     * You: 102
+     * Zizi: 104
+     * Omar: 106
+     * Chris: 108
+     * Daphne: 110
+     */
 		 
-	/*
-	 * Here we use a for loop to fill in the scores, 
-	 * which happen to each increase by 2. 
-	 */
+    /*
+     * Here we use a for loop to fill in the scores, 
+     * which happen to each increase by 2. 
+     */
 		 
-	var index = 0; 
-	for( int i = 102; i <= 110; i += 2 ) 
-	{ 
-	    golfScores[index] = i; 
-	    index += 1; 
-	}
+    var index = 0; 
+    for( int i = 102; i <= 110; i += 2 ) 
+    { 
+        golfScores[index] = i; 
+	index += 1; 
+    }
 		 
 		 
-	/* 
-	 * Here we will manually enter the scores. 
-	 */
+    /* 
+     * Here we will manually enter the scores. 
+     */
 		  
-	golfScores[0] = 102; 
-	golfScores[1] = 104; 
-	golfScores[2] = 106; 
-	golfScores[3] = 108; 
-	golfScores[4] = 110; 
+    golfScores[0] = 102; 
+    golfScores[1] = 104; 
+    golfScores[2] = 106; 
+    golfScores[3] = 108; 
+    golfScores[4] = 110; 
 	
-Both of these examples achieve the desired result of putting the golf scores into the ``int`` array. The most important thing to take away is how we accessed specific elements of the array. As mentioned before, an array’s first element is indexed at zero. So, if I wanted to put my score as the first element, I would say ``golfScores[0] = 102;`` (or ``golfScores[index]`` when index equals 0 for the ``for`` loop example). **If you ever need to access individual elements of an array, this is the correct syntax.** i.e. ``var worstScore = golfScores[4];`` Now, ``worstScore`` holds the value 110. 
+Both of these examples achieve the desired result of putting the golf scores into the ``int`` array. The most important thing to take away is how we accessed specific elements of the array. As mentioned before, an array’s first element is indexed at zero. So, if I wanted to put my score as the first element, I would say ``golfScores[0] = 102;`` (or ``golfScores[index]`` when index equals 0 for the ``for`` loop example). **If you ever need to access individual elements of an array, this is the correct syntax.** e.g. ``var worstScore = golfScores[4];`` Now, ``worstScore`` holds the value 110. 
 
 ``size``
 ^^^^^^^^
 
-Suppose you have an array called ``randomness`` and you want to implement a ``for`` loop that traverses the entire array. First, you must know the length of ``randomness``. Luckily, the ``Array`` class has a “built in” method called ``size`` which returns the length of a given array. Below is the syntax for using ``size``: 
+Suppose you have an array called ``randomness`` and you want to implement a ``for`` loop that traverses the entire array. First, you must know the length of ``randomness``. Luckily, the ``Array`` class has a "built in" property called ``size`` which returns the length of a given array. Below is the syntax for using ``size``: 
 
 ``var length = randomness->size;``	
 
@@ -124,10 +122,10 @@ Another feature of arrays is the ability to fill an array with ``default`` value
 
     String[] a = String:create[5]:default("Serendipity");
 		
-        for( int i = 0; i < a->size; i += 1 )
-	{
-	    Console.printLine("a[" # i # "]: " # a[i]);
-	}
+    for( int i = 0; i < a->size; i += 1 )
+    {
+        Console.printLine("a[" # i # "]: " # a[i]);
+    }
 
 As seen in **Line 1** and the console output below, the addition of ``:default("Serendipity")`` to the array initialization fills each element of the array with the word "Serendipity". 
 
@@ -142,24 +140,24 @@ As seen in **Line 1** and the console output below, the addition of ``:default("
 ``copy``
 ^^^^^^^^
 
-The ``Array`` class has another useful method called ``copy,`` which copies the contents of one array into another array. 
+The ``Array`` class has a useful keyword called ``copy``, which *completely* copies the contents of one array into another array. This is called a **deep copy**. In addition to arrays, the ``copy`` keyword can be used with any object in order to create a deep copy of the object, including all of its members. ``copy`` will be discussed in more detail in the "Classes" tutorial. 
 
-In the example from the ``default`` section above, ``a`` is a ``String`` array with size 5, and each element contains "Serendipity". Let’s examine how the ``copy`` method works using this example. 
+Using the example from the ``default`` section above, where ``a`` is a ``String`` array with size 5, let’s examine how ``copy`` works. 
 
 
 .. code-block:: shadow 
     :linenos:  
 
-	String[] b = copy(a); 
-	for( int i = 0; i < b->size; i += 1 )
-	{
-	    Console.printLine("b[" # i # "]: " # b[i]);
-	}
+    String[] b = copy(a); 
+    for( int i = 0; i < b->size; i += 1 )
+    {
+        Console.printLine("b[" # i # "]: " # b[i]);
+    }
 		
-	b[0] = "Oops"; 
+    b[0] = "Oops"; 
 		
-	Console.printLine("a[0]:" # a[0]); 
-	Console.printLine("b[0]:" # b[0]); 
+    Console.printLine("a[0]:" # a[0]); 
+    Console.printLine("b[0]:" # b[0]); 
 
 Below is the console output: 
 
@@ -173,27 +171,27 @@ Below is the console output:
     a[0]: Serendipity
     b[0]: Oops
 
+The expression ``copy(a)``  in **Line 1** is the proper syntax used in order to copy everything in ``a`` to store in ``b``. However, it is important to note that when we change the value of the first element in ``b`` to “Oops” (**Line 7**), **it does not change the first element in** ``a``.  It is still “Serendipity”. The arrays do not point to the same reference. 
 
-The expression ``copy(a)``  in **Line 1** is the proper syntax for the method call that copies everything in ``a`` to ``b``. However, it is important to note that when we change the value of the first element in ``b`` to “Oops” (**Line 7**), **it does not change the first element in** ``a``.  It is still “Serendipity”. The arrays do not point to the same reference. 
 
 
 ``subarray``
 ^^^^^^^^^^^^
 
-The subarray method works in much the same way as copy, except that it allows you to copy a *part* of the array by using a range of indices. The parameters of the method are the ``start`` **index** from where you want to copy, and the ``stop`` **index**, which copies everything up to but not including this index. The result must be stored in an array of compatible type. 
+The ``subarray()`` method works in much the same way as copy, except that it allows you to copy a *part* of the array by using a range of indices. The parameters of the method are the ``start`` **index** from where you want to copy, and the ``stop`` **index**, which copies everything up to but not including this index. The result must be stored in an array of compatible type. 
 
 
 .. code-block:: shadow 
     :linenos:  
 
-        String[] a = String:create[3]; 
-        a[0] = "Hola"; 
-        a[1] = "Hello"; 
-        a[2] = "Bonjour"; 
+    String[] a = String:create[3]; 
+    a[0] = "Hola"; 
+    a[1] = "Hello"; 
+    a[2] = "Bonjour"; 
     
-        String[] array = a.subarray(0, 2); 
-        Console.printLine("a: " # a); 
-        Console.printLine("array: " # array); 
+    String[] array = a.subarray(0, 2); 
+    Console.printLine("a: " # a); 
+    Console.printLine("array: " # array); 
 
 The contents of the ``a`` and ``array`` are: 
 
@@ -202,40 +200,40 @@ The contents of the ``a`` and ``array`` are:
     a: [Hola, Hello, Bonjour]
     array: [Hola, Hello]
 
-The array we are making a subarray from, ``a``, has three elements. Using ``subarray``, we want to create an array that only has the first two elements of ``a``. As you can see in **Line 6**, the method is being called on ``a`` and the parameters ``0`` and ``2`` represent the ``start`` and ``end``, respectively. This means elements with index ``0`` and ``1`` will be made into a subarray. Most importantly, the result is being stored in a ``String`` array. Now, ``array`` contains "Hola" and "Hello", as seen in the console output. 
+The array we are making a subarray from, ``a``, has three elements. Using ``subarray()``, we want to create an array that only has the first two elements of ``a``. As you can see in **Line 6**, the method is being called on ``a`` and the parameters ``0`` and ``2`` represent the ``start`` and ``end``, respectively. This means elements with index ``0`` and ``1`` will be made into a subarray. Most importantly, the result is being stored in a ``String`` array. Now, ``array`` contains "Hola" and "Hello", as seen in the console output. 
 
 
 ``index``
 ^^^^^^^^^
 
-``index`` is a useful method for accessing/changing the elements in an array. Additionally, ``index`` is an **overloaded** method, in this case meaning that it has two different method signatures. The first way you can use ``index`` is to access/return an element of an array at a specific index. The only parameter is the desired index. The second way to use ``index`` is to change the value of an element at a specific index. The parameters are the index and the new value. See the short program below for an example implementation. 
+``index()`` is a useful method for accessing/changing the elements in an array. Additionally, ``index()`` is an **overloaded** method, in this case meaning that it has two different method signatures. The first way you can use ``index()`` is to access/return an element of an array at a specific index. The only parameter is the desired index. The second way to use ``index()`` is to change the value of an element at a specific index. The parameters are the index and the new value. See the short program below for an example implementation. 
 
 .. code-block:: shadow 
     :linenos: 
  	
-	/* Imagine you are working for news station 
-	* and need to create array with this week's 
-	* predicted temperatures. You will also need 
-	* to update your predictions if they change. 
-	* Below is the implementation of the method
-	* index.
-	*/
+    /* Imagine you are working for a news station 
+     * and need to create array with this week's 
+     * predicted temperatures. You will also need 
+     * to update your predictions if they change.  
+     * Below is the implementation of the method
+     * index.
+     */
 		 
-	double[] temperature = double:create[6]; 
-        for( int i = 0; i < temperature-> size; i += 1 )
-	{
-	    temperature[i] = 40 + (i * 2.1); 
-	}
-	Console.printLine("The week's forcast in degrees fahrenheit is: "); 
-	Console.printLine(temperature); 
+    double[] temperature = double:create[6]; 
+    for( int i = 0; i < temperature-> size; i += 1 )
+    {
+        temperature[i] = 40 + (i * 2.1); 
+    }
+    
+    Console.printLine("The week's forcast in degrees fahrenheit is: "); 
+    Console.printLine(temperature); 
 		 
-	var tuesday = temperature.index(2); 
-	Console.printLine("Tuesday's temp will be " # tuesday # " degrees."); 
+    var tuesday = temperature.index(2); 
+    Console.printLine("Tuesday's temp will be " # tuesday # " degrees."); 
 		 
-	temperature.index(3, 55.3); 
-	Console.printLine("Wednesday's new temp is " # temperature.index(3) # " degrees."); 
+    temperature.index(3, 55.3); 
+    Console.printLine("Wednesday's new temp is " # temperature.index(3) # " degrees."); 
 		 
-
 The console output is: 
 
 .. code-block:: console
@@ -246,7 +244,7 @@ The console output is:
     Wednesday's new temp is 55.3 degrees.
 
 
-The key lines in this example are **Lines 17** and **20**. In **Line 17**, we used ``index`` to store the value of the element at index 2 in the variable ``tuesday``. In **Line 20**, we changed the value of the element at index 3 to 55.3. 
+The key lines in this example are **Lines 17** and **20**. In **Line 17**, we used ``index()`` to store the value of the element at index 2 in the variable ``tuesday``. In **Line 20**, we changed the value of the element at index 3 to 55.3. 
 
 
 ``IndexOutOfBoundsException``
@@ -271,7 +269,7 @@ This is the error statement displayed on the console:
 
     shadow:standard@IndexOutOfBoundsException: Index 4
 
-Why is this exception thrown? The array ``outOfBounds`` is created correctly and filled without error. However, notice in **Line 6** that we try to add a 4th element to the array by stating ``outOfBounds[4] = 4;`` This will cause an ``IndexOutOfBounds`` exception to be thrown and the program to terminate with an error (displayed on the console) because there is no index of 4 in the array. Again, *once an array’s size is declared, it cannot change.* It is especially important to pay attention to indices of arrays when writing the conditions for a loop (i.e. a ``for`` loop).  
+Why is this exception thrown? The array ``outOfBounds`` is created correctly and filled without error. However, notice in **Line 6** that we try to add a 4th element to the array by stating ``outOfBounds[4] = 4;`` This will cause an ``IndexOutOfBounds`` exception to be thrown and the program to terminate with an error (displayed on the console) because there is no index of 4 in the array. Again, *once an array’s size is declared, it cannot change.* It is especially important to pay attention to indices of arrays when writing the conditions for a loop (e.g. a ``for`` loop).  
 
 
 2-D Arrays
@@ -306,9 +304,9 @@ In both examples, each grouping of words is like its own array. In the first exa
 		
     for( int i = 0; i < speeding->size; i += 1 )
     {
-        for( int k = 0; k < speeding[0]->size; k += 1 )
+        for( int j = 0; j < speeding[i]->size; j += 1 )
 	{
-	    speeding[i][k] =  i + k + 60; 
+	    speeding[i][j] =  i + j + 60; 
 	}
     }
 		
@@ -320,13 +318,14 @@ The array contents are as follows:
 
     [[60, 61, 62, 63, 64], [61, 62, 63, 64, 65], [62, 63, 64, 65, 66], [63, 64, 65, 66, 67]]
  
-As seen in **Line 3**, in order to iterate through the 2-D array correctly, the condition for the outer loop should be ``i < speeding->size;``. ``speeding->size`` represents the number of **rows** in the array. Conversely, the condition ``k < speeding[0]->size`` traverses through the **columns** of the array. However, instead of using ``size`` for the conditionals, if you already know the length of the columns or rows, you can use those values for the conditions instead. 
+As seen in **Line 3**, in order to iterate through the 2-D array correctly, the condition for the outer loop should be ``i < speeding->size;``. ``speeding->size`` represents the number of **rows** in the array. Conversely, the condition ``j < speeding[i]->size`` traverses through the **columns** of the array (and avoids an ``IndexOutOfBoundsException`` if the array is jagged). However, instead of using ``size`` for the conditionals, if you already know the length of the columns or rows, you can use those values for the conditions instead. 
 
-Lastly, notice how in **Line 7** we wrote ``speeding[i][k]`` in order to set the value at the specific row/column index. This is the proper syntax. 
+Lastly, notice how in **Line 7** we wrote ``speeding[i][j]`` in order to set the value at the specific row/column index. This is the proper syntax. 
 
 .. note:: The ``copy`` method also works for 2-D arrays. 
 
 A final note: In Shadow it is possible to have 3-D arrays and really, in theory, an infinite number of dimensions. However, in practice they are not often used, as the syntax can become quite tedious and complicated. 
+In fact, in reality, there is no such thing as a *true* 2-D, 3-D, 4-D, etc. array in Shadow. You really just have an array in an array. 
 
 ``foreach`` Loops
 ^^^^^^^^^^^^^^^^^^
@@ -337,10 +336,10 @@ For the last array topic, we will examine the ``foreach`` loop. In basic terms, 
 .. code-block:: shadow 
     :linenos:  
 
-     String[] a = String:create[5]:default("Kerfuffle");
+    String[] a = String:create[5]:default("Kerfuffle");
 		
-     foreach ( String value in a )
-         Console.printLine( value );
+    foreach ( String value in a )
+        Console.printLine( value );
 
 Console: 
 

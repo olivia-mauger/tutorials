@@ -25,7 +25,7 @@ Key **numeric type** variables, which are examples of **primitive variables** an
 +---------+------------------+------------------------+----------------------------+-------------------+
 
 
-In addition to the above integer-like types, Shadow also has two types of primitive variables for storing **floating-point values** (i.e. 10.4 or 12.3564): ``double`` and ``float.``
+In addition to the above integer-like types, Shadow also has two types of primitive variables for storing **floating-point values** (e.g. 10.4 or 12.3564): ``double`` and ``float.``
 
 Unlike Java, Shadow has **unsigned types** for primitive variables as well. For example, an unsigned ``int`` is represented as ``uint``. However, casting is still needed if you want to store an uint in an int, or vice versa. Due to strict Shadow type-checking, exercise caution when using unsigned variables.
 
@@ -73,7 +73,7 @@ Strings and Immutability
 
 Although Strings will be discussed more in-depth in a later tutorial, the basics are outlined here. 
 
-While it appears that a Shadow variable can be declared of type ``String``, you are actually creating an object of the ``String`` class (see “Shadow Classes”). This means that unlike a numeric variable which holds a literal value (like the number 20), ``String`` variables hold **references** (a location in memory) to an object. 
+While it appears that a Shadow variable can be declared of type ``String``, you are actually creating an object of the ``String`` class (see "Shadow Classes"). This means that unlike a numeric variable which holds a literal value (like the number 20), ``String`` variables hold **references** (a location in memory) to an object. 
 
 For example, 
 
@@ -156,7 +156,7 @@ To analyze this code, let's break it up into sections.
 
 The most important thing to note here is how the variables are named. For example, ``restaurantName`` is a ``String`` variable. Notice how I did not name it ``RestaurantName`` or ``restaurantname``. Although using these names would not cause a compile error, it is good programming practice to use **CamelCase** notation: where the first word in a sequence of words (that are not separated by spaces) begins with a lowercase letter and the rest begin with uppercase letters. The same goes for the ``boolean`` variable ``isHungry``. In addition to using CamelCase notation, it is also a good idea to make sure your variable names are descriptive of their purpose. In this case, if this was a program for a Restaurant, ``isHungry`` would be used to tell if a certain customer is hungry -- as can be inferred from the variable's name. 
   
-.. note:: Your code will not compile if you have spaces in variable names, i.e. ``restaurant name``
+.. note:: Your code will not compile if you have spaces in variable names, e.g. ``restaurant name``
  
 2) **More Naming Conventions**
 
@@ -170,8 +170,8 @@ The most important thing to note here is how the variables are named. For exampl
 There are a few more key naming conventions for Shadow. 
 
     * Starting a variable name with a number will cause a compile error (but ending it with a number is acceptable) 
-    * Single-word names should be all lowercase (i.e. price, meal, or quantity), but is not a compile error 
-    * Starting a variable name with a special symbol (i.e. #, _, @, % +, etc.) will cause a compile error 
+    * Single-word names should be all lowercase (e.g. price, meal, or quantity), but is not a compile error 
+    * Starting a variable name with a special symbol (e.g. #, _, @, % +, etc.) will cause a compile error 
     * Variable names cannot be **reserved words** (see next section). 
 
 
@@ -216,7 +216,7 @@ In Shadow, and with most programming languages, there are **reserved words.** Re
 A Note on ``var`` 
 ^^^^^^^^^^^^^^^^^
 
-In all examples in this section, the variables are declared with a **specific** type and name. (i.e. ``int num = 4;``). Like C# (and similar to the ``auto`` keyword in C++11), Shadow provides a ``var`` keyword that can be used to declare local variables that have an initializer. This can be done because a variable's type is generally obvious, as you would probably not easily confuse an ``double`` versus a literal ``String`` in " ". 
+In all examples in this section, the variables are declared with a **specific** type and name. (e.g. ``int num = 4;``). Like C# (and similar to the ``auto`` keyword in C++11), Shadow provides a ``var`` keyword that can be used to declare local variables that have an initializer. This can be done because a variable's type is generally obvious, as you would probably not easily confuse an ``double`` versus a literal ``String`` in " ". 
 
 .. code-block:: shadow
 
