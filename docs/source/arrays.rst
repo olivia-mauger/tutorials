@@ -322,7 +322,7 @@ As seen in **Line 3**, in order to iterate through the 2-D array correctly, the 
 
 Lastly, notice how in **Line 7** we wrote ``speeding[i][j]`` in order to set the value at the specific row/column index. This is the proper syntax. 
 
-.. note:: The ``copy`` method also works for 2-D arrays. 
+.. note:: ``copy``, ``index()``, and ``subarray()``  also work for 2-D arrays. 
 
 A final note: In Shadow it is possible to have 3-D arrays and really, in theory, an infinite number of dimensions. However, in practice they are not often used, as the syntax can become quite tedious and complicated. 
 In fact, in reality, there is no such thing as a *true* 2-D, 3-D, 4-D, etc. array in Shadow. You really just have an array in an array. 
