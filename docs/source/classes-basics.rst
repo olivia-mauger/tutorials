@@ -92,13 +92,13 @@ As aforementioned, objects are typically created in the ``main()`` method of a c
 
 The first line of the ``main()`` method is: 
 
-``Otter olive = Otter:create("Olive", "River", 2);``
+``Otter olive = Otter:create("Olive", "River", 6);``
 
 ``Otter olive`` is how we declare the object. The type, which has to be the **name of the class** , is ``Otter``. ``olive`` is the name of our object, or an instance of the ``Otter`` class. The same naming conventions outlined in "Variables Introduction" should be followed. There is no limit on the number of ``Otter`` objects we can create. 
 
 The expression to the right of the equals sign invokes the object’s **constructor** and thus creates an ``Otter`` object (as made clear by the reserved word ``create``). Inside the parentheses we see 3 literal values. Much like the method calls discussed in an earlier tutorial, **constructors** can take in parameters. 
 
-Looking back at the ``Otter`` class, you can see in the constructor parameter list that it requires two ``String``variables and an ``int`` *in that order*. Thus, that is why we passed in "Olive", "River", and 2 when creating the object. 
+Looking back at the ``Otter`` class, you can see in the constructor parameter list that it requires two ``String`` variables and an ``int`` *in that order*. Thus, that is why we passed in "Olive", "River", and 6 when creating the object. 
 
 
 **The Constructor Body**
@@ -137,18 +137,47 @@ Thus, the following statement is now valid:
 
 ``Otter oliver = Otter:create("Oliver", "Ocean");``
 
-The program recognizes that this second constructor exists, and now ``oliver`` has ``age = 0;``. It is important to recognize that both ``olive`` and ``oliver`` are still otters. They were just created invoking different constructors. 
+The program recognizes that this second constructor exists, and now ``oliver`` has ``age = 0;``. It is important to recognize that both ``olive`` and ``oliver`` are still otters. They were just created by invoking different constructors. 
 
-Default Constructors
-^^^^^^^^^^^^^^^^^^^^
-What happens if a constructor is not explicitly defined by the programmer? Can you still create an object of the class? The answer is **yes**. 
+Nullable and Default Constructors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In order to understand how to properly invoke the **default constructor**, we must first discuss ``null`` and the modifier ``nullable``. As previously noted in the  "Arrays" tutorial, there are default values for the different variable types. 
 
-When no constructor is present, **Shadow** invokes a **default constructor**, where member variables are given default values. ``int`` would be 0, ``double`` 0.0, ``boolean`` ``false``, and ``code`` '\0'. However, what happens to a ``String`` member variable? Unless it is declared to be **nullable**, you will get a compile error that says: 
-``Uninitialized field: Non-nullable field name might not be initialized by a create``
+The default values for primitive types are as follows: 
 
-Marking a ``String`` member variable as ``nullable`` allows the variable to hold the value ``null``, and thus, the default constructor to be invoked. You should also declare a ``String`` array to be ``nullable`` if it is a member variable and you are invoking the default constructor. ``nullable`` will be covered more in-depth in a later section. 
+* ``int`` : ``0``
+* ``double`` : ``0.0``
+* ``boolean`` : ``false``
+* ``code`` : ``\0``
+
+For **reference types**, including ``String`` and objects, the most logical default value is ``null``. However, those who are familiar with C/C++/Java will understand that ``null`` can cause many unintended errors and bugs in a program (e.g. a ``NullPointerException`` in Java). 
+
+**Shadow** deals with this issue by using the ``nullable`` modifier. If a reference is marked as ``nullable``, it means that it is **able to store the value** ``null`` **in it**. For example: 
+
+``nullable String word = null;``
+
+This is a  ``nullable`` ``String`` reference that is equal to ``null`` and will not cause a compile error. 
+
+However, what if I tried to write this statement?
+
+``String word2 = null;``
+
+This will cause a compile error, as ``word2`` is a non-``nullable`` reference and therefore cannot hold the value ``null``. Although creating ``nullable`` references can circumvent some issues with using ``null``, **the goal is to have as little** ``nullable`` **references as possible** -- using them when only absolutely necessary. 
+
+The implications of using ``nullable`` can be seen in the **Shadow default constructor**. A default constructor is a "built-in" constructor that takes in no parameters and can be invoked **only when no other constructor is defined in the class**. If this is the case, the default constructor gives each member variable a **default value**. For primitive member variables, this is no problem. They are assigned the default values listed above. 
+
+However, what  happens to **reference-type** member variables? Unless the variable declared to be **nullable**, you will get a compile error that says: 
+
+``Uninitialized field: Non-nullable field name might not be initialized by a create``. This happens because the program is trying to assign the value ``null`` to a non- ``nullable`` reference type. 
+
+How can we get around this error in order to invoke the default constructor? You *could* mark all reference variable types as ``nullable`` , but this would not help keep the number of ``nullable`` references at a minimum, which is the goal. Instead you could just as easily initialize the individual member variables outside of any constructor. 
+
+For example, if one of your member variables in ``String something;``, to avoid using ``nullable`` and still use the default constructor, you could simple write ``String something = " ";`` 
 
 Lastly, if you have at least one programmer-defined constructor, you will get a compile error if you try to invoke the default constructor. 
+
+
+
 
 ``get`` and ``set`` Properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
