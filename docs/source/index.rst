@@ -7,7 +7,7 @@ Welcome to the Shadow Tutorials!
 ================================
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 11
    :caption: Contents:
    
    intro
@@ -20,6 +20,7 @@ Welcome to the Shadow Tutorials!
    read-from-console
    arrays
    classes-basics
+   classes-properties
    
    
    
