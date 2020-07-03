@@ -1,9 +1,9 @@
-Properties of Classes
----------------------
+Properties of Classes and Objects
+---------------------------------
 
 Now that we have covered the basics of classes in **Shadow**, we can move on to some features/properties of classes. 
 
-``immutable`` and ``freeze()``
+``immutable`` and ``freeze``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In a previous tutorial under  "Variables Introduction", we discussed the concept of **immutability** in terms of a ``String``. When we say that a ``String`` is **immutable**, we mean that once it is created, **its value cannot be changed**. 
@@ -86,13 +86,13 @@ The console output is:
 
 As you can see in the driver program, **when a class is declared to be** ``immutable``, you do not need to use the ``immutable`` keyword to make the object ``immutable``; it automatically is.  The ``evaluateApp()`` method is called and executes as expected.
 
-However, let’s imagine that the ``JobApplication`` class is non- ``immutable``. How can we create an ``immutable`` instance of the class? **We use the** ``freeze()`` **method**. The ``freeze()`` method creates an ``immutable`` copy of the object it is called on. 
+However, let’s imagine that the ``JobApplication`` class is non- ``immutable``. How can we create an ``immutable`` instance of the class? **We use the** ``freeze`` **keyword**. Using ``freeze`` creates an ``immutable`` , deep copy of the object it is called on. 
 
-The syntax for using ``freeze()`` is below. 
+The syntax for using ``freeze`` is below. 
 
 ``immutable JobApplication chris = freeze(JobApplication:create("Chris", 20, true, "positive attitude"));`` 
 
-Using ``freeze()`` on the right side of the equals sign creates an ``immutable`` reference to a non- ``immutable`` object and stores it in the ``immutable`` object ``Chris``. If the statement on the left side of the equals sign had just been ``JobApplication chris``, then you would have gotten a compile error **because an** ``immutable`` **reference cannot be assigned to a non-** ``immutable`` **object (and vice versa).** 
+Using ``freeze`` on the right side of the equals sign creates an ``immutable`` reference to a non- ``immutable`` object and stores it in the ``immutable`` object ``Chris``. If the statement on the left side of the equals sign had just been ``JobApplication chris``, then you would have gotten a compile error **because an** ``immutable`` **reference cannot be assigned to a non-** ``immutable`` **object (and vice versa).** 
 
 
 ``readonly``
@@ -100,16 +100,72 @@ Using ``freeze()`` on the right side of the equals sign creates an ``immutable``
 
 Although ``immutable`` references/classes can help with **thread safety**, the trouble is that an immutable reference cannot be stored into a normal reference without losing the guarantee that its contents are protected (as explained above). To mediate between the two different kinds of references, ``readonly`` references are used.
 
-If a reference is marked as ``readonly``, it means that no mutable method can be called on it. However, it is useful because you can store either a normal reference or a ``immutable`` reference in it. Although this may not seem much different from an ``immutable``, with a ``readonly`` reference, someone might have a normal reference they can use to change the contents of the object. Conversely, with an ``immutable`` reference, it's as if all the references to the object are ``readonly``. No one can ever change the contents of such an object.
+If a reference is marked as ``readonly``, it means that no mutable method can be called on it. However, it is useful because you can store either a normal reference or a ``immutable`` reference in it. Although this may not seem much different from an ``immutable`` reference, with a ``readonly`` reference, someone might have a normal reference they can use to change the contents of the object. Conversely, with an ``immutable`` reference, it's as if all the references to the object are ``readonly``. No one can ever change the contents of such an object.
 
 Although methods can be marked as ``readonly``, classes cannot be. In addition, all methods of an ``immutable`` class are ``readonly`` automatically. 
 
 
+Deep Copying and ``copy``
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Another notable feature of Shadow and Shadow classes is the ability to create **deep copies** of objects. You have probably already made deep copies without knowing it;  there was a section on ``copy`` in the "Arrays" tutorial, and we just discussed ``freeze`` (i.e. a form of deep copying). 
+
+Nevertheless, to be precise, making a **deep copy** means not only copying the object, but all members of the object as well. This is different than storing an object in another reference, as this only creates an **alias** to the original object. Especially in other programming languages such as Java, attempting to make a deep copy can lead to a circular reference,  where a cycle of copying begins that never terminates. Shadow mitigates this potential problem through the keywords ``copy`` and ``freeze``.  
+
+See below for an example of using ``copy`` (references the ``Otter`` class from the previous tutorial): 
+
+.. code-block:: shadow 
+
+    Otter oliver = Otter:create("Oliver", "Ocean"); 
+    Otter oscar = copy(oliver); 
+
+As you can see, the syntax for using ``copy`` is quite simple. You simply write ``copy(objectToCopy)`` and store it in an object of the appropriate type. The ``Otter`` ``oscar`` is now a deep copy of ``oliver`` -- including deep copies of all of its members. Any changes to ``oscar`` are not reflected in ``oliver``. Internally, the ``copy`` command keeps track of all the new objects allocated. If a circular reference would cause something to be copied a second time, the ``copy`` command instead uses the first copy. The exception to the rule is ``immutable`` objects, which cannot be changed anyway. References to such objects are assigned directly, without making copies of the underlying objects.
+
+In order to review how ``freeze`` works, take a look at the above section " ``immutable`` and ``freeze`` ". The syntax is the same. The only difference is that ``freeze`` creates an immutable copy of the object. 
+
+
 Arrays as Objects
 ^^^^^^^^^^^^^^^^^
+At this point in the tutorials, you probably have noticed that arrays appear to behave much like objects. You can initialize them with ``create()``, use the ``copy`` command, and call certain methods on them (e.g. ``index()`` ). As it turns out, **arrays themselves are objects**, so concepts relating to Objects in general apply to arrays.
 
-``copy()``
-^^^^^^^^^^^
+Now that we have introduced objects, it is also worth mentioning that instead of having an array of primitive type or a ``String`` array,  you can also create an array of objects as well. In addition, as introduced in "Classes: The Basics", you can also declare an array to be ``nullable``. This will be covered in the next section. 
+
+
+``nullable`` Arrays
+^^^^^^^^^^^^^^^^^^^
+
+Just as you can declare a ``String`` reference to be ``nullable``, you can do the same for arrays. However, it is important to note that the **array itself is not nullable, but the elements inside of it are.** Consider the example below. 
+
+.. code-block:: shadow 
+    :linenos: 
+
+    nullable String[] test = String:null[4]; 
+		
+    Otter ophelia = Otter:create("Ophelia", "River", 7); 
+		
+    test[1] = "Joy"; 
+    test[2] = #ophelia; 
+
+    Console.printLine(test); 
+
+The console output is: 
+
+.. code-block:: shadow 
+
+    [null, Joy, default@Otter, null]
+
+The ``nullable`` ``String`` array ``test`` is created with 4 elements, all storing ``null``. Then, in **Line 5**, we have changed the value of the 2nd element in the array to "Joy". In **Line 6**  have changed the value of the 3rd element in the array to the ``String`` representation of the ``Otter`` object ``ophelia``. 
+
+.. note:: Recall that putting the ``#`` in front of a value converts it to a ``String``.
+
+
+
+
+		
+
+
+``toString()``
+^^^^^^^^^^^^^^
 
 ``equal()`` 
 ^^^^^^^^^^^^

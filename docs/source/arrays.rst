@@ -175,7 +175,7 @@ The expression ``copy(a)``  in **Line 1** is the proper syntax used in order to 
 
 
 
-``subarray``
+``subarray()``
 ^^^^^^^^^^^^
 
 The ``subarray()`` method works in much the same way as copy, except that it allows you to copy a *part* of the array by using a range of indices. The parameters of the method are the ``start`` **index** from where you want to copy, and the ``stop`` **index**, which copies everything up to but not including this index. The result must be stored in an array of compatible type. 
@@ -203,7 +203,7 @@ The contents of the ``a`` and ``array`` are:
 The array we are making a subarray from, ``a``, has three elements. Using ``subarray()``, we want to create an array that only has the first two elements of ``a``. As you can see in **Line 6**, the method is being called on ``a`` and the parameters ``0`` and ``2`` represent the ``start`` and ``end``, respectively. This means elements with index ``0`` and ``1`` will be made into a subarray. Most importantly, the result is being stored in a ``String`` array. Now, ``array`` contains "Hola" and "Hello", as seen in the console output. 
 
 
-``index``
+``index()``
 ^^^^^^^^^
 
 ``index()`` is a useful method for accessing/changing the elements in an array. Additionally, ``index()`` is an **overloaded** method, in this case meaning that it has two different method signatures. The first way you can use ``index()`` is to access/return an element of an array at a specific index. The only parameter is the desired index. The second way to use ``index()`` is to change the value of an element at a specific index. The parameters are the index and the new value. See the short program below for an example implementation. 
