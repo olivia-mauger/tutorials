@@ -21,6 +21,7 @@ Welcome to the Shadow Tutorials!
    arrays
    classes-basics
    classes-properties
+   interfaces-intro
    
    
    

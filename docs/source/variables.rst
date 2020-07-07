@@ -55,6 +55,19 @@ As an example, a basic variable declaration of type ``int`` looks like this:
 
 The **variable** ``age`` is of **primitive** type ``int`` and holds the **literal value** ``20``.
 
+``code``
+^^^^^^^^
+
+Outside of the numeric-type primitive variables, there is also a type called ``code``. Similar to ``char`` in Java, a ``code`` represents an individual character.  The declaration of a ``char`` variable is as follows: 
+
+``code grade = 'd';``
+
+The **variable** ``grade`` is of primitive type  ``code`` and holds the value ``'d'``.  Make sure you put the character in single quotes in order for it to be recognized as ``code``. 
+
+However, if you are familiar with Java, you may be wondering how ``code`` is different from ``char``. It all comes down to the UTF used, which is a collection of standards for encoding characters. Java uses UTF-16, meaning that each character is represented using 2 bytes, while Shadow uses UTF-8, which is variable-size encoding. Even though a variable number of bytes are used, a single ``code`` variable still takes up 4 bytes in order to ensure the largest characters can be stored in it.  To get around this, individual ``code`` variables can be stored in a ``String`` in order to use only as many bytes as needed. 
+
+.. note:: ``code`` characters do not have to be letters. They could be numbers or even special characters like ``$``. 
+
 ``boolean``
 ^^^^^^^^^^^
 

@@ -159,16 +159,64 @@ The ``nullable`` ``String`` array ``test`` is created with 4 elements, all stori
 .. note:: Recall that putting the ``#`` in front of a value converts it to a ``String``.
 
 
+Method Overriding
+^^^^^^^^^^^^^^^^^
 
-
-		
-
+Often confused with method overloading, **method overriding** is when the programmer provides a new default implementation for a pre-provided method in a class. In order to properly override a method, the overridden method header must **exactly** match the header of the original method. The method body may -- and should -- be different. A commonly overridden method for Objects is the ``toString()`` method, which gives a ``String`` representation of the object. It is a good example on how to override a method, and it is shown in the next section. 
 
 ``toString()``
 ^^^^^^^^^^^^^^
 
-``equal()`` 
-^^^^^^^^^^^^
+You may have noticed in the " ``nullable`` Arrays " section that the ``String`` representation of the ``Otter`` object ``ophelia`` was ``default@Otter`` . In other languages like Java, ``toString()`` returns a number representing the location of that object in memory, and most of that time the number is meaningless to the programmer. In **Shadow**, the default implementation of ``toString()`` **returns the package and class that the object belongs to.**  If you don’t create a package for a class, like in the ``Otter`` example, the package will be default automatically. 
 
-``destroy()`` 
-^^^^^^^^^^^^^
+Either way, the default implementation is often useless. This is where **method overriding** becomes valuable. For example, let’s pretend we have a very simple class representing Shadow State Park, located in the Methods Mountain Range. The member variables represent the guest’s name, length of stay, and preferred activity, respectively. See below for the full class. 
+
+.. code-block:: shadow 
+    :linenos:  
+    
+    import shadow:io@Console;
+
+    class ShadowPark
+    {
+        get String guestName; 
+	get set int days; 
+	get set String activity; 
+	
+	public create(String gn, int d, String a) 
+	{
+	    guestName = gn; 
+	    days = d; 
+	    activity = a; 
+	}
+	
+	public readonly toString() => (String)
+	{
+	    String one = # guestName # " is staying for " # days # " days"; 
+	    String two = " and would like to go " # activity; 
+		
+	    return one # two; 			
+	}
+	
+    }
+
+
+Here is an exerpt from the driver program and console output: 
+
+.. code-block:: shadow 
+    :linenos: 
+
+    ShadowPark guest1 = ShadowPark:create("Natasha", 3, "rock climbing"); 
+    Console.printLine(guest1); 
+
+.. code-block:: console
+
+    Natasha is staying for 3 days and would like to go rock climbing
+
+The key lines to pay attention to in the ``ShadowPark`` class are **Lines 16-22**. This is where we have overridden the default ``toString()`` method. If a programmer decides to override the ``toString()`` method in any class, the method header **MUST** match ``public readonly toString() => (String)``, exactly. Omitting ``readonly`` will cause a compile error, as ``toString()`` cannot make changes to the object it is called on. 
+
+Now, when we say ``Console.printLine(objectName)``, or ``#objectName``,  the program will display on the console the ``String`` value returned by the ``toString()`` method that we overrode, as shown in the driver program above. Our new ``toString()`` method is now much more helpful/informational than what would have been returned from the ``toString()`` method by default, ``default@ShadowPark``. 
+
+More information on method overriding will be provided when we start discussing **inheritance** in a later tutorial. 
+
+
+
