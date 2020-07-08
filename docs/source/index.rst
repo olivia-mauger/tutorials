@@ -7,7 +7,7 @@ Welcome to the Shadow Tutorials!
 ================================
 
 .. toctree::
-   :maxdepth: 11
+   :maxdepth: 15
    :caption: Contents:
    
    intro
@@ -22,6 +22,7 @@ Welcome to the Shadow Tutorials!
    classes-basics
    classes-properties
    interfaces-intro
+   singletons
    
    
    
