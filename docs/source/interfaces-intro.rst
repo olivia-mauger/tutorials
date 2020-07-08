@@ -132,6 +132,15 @@ The order the interfaces are presented in *does not matter* so long as they are 
 
 What does this mean for the body of the class? Now, the class must implement **every method** of every interface stated in its class header in order for the code to compile. 
 
+For example, let’s say that we added an interface called ``CanScubaDive`` that has one method called ``scubaDive()`` and both ``Madagascar`` and ``Bermuda`` implement it. Now, look back at the driver program from the previous section. If we added the expression ``bermuda.scubaDive();`` , the ``scubaDive()`` method from the ``Bermuda`` class would execute as expected. However, what if we added ``madagascar.scubaDive();`` ? Would the code compile? **No.** It would not compile because ``madagascar`` is declared to be of type ``CanVacation``. This means that when you try to call a method from another interface (in this case, ``CanScubaDive``), the method would not be defined in this context. Therefore, when a class implements more than one interface, it is not usually a good idea for instances of the class to have an ``interface`` type. 
+
+No Default Implementation
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are familiar with Java, you are probably wondering if it is possible for an ``interface`` to provide a default implementation for some or all of its methods. In **Shadow** the is answer is **no**. You will get a compile error if you try to do so. **The whole purpose of an interface is to outline methods that a class is forced to implement itself based off of the specific needs/function of the class itself**. 
+
+
+
 
 
 
