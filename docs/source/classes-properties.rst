@@ -27,7 +27,7 @@ In **Shadow**, a ``String`` is not the only thing that is ``immutable`` -- class
      * the class to be immutable.
      */
 
-    immutable class JobApplication
+    immutable class tutorials:properties@JobApplication
     {
         get String name; 
         get int age; 
@@ -69,7 +69,7 @@ In order to understand how to create an immutable reference/object, take a look 
 
     import shadow:io@Console;
 
-    class ApplicationDriver
+    class tutorials:properties@ApplicationDriver
     {
         public main( String[] args ) => ()
 	{
@@ -176,7 +176,7 @@ Either way, the default implementation is often useless. This is where **method 
     
     import shadow:io@Console;
 
-    class ShadowPark
+    class tutorials:properties@ShadowPark
     {
         get String guestName; 
 	get set int days; 

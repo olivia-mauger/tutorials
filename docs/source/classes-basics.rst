@@ -270,8 +270,28 @@ The method takes in no parameters and returns an ``int`` representing the number
 
 Defining different methods within a class gives the class greater functionality and makes objects even more useful. Now, we are ready to move on to more advanced topics regarding classes.  
 
+Packages
+^^^^^^^^
 
+**Packages** in **Shadow** are a means of organizing groups of classes that serve a similar function or have some commonality that unites them. They are created by putting these different classes in folders/directories. You have already been exposed to packages, just not explicitly. For example, consider the ``shadow:standard`` package. It contains essential classes, interfaces, singletons, and exceptions (to be explained in later tutorials) needed for any Shadow program. These types do not need to be explicitly imported because the compiler will do so automatically. The other built-in Shadow packages are listed below (as described in the Shadow API). 
 
+* Package ``shadow:io`` contains fundamental types used for input and output, both for the console and for file and path manipulation
+
+* Package ``shadow:natives`` contains classes and exceptions used to interact with C code.
+
+* Package ``shadow:utility`` contains basic data structures and utility classes that are useful in many different kinds of programs.
+
+While these are the packages essential to the Shadow language, what if you wanted to create your own package? For example, you may be wondering what package all of these test programs we have studied are stored in. **If not specified in the class header, classes are stored in the** ``default`` **package**. From now on, let’s say we want to put all of these example programs in a Shadow tutorials package. 
+
+First, we will create a folder called ``tutorials``, and inside this folder we can have multiple other folders to hold different classes. For example, inside the ``tutorial`` folder, let’s say we make a folder called ``variables``. Inside this folder, we can put all the programs we have relating to variable examples. It becomes a package. But how do we designate the package in class headings? 
+
+Let’s pretend we made a class called ``VariableClass``. 
+
+Instead of the class header saying, ``class VariableClass`` , we now should write ``class tutorials:variables@VariableClass``. 
+
+The package name is ``tutorials:variables`` (these are the folder/directory names), and the class name is ``VariableClass``. The class name must **always** appear after the ``@`` symbol. 
+
+When working with many classes, interfaces, etc. for a programming project, it is a good idea to put your code into packages to stay organized. From now on, packages will be incorporated into our example programs. 
 
 
 

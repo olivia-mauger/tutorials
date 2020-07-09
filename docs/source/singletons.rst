@@ -17,7 +17,7 @@ Let's first look at ``OperationTracker``, which is a ``singleton`` class. Its pu
 .. code-block:: shadow 
     :linenos: 
 
-    singleton OperationTracker
+    singleton tutorials:singletons@OperationTracker
     {
         get int numOperations = 0; 
 	
@@ -38,7 +38,7 @@ Now, let's break down the ``CovertOperation`` class.
 .. code-block:: shadow 
     :linenos: 
 
-    class CovertOperation
+    class tutorials:singletons@CovertOperation
     {
         get set String password; 
 	get code secret; 

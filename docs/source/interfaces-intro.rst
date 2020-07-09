@@ -5,7 +5,7 @@ In this section we will cover another very important part of **Shadow**: interfa
 .. code-block:: shadow 
     :linenos: 
 
-    interface CanVacation
+    interface tutorials:interfaces@CanVacation
     {
         vacation() => (); 
     }
@@ -36,7 +36,7 @@ First, is the ``Bermuda`` class:
 
     import shadow:io@Console;
 
-    class Bermuda is CanVacation 
+    class tutorials:interfaces@Bermuda is CanVacation 
     {
         public vacation() => ()
 	{
@@ -60,7 +60,7 @@ Second, is the ``Madagascar`` class:
 
     import shadow:io@Console;
 
-    class Madagascar is CanVacation 
+    class tutorials:interfaces@Madagascar is CanVacation 
     {
         public vacation() => ()
 	{
@@ -132,7 +132,7 @@ The order the interfaces are presented in *does not matter* so long as they are 
 
 What does this mean for the body of the class? Now, the class must implement **every method** of every interface stated in its class header in order for the code to compile. 
 
-For example, let’s say that we added an interface called ``CanScubaDive`` that has one method called ``scubaDive()`` and both ``Madagascar`` and ``Bermuda`` implement it. Now, look back at the driver program from the previous section. If we added the expression ``bermuda.scubaDive();`` , the ``scubaDive()`` method from the ``Bermuda`` class would execute as expected. However, what if we added ``madagascar.scubaDive();`` ? Would the code compile? **No.** It would not compile because ``madagascar`` is declared to be of type ``CanVacation``. This means that when you try to call a method from another interface (in this case, ``CanScubaDive``), the method would not be defined in this context. Therefore, when a class implements more than one interface, it is not usually a good idea for instances of the class to have an ``interface`` type. 
+For example, let’s say that we added an interface called ``CanScubaDive`` that has one method called ``scubaDive()`` and both ``Madagascar`` and ``Bermuda`` implement it. Now, look back at the driver program from the previous section. If we added the expression ``bermuda.scubaDive();`` , the ``scubaDive()`` method from the ``Bermuda`` class would execute as expected. However, what if we added ``madagascar.scubaDive();`` ? Would the code compile? **No.** It would not compile because ``madagascar`` is declared to be of type ``CanVacation``. This means that when you try to call a method from another interface (in this case, ``CanScubaDive``), the method would not be defined in this context. Therefore, when a class implements more than one interface, pay attention to the variable type when creating objects of the class. 
 
 No Default Implementation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
