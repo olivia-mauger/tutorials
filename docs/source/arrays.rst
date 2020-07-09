@@ -176,7 +176,7 @@ The expression ``copy(a)``  in **Line 1** is the proper syntax used in order to 
 
 
 ``subarray()``
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 The ``subarray()`` method works in much the same way as copy, except that it allows you to copy a *part* of the array by using a range of indices. The parameters of the method are the ``start`` **index** from where you want to copy, and the ``stop`` **index**, which copies everything up to but not including this index. The result must be stored in an array of compatible type. 
 
