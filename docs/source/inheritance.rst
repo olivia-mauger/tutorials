@@ -240,6 +240,23 @@ Since subclasses inherit the methods of its superclass, it is possible to overri
 
 **The key part of this method is that the header exactly matches the header of the** ``clockIn()`` **method in the** ``Employee`` **class**. If it had not, you would not have successfully overridden the method and gotten a compile error. There are no requirements on what has to be different in the method body. In this case, we simply changed the length of the shift for all ``Waiter`` objects. 
 
-	
+Final Note
+^^^^^^^^^^
+
+
+As a final note, it is important to address the syntax of the header for a class that **extends** one class, but implements one or more interfaces. Although a class can implement multiple interfaces, it can only directly extend one other class. This can be confusing, as implementing and extending both use the keyword ``is``. 
+
+As a rule, if a class extends another class, it should be the first statement, followed by the interfaces it implements in any order (and separated by ``and``). For example, 
+
+
+.. code-block:: shadow 
+    
+    class Testy
+    is Awesome
+    and CanDance
+    and CanSing
+
+Here, the class name is ``Testy``, and the class it extends is ``Awesome``, and the two interfaces it implements are ``CanDance`` and ``CanSing``. 
+
 
 
