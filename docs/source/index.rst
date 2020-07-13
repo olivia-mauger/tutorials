@@ -23,6 +23,7 @@ Welcome to the Shadow Tutorials!
    classes-properties
    interfaces-intro
    singletons
+   inheritance
    
    
    
