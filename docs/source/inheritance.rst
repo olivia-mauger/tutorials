@@ -46,7 +46,7 @@ In order to understand the syntax and implementation of extending classes, there
 
     import shadow:io@Console;
 
-    class Employee
+    class tutorials:inheritance@Employee
     {
         get String name; 
 	get set int hoursWorked; 
@@ -81,7 +81,7 @@ And here is the ``Waiter`` class:
 
     import shadow:io@Console;
 
-    class Waiter is Employee
+    class tutorials:inheritance@Waiter is Employee
     {
         int numTables; 
 	double tips; 
@@ -174,7 +174,7 @@ In addition, you can also create ``protected`` ``get`` and ``set`` properties. A
 .. code-block:: shadow 
     :linenos:
 
-    class Hello
+    class tutorials:inheritance@Hello
     {
         get String word = "hello"; 
 	
@@ -189,7 +189,7 @@ In addition, you can also create ``protected`` ``get`` and ``set`` properties. A
 .. code-block:: shadow 
     :linenos:
 
-    class Bonjour is Hello 
+    class tutorials:inheritance@Bonjour is Hello 
     {
         public speakFrench() => ()
 	{
@@ -204,7 +204,7 @@ In addition, you can also create ``protected`` ``get`` and ``set`` properties. A
 
     import shadow:io@Console;
 
-    class Language
+    class tutorials:inheritance@Language
     {
         public main( String[] args ) => ()
 	{ 
