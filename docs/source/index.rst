@@ -24,6 +24,7 @@ Welcome to the Shadow Tutorials!
    interfaces-intro
    singletons
    inheritance
+   abstract-classes
    
    
    

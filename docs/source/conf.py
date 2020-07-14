@@ -61,3 +61,5 @@ def setup(app):
     app.add_lexer('shadow', ShadowLexer)
 
 smartquotes = False
+
+extensions = ['sphinx.ext.autosectionlabel']
