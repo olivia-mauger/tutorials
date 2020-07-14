@@ -110,7 +110,7 @@ Below is a sample driver program and console output for the above interface and 
 
 First and foremost, it is important to understand that **you may not create objects/instances of interfaces**. You can, and should, create instances of the classes that implement interfaces, as shown in the example above. 
 
-Let’s look at the ``bermuda`` object first. It is an object of the ``Bermuda`` class, and the ``vacation()`` method is called on it. The syntax is the same as discussed in the "Classes: The Basics" tutorial. 
+Let’s look at the ``bermuda`` object first. It is an object of the ``Bermuda`` class, and the ``vacation()`` method is called on it. The syntax is the same as discussed in the :ref:`Classes: The Basics<Classes: The Basics>` tutorial. 
 
 Now, look at the declaration of the ``madagascar`` object. The object itself is an instance of the ``Madagascar`` class, but it is stored as type ``CanVacation``, an interface. Although there is no real difference between these two different ways of instantiating an object, it is often useful to store an object in an  ``interface`` type variable. If you happen to change the object in one place, you would not need to modify any code that expects an ``interface``. 
 

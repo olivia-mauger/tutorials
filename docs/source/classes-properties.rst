@@ -3,10 +3,10 @@ Properties of Classes and Objects
 
 Now that we have covered the basics of classes in **Shadow**, we can move on to some features/properties of classes. 
 
-``immutable`` and ``freeze``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+immutable and freeze
+^^^^^^^^^^^^^^^^^^^^
 
-In a previous tutorial under  "Variables Introduction", we discussed the concept of **immutability** in terms of a ``String``. When we say that a ``String`` is **immutable**, we mean that once it is created, **its value cannot be changed**. 
+In a :ref:`previous tutorial<Strings and Immutability>`, we discussed the concept of **immutability** in terms of a ``String``. When we say that a ``String`` is **immutable**, we mean that once it is created, **its value cannot be changed**. 
 
 In **Shadow**, a ``String`` is not the only thing that is ``immutable`` -- classes and references can be as well. We will start with analyzing ``immutable`` classes. See the basic example below: 
 
@@ -108,7 +108,7 @@ Although methods can be marked as ``readonly``, classes cannot be. In addition, 
 Deep Copying and ``copy``
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Another notable feature of Shadow and Shadow classes is the ability to create **deep copies** of objects. You have probably already made deep copies without knowing it;  there was a section on ``copy`` in the "Arrays" tutorial, and we just discussed ``freeze`` (i.e. a form of deep copying). 
+Another notable feature of Shadow and Shadow classes is the ability to create **deep copies** of objects. You have probably already made deep copies without knowing it;  there was a section on ``copy`` in the :ref:`Arrays<Arrays>` tutorial, and we just discussed ``freeze`` (i.e. a form of deep copying). 
 
 Nevertheless, to be precise, making a **deep copy** means not only copying the object, but all members of the object as well. This is different than storing an object in another reference, as this only creates an **alias** to the original object. Especially in other programming languages such as Java, attempting to make a deep copy can lead to a circular reference,  where a cycle of copying begins that never terminates. Shadow mitigates this potential problem through the keywords ``copy`` and ``freeze``.  
 
@@ -121,18 +121,18 @@ See below for an example of using ``copy`` (references the ``Otter`` class from 
 
 As you can see, the syntax for using ``copy`` is quite simple. You simply write ``copy(objectToCopy)`` and store it in an object of the appropriate type. The ``Otter`` ``oscar`` is now a deep copy of ``oliver`` -- including deep copies of all of its members. Any changes to ``oscar`` are not reflected in ``oliver``. Internally, the ``copy`` command keeps track of all the new objects allocated. If a circular reference would cause something to be copied a second time, the ``copy`` command instead uses the first copy. The exception to the rule is ``immutable`` objects, which cannot be changed anyway. References to such objects are assigned directly, without making copies of the underlying objects.
 
-In order to review how ``freeze`` works, take a look at the above section " ``immutable`` and ``freeze`` ". The syntax is the same. The only difference is that ``freeze`` creates an immutable copy of the object. 
+In order to review how ``freeze`` works, take a look at the :ref:`above section<immutable and freeze>`. The syntax is the same. The only difference is that ``freeze`` creates an immutable copy of the object. 
 
 
 Arrays as Objects
 ^^^^^^^^^^^^^^^^^
 At this point in the tutorials, you probably have noticed that arrays appear to behave much like objects. You can initialize them with ``create()``, use the ``copy`` command, and call certain methods on them (e.g. ``index()`` ). As it turns out, **arrays themselves are objects**, so concepts relating to Objects in general apply to arrays.
 
-Now that we have introduced objects, it is also worth mentioning that instead of having an array of primitive type or a ``String`` array,  you can also create an array of objects as well. In addition, as introduced in "Classes: The Basics", you can also declare an array to be ``nullable``. This will be covered in the next section. 
+Now that we have introduced objects, it is also worth mentioning that instead of having an array of primitive type or a ``String`` array,  you can also create an array of objects as well. In addition, as introduced in :ref:`Classes: The Basics<Classes: The Basics>`, you can also declare an array to be ``nullable``. This will be covered in the next section. 
 
 
-``nullable`` Arrays
-^^^^^^^^^^^^^^^^^^^
+nullable Arrays
+^^^^^^^^^^^^^^^^
 
 Just as you can declare a ``String`` reference to be ``nullable``, you can do the same for arrays. However, it is important to note that the **array itself is not nullable, but the elements inside of it are.** Consider the example below. 
 
@@ -167,7 +167,7 @@ Often confused with method overloading, **method overriding** is when the progra
 ``toString()``
 ^^^^^^^^^^^^^^
 
-You may have noticed in the " ``nullable`` Arrays " section that the ``String`` representation of the ``Otter`` object ``ophelia`` was ``default@Otter`` . In other languages like Java, ``toString()`` returns a number representing the location of that object in memory, and most of that time the number is meaningless to the programmer. In **Shadow**, the default implementation of ``toString()`` **returns the package and class that the object belongs to.**  If you don’t create a package for a class, like in the ``Otter`` example, the package will be default automatically. 
+You may have noticed in the :ref:`nullable Arrays<nullable Arrays>` section that the ``String`` representation of the ``Otter`` object ``ophelia`` was ``default@Otter`` . In other languages like Java, ``toString()`` returns a number representing the location of that object in memory, and most of that time the number is meaningless to the programmer. In **Shadow**, the default implementation of ``toString()`` **returns the package and class that the object belongs to.**  If you don’t create a package for a class, like in the ``Otter`` example, the package will be default automatically. 
 
 Either way, the default implementation is often useless. This is where **method overriding** becomes valuable. For example, let’s pretend we have a very simple class representing Shadow State Park, located in the Methods Mountain Range. The member variables represent the guest’s name, length of stay, and preferred activity, respectively. See below for the full class. 
 
@@ -216,7 +216,7 @@ The key lines to pay attention to in the ``ShadowPark`` class are **Lines 16-22*
 
 Now, when we say ``Console.printLine(objectName)``, or ``#objectName``,  the program will display on the console the ``String`` value returned by the ``toString()`` method that we overrode, as shown in the driver program above. Our new ``toString()`` method is now much more helpful/informational than what would have been returned from the ``toString()`` method by default, ``default@ShadowPark``. 
 
-More information on method overriding will be provided when we start discussing **inheritance** in a later tutorial. 
+More information on method overriding will be provided when we start discussing **inheritance** in a :ref:`later tutorial<Inheritance>`. 
 
 
 

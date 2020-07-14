@@ -68,7 +68,7 @@ Member Variables
 
 The first thing to note about the ``Otter`` class are its **member variables** (or **fields**)  as seen in **Lines 6-9**. Member variables, in essence, represent a class’s attributes. They "belong" to the class (i.e. in the scope of it).  For example, imagine you are looking at a real, live otter (lucky you!). How would you describe or define the animal? Does it have a name? Habitat? Mate? Age? All of these questions can be translated into specific **member variables** of the ``Otter`` class. ``name`` is a ``String`` variable, ``mate`` a ``boolean``, ``age`` an ``int``, and ``habitat`` a ``String`` as well. There is no limit to how many member variables a class can have, and there is no minimum requirement. In fact, a class does not *need* to have member variables at all. 
 
-Aside from the words ``get`` and ``set``, declaring a member variable is the same as declaring any local variable. The difference, though, is that every member variable is automatically declared ``private``. You do need to and should not include this **reserved word** as a modifier. It is a given. When ``private`` is used to modify a variable, it means that the variable can only be accessed **within the class that it is declared in**. This is exactly why we use ``get`` and ``set``: to allow other classes to be able to access or change the value of these private member variables. ``get`` and ``set`` will be explained in the later section, "Accessing Member Variables". 
+Aside from the words ``get`` and ``set``, declaring a member variable is the same as declaring any local variable. The difference, though, is that every member variable is automatically declared ``private``. You do need to and should not include this **reserved word** as a modifier. It is a given. When ``private`` is used to modify a variable, it means that the variable can only be accessed **within the class that it is declared in**. This is exactly why we use ``get`` and ``set``: to allow other classes to be able to access or change the value of these private member variables. ``get`` and ``set`` will be explained in a :ref:`later section<get and set Properties>`. 
 
 **A Brief Conceptual Note** 
 
@@ -94,7 +94,7 @@ The first line of the ``main()`` method is:
 
 ``Otter olive = Otter:create("Olive", "River", 6);``
 
-``Otter olive`` is how we declare the object. The type, which has to be the **name of the class** , is ``Otter``. ``olive`` is the name of our object, or an instance of the ``Otter`` class. The same naming conventions outlined in "Variables Introduction" should be followed. There is no limit on the number of ``Otter`` objects we can create. 
+``Otter olive`` is how we declare the object. The type, which has to be the **name of the class** , is ``Otter``. ``olive`` is the name of our object, or an instance of the ``Otter`` class. The same naming conventions outlined in :ref:`Variables Introduction<Variables Introduction>` should be followed. There is no limit on the number of ``Otter`` objects we can create. 
 
 The expression to the right of the equals sign invokes the object’s **constructor** and thus creates an ``Otter`` object (as made clear by the reserved word ``create``). Inside the parentheses we see 3 literal values. Much like the method calls discussed in an earlier tutorial, **constructors** can take in parameters. 
 
@@ -158,7 +158,7 @@ For **reference types**, including ``String`` and objects, the most logical defa
 
 This is a  ``nullable`` ``String`` reference that is equal to ``null`` and will not cause a compile error. 
 
-However, what if I tried to write this statement?
+However, what if we tried to write this statement?
 
 ``String word2 = null;``
 
@@ -179,8 +179,8 @@ Lastly, if you have at least one programmer-defined constructor, you will get a 
 
 
 
-``get`` and ``set`` Properties
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+get and set Properties
+^^^^^^^^^^^^^^^^^^^^^^^
 
 We are now going to move back to our analysis of the ``Otter`` class and address the properties ``get`` and ``set``. 
 
@@ -240,7 +240,7 @@ Class Methods
 ^^^^^^^^^^^^^
 
 Outside of  **constructor(s)**, **accessors**, or **mutators**, classes can have any 
-number of other methods, as discussed in the previous "Methods" tutorials. If you need a refresher on how to create, use, or call methods, refer back to this section. 
+number of other methods, as discussed in the previous :ref:`Methods<Methods>` tutorials. If you need a refresher on how to create, use, or call methods, refer back to this section. 
 
 Notice how the ``Otter`` class has a method called ``goFishing()`` (see below) 
 

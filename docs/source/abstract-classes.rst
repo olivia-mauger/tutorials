@@ -106,9 +106,9 @@ Lastly, here is an excerpt from the brief driver class, ``AutoDriver``, and the 
  
 First, before we get into any explanations, take a few minutes and examine the three classes above. See if you can trace through the driver program and predict the output without looking ahead. 
 
-Now that you have a general idea how the program works, we will first touch on the ``abstract`` class ``Automobile``. Aside from the word ``abstract`` in the class header and the ``abstract`` method ``takeATrip()`` , ``Automobile does not appear to be any different than the classes we have studied previously. It still has a constructor, member variables, and one concrete method, ``buyAuto()``. 
+Now that you have a general idea how the program works, we will first touch on the ``abstract`` class ``Automobile``. Aside from the word ``abstract`` in the class header and the ``abstract`` method ``takeATrip()`` , ``Automobile`` does not appear to be any different than the classes we have studied previously. It still has a constructor, member variables, and one concrete method, ``buyAuto()``. 
 
-The second class, ``Motorcycle``, extends ``Automobile``, as you can tell from the keyword ``is`` in the class header. ``Motorcycle`` does not override ``buyAuto()``, but it must provide default implementation for ``takeATrip()``, as seen in **Lines 11-15**. Notice how in **Line 8** we use the ``super()`` call to invoke the ``Automobile`` constructor. Using ``super()`` was covered in a previous section called "Implementation" under the page on "Inheritance". 
+The second class, ``Motorcycle``, extends ``Automobile``, as you can tell from the keyword ``is`` in the class header. ``Motorcycle`` does not override ``buyAuto()``, but it must provide default implementation for ``takeATrip()``, as seen in **Lines 11-15**. Notice how in **Line 8** we use the ``super()`` call to invoke the ``Automobile`` constructor. Using ``super()`` was covered in a :ref:`previous section<Implementation>`. 
 
 Lastly, the driver program should not look any different from any of the examples we have used thus far. We have created a ``Motorcycle`` object and called methods on it. However, it is important to note we could have declared ``harley`` like this as well:  
 

@@ -103,7 +103,7 @@ And here is the ``Waiter`` class:
 
 **The Class Header** 
 
-By itself, there is nothing new included in the ``Employee`` class. There are 3 member variables, one constructor, and two methods. If an element of the class looks unfamiliar,  you should revisit the "Classes: The Basics" tutorial. 
+By itself, there is nothing new included in the ``Employee`` class. There are 3 member variables, one constructor, and two methods. If an element of the class looks unfamiliar,  you should revisit the :ref:`Classes: The Basics<Classes: The Basics>` tutorial. 
 
 Now, look at the ``Waiter`` class. Notice how the class header says, ``class Waiter is Employee``. The keyword ``is`` signifies to the compiler that ``Waiter`` *extends* employee. Syntactically, this is the only thing you have to do in order to "establish" this line of inheritance. 
 
@@ -222,7 +222,7 @@ The first thing to pay attention to is that the class ``Bonjour`` extends ``Hell
 Method Overriding, Revisited 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The last topic we will briefly discuss in this introduction to **inheritance** is **method overriding**. If this concept is completely new to you, it would be a good idea to review the tutorial "Method Overriding" in "Properties of Classes and Objects". 
+The last topic we will briefly discuss in this introduction to **inheritance** is **method overriding**. If this concept is completely new to you, it would be a good idea to review the tutorial :ref:`Method Overriding<Method Overriding>`. 
 
 As a refresher, method overriding is when the programmer provides a new default implementation for a pre-provided method in a class. In order to properly override a method, the overridden method header must exactly match the header of the original method. The method body may -- and should -- be different.
 

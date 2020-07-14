@@ -96,7 +96,7 @@ Let’s use our ``age`` variable again (``int age = 20;``). If you had a birthda
 
     age = 21; 
 
-Now the variable ``age`` is updated and holds the literal value of 21. Notice how I did not write 
+Now the variable ``age`` is updated and holds the literal value of 21. Notice how we did not write 
 
 .. code-block:: shadow
 
@@ -167,7 +167,7 @@ To analyze this code, let's break it up into sections.
     String restaurantName = "Taco Tuesday"; 
     boolean isHungry = true; 
 
-The most important thing to note here is how the variables are named. For example, ``restaurantName`` is a ``String`` variable. Notice how I did not name it ``RestaurantName`` or ``restaurantname``. Although using these names would not cause a compile error, it is good programming practice to use **CamelCase** notation: where the first word in a sequence of words (that are not separated by spaces) begins with a lowercase letter and the rest begin with uppercase letters. The same goes for the ``boolean`` variable ``isHungry``. In addition to using CamelCase notation, it is also a good idea to make sure your variable names are descriptive of their purpose. In this case, if this was a program for a Restaurant, ``isHungry`` would be used to tell if a certain customer is hungry -- as can be inferred from the variable's name. 
+The most important thing to note here is how the variables are named. For example, ``restaurantName`` is a ``String`` variable. Notice how we did not name it ``RestaurantName`` or ``restaurantname``. Although using these names would not cause a compile error, it is good programming practice to use **CamelCase** notation: where the first word in a sequence of words (that are not separated by spaces) begins with a lowercase letter and the rest begin with uppercase letters. The same goes for the ``boolean`` variable ``isHungry``. In addition to using CamelCase notation, it is also a good idea to make sure your variable names are descriptive of their purpose. In this case, if this was a program for a Restaurant, ``isHungry`` would be used to tell if a certain customer is hungry -- as can be inferred from the variable's name. 
   
 .. note:: Your code will not compile if you have spaces in variable names, e.g. ``restaurant name``
  
@@ -185,7 +185,7 @@ There are a few more key naming conventions for Shadow.
     * Starting a variable name with a number will cause a compile error (but ending it with a number is acceptable) 
     * Single-word names should be all lowercase (e.g. price, meal, or quantity), but is not a compile error 
     * Starting a variable name with a special symbol (e.g. #, _, @, % +, etc.) will cause a compile error 
-    * Variable names cannot be **reserved words** (see next section). 
+    * Variable names cannot be **reserved words** (see :ref:`next section<Reserved Words>`). 
 
 
 3) **Formating Output** 

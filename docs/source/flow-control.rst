@@ -8,7 +8,7 @@ However, **flow control** becomes more interesting as we begin to introduce new 
 ``if`` and ``else`` Statements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Although ``if`` statements were briefly mentioned in a previous section ("Logical Operators"), they will now be covered in-depth. 
+Although ``if`` statements were briefly mentioned in a :ref:`previous section<Logical Operators>`, they will now be covered in-depth. 
 
 Below is the basic structure for an ``if``/``else`` statement. 
 
@@ -135,7 +135,7 @@ Since both statements following the ``if`` are indented, you might assume that b
 ``while`` Loops 
 ^^^^^^^^^^^^^^^
 
-Now, we will shift to **loops**, specifically ``while`` loops. But first, we must answer a basic question: *What is a loop?* As with Shadow, and programming in general, sometimes you will need to repeat an action multiple times. For example, let's say for some random reason I wanted to write a program that outputs "I love Shadow!" 5 times in a row. I could write ``Console.printLine("I love Shadow!")`` 5 separate times. However, this can become quite tedious and inefficient. Cue **loops**.  Loops allow you to repeat code for a specified number of times, or while a certain condition is met. 
+Now, we will shift to **loops**, specifically ``while`` loops. But first, we must answer a basic question: *What is a loop?* As with Shadow, and programming in general, sometimes you will need to repeat an action multiple times. For example, let's say for some random reason we wanted to write a program that outputs "I love Shadow!" 5 times in a row. We could write ``Console.printLine("I love Shadow!")`` 5 separate times. However, this can become quite tedious and inefficient. Cue **loops**.  Loops allow you to repeat code for a specified number of times, or while a certain condition is met. 
 
 The first type of loop discussed is the ``while`` loop, which repeats code based off of some boolean expression. The basic structure is below: 
 
@@ -336,7 +336,7 @@ However, ``i`` does not *have* to be initialized inside the ``for`` loop. It cou
 
     Console.printLine(c); 
 
-Does declaring the variable *outside* of the loop change the output? **No.**  "Hey you! Wake up!!" is still printed 5 times, like in the original example. The difference, instead, lies in the **scope of the variable.**  In Shadow, the **scope** of a variable is where the variable carries meaning in the program. Although **scope** will be discussed more in-depth in a later tutorial, it is important to note the distinction here. In the first example, ``i`` is declared and initialized inside the ``for`` loop. This means that if you tried to write ``Console.printLine(i);`` outside of the loop, you would get a compile error because you are not in the *scope* of ``i``. In other words, when you declare a variable inside of a loop, it only carries meaning *in that loop*, so in essence, it does not exist/cannot be accessed outside of the loop. However, in example 2, ``c`` is declared outside of the loop. Now, not only is ``c`` within the scope of the ``main()`` method, it also can be used inside of the loop. Why would you want to do this? Sometimes when writing programs, we want to use the counter variable in later calculations or for some other purpose, and declaring the variable outside of the loop allows this to happen. 
+Does declaring the variable *outside* of the loop change the output? **No.**  "Hey you! Wake up!!" is still printed 5 times, like in the original example. The difference, instead, lies in the **scope of the variable.**  In Shadow, the **scope** of a variable is where the variable carries meaning in the program. Although **scope** will be discussed more in-depth in a :ref:`later tutorial<A Note on Scope>`., it is important to note the distinction here. In the first example, ``i`` is declared and initialized inside the ``for`` loop. This means that if you tried to write ``Console.printLine(i);`` outside of the loop, you would get a compile error because you are not in the *scope* of ``i``. In other words, when you declare a variable inside of a loop, it only carries meaning *in that loop*, so in essence, it does not exist/cannot be accessed outside of the loop. However, in example 2, ``c`` is declared outside of the loop. Now, not only is ``c`` within the scope of the ``main()`` method, it also can be used inside of the loop. Why would you want to do this? Sometimes when writing programs, we want to use the counter variable in later calculations or for some other purpose, and declaring the variable outside of the loop allows this to happen. 
 
 
 2. **The Condition to be Evaluated** 
@@ -344,7 +344,7 @@ Does declaring the variable *outside* of the loop change the output? **No.**  "H
 
 ``i <= 5;``
 
-The second step when creating a ``for`` loop is to define the condition that determines when the loop will end. In this example, since I want to print the message 5 times, and ``i`` starts at 1, ``i <= 5;`` is the appropriate expression. If I had initialized ``i`` to be 0, then the condition would need to be ``i < 5;`` 
+The second step when creating a ``for`` loop is to define the condition that determines when the loop will end. In this example, since we want to print the message 5 times, and ``i`` starts at 1, ``i <= 5;`` is the appropriate expression. If we had initialized ``i`` to be 0, then the condition would need to be ``i < 5;`` 
 
 .. note:: Although ``<`` , ``>`` , ``<=``, ``>=`` are probably the most common operators used in ``for`` loops, others may be used if a programer deems fit (e.g. ``!=``). 
 
@@ -403,7 +403,7 @@ Now, control flows back the **outer loop**, and ``i`` is decreased by one (so no
 ``switch`` Statements
 ^^^^^^^^^^^^^^^^^^^^^
 
-We will conclude this section with a discussion on ``switch`` statements, which are similar in concept to ``if``/``else`` statements but syntactically very different. 
+We will continue this section with a discussion on ``switch`` statements, which are similar in concept to ``if``/``else`` statements but syntactically very different. 
 
 A ``switch`` statement is useful when you have input, whether it is user or program defined, and different actions to take based on the value of the input. In other words, there are many different **cases** of input that correspond to disticnt actions. For example, say you have a ``String`` variable that holds a genre of music. There are many different genres of music: hip-hop, rock, pop, alternative, etc. These different genres are called **cases**, and based on the case given, the program will recommend a specific song (e.g. a pop song for the pop genre). This example is coded below, demonstrating the general structure of a ``switch`` statement. 
 

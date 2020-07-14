@@ -1,6 +1,6 @@
 Arrays 
 ------
-This page introduces and analyzes **arrays** in Shadow. An array is a very useful data type that is able to store multiple values *of the same type*.  For example, if I had a list of ``String`` variables representing different dog breeds, instead of dealing with all of these individual variables, I could store the literal ``String`` values in a single array. See the visualization of an array below. 
+This page introduces and analyzes **arrays** in Shadow. An array is a very useful data type that is able to store multiple values *of the same type*.  For example, if you had a list of ``String`` variables representing different dog breeds, instead of dealing with all of these individual variables, you could store the literal ``String`` values in a single array. See the visualization of an array below. 
 
 +---------+---------+---------+---------+---------+
 |    0    |    1    |    2    |    3    |    4    |
@@ -100,7 +100,7 @@ Thus, the array ``golfScores`` holds five 0’s. Now you may ask, how do we inpu
     golfScores[3] = 108; 
     golfScores[4] = 110; 
 	
-Both of these examples achieve the desired result of putting the golf scores into the ``int`` array. The most important thing to take away is how we accessed specific elements of the array. As mentioned before, an array’s first element is indexed at zero. So, if I wanted to put my score as the first element, I would say ``golfScores[0] = 102;`` (or ``golfScores[index]`` when index equals 0 for the ``for`` loop example). **If you ever need to access individual elements of an array, this is the correct syntax.** e.g. ``var worstScore = golfScores[4];`` Now, ``worstScore`` holds the value 110. 
+Both of these examples achieve the desired result of putting the golf scores into the ``int`` array. The most important thing to take away is how we accessed specific elements of the array. As mentioned before, an array’s first element is indexed at zero. So, if you wanted to put your score as the first element, you would say ``golfScores[0] = 102;`` (or ``golfScores[index]`` when index equals 0 for the ``for`` loop example). **If you ever need to access individual elements of an array, this is the correct syntax.** e.g. ``var worstScore = golfScores[4];`` Now, ``worstScore`` holds the value 110. 
 
 ``size``
 ^^^^^^^^
@@ -140,7 +140,7 @@ As seen in **Line 1** and the console output below, the addition of ``:default("
 ``copy``
 ^^^^^^^^
 
-The ``Array`` class has a useful keyword called ``copy``, which *completely* copies the contents of one array into another array. This is called a **deep copy**. In addition to arrays, the ``copy`` keyword can be used with any object in order to create a deep copy of the object, including all of its members. ``copy`` will be discussed in more detail in the "Classes" tutorial. 
+The ``Array`` class has a useful keyword called ``copy``, which *completely* copies the contents of one array into another array. This is called a **deep copy**. In addition to arrays, the ``copy`` keyword can be used with any object in order to create a deep copy of the object, including all of its members. ``copy`` will be discussed in more detail in the :ref:`Properties of Classes and Objects<Properties of Classes and Objects>` tutorial. 
 
 Using the example from the ``default`` section above, where ``a`` is a ``String`` array with size 5, let’s examine how ``copy`` works. 
 

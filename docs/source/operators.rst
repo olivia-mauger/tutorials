@@ -4,7 +4,7 @@ Operators and Expressions
 Assignment
 ^^^^^^^^^^
 
-In the "Variables Introduction" section, assigning a variable a particular value is briefly touched on. For example, consider the following line of code:  
+In the :ref:`Variables Introduction<Variables Introduction>` page, assigning a variable a particular value is briefly touched on. For example, consider the following line of code:  
 
 .. code-block:: shadow 
 
@@ -232,7 +232,7 @@ The console output is here for reference.
 Logical Operators
 ^^^^^^^^^^^^^^^^^
 
-Logical operators in Shadow, like relational operators, evaluate to either ``true`` or ``false`` when used in expressions. They are commonly used in ``if``/ ``else`` statements, which are discussed in detail on the next page. See below for a list of logical operators: 
+Logical operators in Shadow, like relational operators, evaluate to either ``true`` or ``false`` when used in expressions. They are commonly used in ``if``/ ``else`` statements, which are discussed in detail on the :ref:`next page<Flow Control and Looping>`. See below for a list of logical operators: 
 
 * ``and``
 * ``or`` 
@@ -349,7 +349,7 @@ Although lines 2 and 7 effectively do the same thing, line 2 is a more simple wa
 The Concatenation Operator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As mentioned in the previous "Code Example and Variable Names" section, ``#`` is called the **octothorpe**. It is **Shadow’s** version of the concatenation operator. 
+As mentioned in the previous :ref:`Code Example and Variable Names<Code Example and Variable Names>` section, ``#`` is called the **octothorpe**. It is **Shadow’s** version of the concatenation operator. 
 
 The main function of ``#`` is to concatenate other types onto string values. For example, we use ``#`` to include literal values of variables in ``Console.printLine()`` statements. Another example is below. It is important to note that this operator has a lower precedence than addition (i.e. 1+1 will be added before it is connected with a ``String``). 
 
