@@ -7,7 +7,7 @@ Welcome to the Shadow Tutorials!
 ================================
 
 .. toctree::
-   :maxdepth: 15
+   :maxdepth: 18
    :caption: Contents:
    
    intro
@@ -25,6 +25,7 @@ Welcome to the Shadow Tutorials!
    singletons
    inheritance
    abstract-classes
+   polymorphism-casting
    
    
    
