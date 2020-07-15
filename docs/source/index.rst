@@ -7,7 +7,7 @@ Welcome to the Shadow Tutorials!
 ================================
 
 .. toctree::
-   :maxdepth: 18
+   :maxdepth: 20
    :caption: Contents:
    
    intro
@@ -17,6 +17,7 @@ Welcome to the Shadow Tutorials!
    operators
    flow-control
    methods
+   string-methods
    read-from-console
    arrays
    classes-basics
