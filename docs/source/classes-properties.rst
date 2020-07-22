@@ -3,8 +3,8 @@ Properties of Classes and Objects
 
 Now that we have covered the basics of classes in **Shadow**, we can move on to some features/properties of classes. 
 
-immutable and freeze
-^^^^^^^^^^^^^^^^^^^^
+The ``immutable`` and ``freeze`` Keywords
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In a :ref:`previous tutorial<Strings and Immutability>`, we discussed the concept of **immutability** in terms of a ``String``. When we say that a ``String`` is **immutable**, we mean that once it is created, **its value cannot be changed**. 
 
@@ -121,7 +121,7 @@ See below for an example of using ``copy`` (references the ``Otter`` class from 
 
 As you can see, the syntax for using ``copy`` is quite simple. You simply write ``copy(objectToCopy)`` and store it in an object of the appropriate type. The ``Otter`` ``oscar`` is now a deep copy of ``oliver`` -- including deep copies of all of its members. Any changes to ``oscar`` are not reflected in ``oliver``. Internally, the ``copy`` command keeps track of all the new objects allocated. If a circular reference would cause something to be copied a second time, the ``copy`` command instead uses the first copy. The exception to the rule is ``immutable`` objects, which cannot be changed anyway. References to such objects are assigned directly, without making copies of the underlying objects.
 
-In order to review how ``freeze`` works, take a look at the :ref:`above section<immutable and freeze>`. The syntax is the same. The only difference is that ``freeze`` creates an immutable copy of the object. 
+In order to review how ``freeze`` works, take a look at the :ref:`above section<The ``immutable`` and ``freeze`` Keywords>`. The syntax is the same. The only difference is that ``freeze`` creates an immutable copy of the object. 
 
 
 Arrays as Objects

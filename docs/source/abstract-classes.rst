@@ -14,7 +14,7 @@ Now that we have covered *how* to create an ``abstract`` class, it also importan
 
 In general, programming is about **abstraction**, meaning the goal is to write loosely coupled code that works in multiple places. ``abstract`` classes help us to achieve that end, as ``abstract`` methods provide a general framework that subclasses are forced to implement. 
 
-In addition, ``abstract`` classes are different from interfaces for a couple of reasons. For one, a class may extend only one ``abstract`` class, but it can implement numerous interfaces. Interfaces are **not** allowed to provide default implementation for their methods, but ``abstract`` classes can for any concrete methods.
+In addition, ``abstract`` classes are different from interfaces for a couple of reasons. For one, a class may extend only one ``abstract`` class, but it can implement numerous interfaces. Interfaces are **not** allowed to provide default implementation for their methods, but ``abstract`` classes can for any concrete methods. While ``abstract`` classes are able to store data, interfaces **cannot**. 
 
 .. note:: Interfaces and ``abstract`` classes do share something in common: you can not instantiate either using the keyword ``create``. 
 
@@ -23,14 +23,14 @@ Take a look at the example below to see how an ``abstract`` **class** works.
 Example
 ^^^^^^^^
 
-The first class is ``Automobile``, the abstract class. 
+The first class is ``Vehicle``, the abstract class. 
 
 .. code-block:: shadow 
     :linenos: 
  
     import shadow:io@Console;
 
-    abstract class tutorials:absclass@Automobile
+    abstract class tutorials:absclass@Vehicle
     {
         get String type; 
 	get set int year; 
@@ -61,7 +61,7 @@ The first class is ``Automobile``, the abstract class.
 	} 
     }
 
-The second is ``Motorcycle``, which extends ``Automobile``. 
+The second is ``Motorcycle``, which extends ``Vehicle``. 
 
 
 .. code-block:: shadow 
@@ -69,7 +69,7 @@ The second is ``Motorcycle``, which extends ``Automobile``.
 
     import shadow:io@Console;
 
-    class tutorials:absclassMotorcycle is Automobile
+    class tutorials:absclass@Motorcycle is Vehicle
     {
 	
         public create(String t, int y, int m, double p)
@@ -106,18 +106,18 @@ Lastly, here is an excerpt from the brief driver class, ``AutoDriver``, and the 
  
 First, before we get into any explanations, take a few minutes and examine the three classes above. See if you can trace through the driver program and predict the output without looking ahead. 
 
-Now that you have a general idea how the program works, we will first touch on the ``abstract`` class ``Automobile``. Aside from the word ``abstract`` in the class header and the ``abstract`` method ``takeATrip()`` , ``Automobile`` does not appear to be any different than the classes we have studied previously. It still has a constructor, member variables, and one concrete method, ``buyAuto()``. 
+Now that you have a general idea how the program works, we will first touch on the ``abstract`` class ``Vehicle``. Aside from the word ``abstract`` in the class header and the ``abstract`` method ``takeATrip()`` , ``Vehicle`` does not appear to be any different than the classes we have studied previously. It still has a constructor, member variables, and one concrete method, ``buyAuto()``. 
 
-The second class, ``Motorcycle``, extends ``Automobile``, as you can tell from the keyword ``is`` in the class header. ``Motorcycle`` does not override ``buyAuto()``, but it must provide default implementation for ``takeATrip()``, as seen in **Lines 11-15**. Notice how in **Line 8** we use the ``super()`` call to invoke the ``Automobile`` constructor. Using ``super()`` was covered in a :ref:`previous section<Implementation>`. 
+The second class, ``Motorcycle``, extends ``Vehicle``, as you can tell from the keyword ``is`` in the class header. ``Motorcycle`` does not override ``buyAuto()``, but it must provide default implementation for ``takeATrip()``, as seen in **Lines 11-15**. Notice how in **Line 8** we use the ``super()`` call to invoke the ``Vehicle`` constructor. Using ``super()`` was covered in a :ref:`previous section<Implementation>`. 
 
 Lastly, the driver program should not look any different from any of the examples we have used thus far. We have created a ``Motorcycle`` object and called methods on it. However, it is important to note we could have declared ``harley`` like this as well:  
 
 .. code-block:: shadow 
 
-    Automobile harley = Motorcycle:create("Motorcycle", 2012, 8000, 30000.50); 
+    Vehicle harley = Motorcycle:create("Motorcycle", 2012, 8000, 30000.50); 
 
 
-Here, the **type** of the variable ``harley`` is ``Automobile``, but it is still an instance of the ``Motorcycle`` class. You would get a compile error if you tried to write ``Automobile:create``. 
+Here, the **type** of the variable ``harley`` is ``Vehicle``, but it is still an instance of the ``Motorcycle`` class. You would get a compile error if you tried to write ``Vehicle:create``. 
 
 
 

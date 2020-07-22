@@ -240,6 +240,29 @@ Since subclasses inherit the methods of its superclass, it is possible to overri
 
 **The key part of this method is that the header exactly matches the header of the** ``clockIn()`` **method in the** ``Employee`` **class**. If it had not, you would not have successfully overridden the method and gotten a compile error. There are no requirements on what has to be different in the method body. In this case, we simply changed the length of the shift for all ``Waiter`` objects. 
 
+
+It is useful to note that in addition to constructors, ``super()`` can also be used to call the parent class method of a method you have overridden. For example, in the overridden ``clockIn()`` method above, if we wanted to call the ``clockIn()`` method defined in ``Employee`` , it would look like this: 
+
+.. code-block:: shadow 
+    :linenos:
+
+    public clockIn() => ()
+    {
+        super.clockIn(); 
+        // some more statements
+    }
+
+
+The ``locked`` Keyword
+^^^^^^^^^^^^^^^^^^^^^^
+
+Another feature of Shadow is the ``locked`` keyword. When you declare a method to be ``locked``, it means that the **children of the class cannot override the method**. In other words, you don’t want the implementation of a certain method to change. Declaring a method as ``locked`` can help increase the efficiency of a program, even if just slightly. 
+
+The method header of a ``locked`` method is as follows: 
+
+``public locked methodName() => ()`` 
+
+
 Final Note
 ^^^^^^^^^^
 

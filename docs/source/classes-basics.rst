@@ -68,7 +68,7 @@ Member Variables
 
 The first thing to note about the ``Otter`` class are its **member variables** (or **fields**)  as seen in **Lines 6-9**. Member variables, in essence, represent a class’s attributes. They "belong" to the class (i.e. in the scope of it).  For example, imagine you are looking at a real, live otter (lucky you!). How would you describe or define the animal? Does it have a name? Habitat? Mate? Age? All of these questions can be translated into specific **member variables** of the ``Otter`` class. ``name`` is a ``String`` variable, ``mate`` a ``boolean``, ``age`` an ``int``, and ``habitat`` a ``String`` as well. There is no limit to how many member variables a class can have, and there is no minimum requirement. In fact, a class does not *need* to have member variables at all. 
 
-Aside from the words ``get`` and ``set``, declaring a member variable is the same as declaring any local variable. The difference, though, is that every member variable is automatically declared ``private``. You do need to and should not include this **reserved word** as a modifier. It is a given. When ``private`` is used to modify a variable, it means that the variable can only be accessed **within the class that it is declared in**. This is exactly why we use ``get`` and ``set``: to allow other classes to be able to access or change the value of these private member variables. ``get`` and ``set`` will be explained in a :ref:`later section<get and set Properties>`. 
+Aside from the words ``get`` and ``set``, declaring a member variable is the same as declaring any local variable. The difference, though, is that every member variable is automatically declared ``private``. You do need to and should not include this **reserved word** as a modifier. It is a given. When ``private`` is used to modify a variable, it means that the variable can only be accessed **within the class that it is declared in**. This is exactly why we use ``get`` and ``set``: to allow other classes to be able to access or change the value of these private member variables. ``get`` and ``set`` will be explained in later section on this page. 
 
 **A Brief Conceptual Note** 
 
@@ -176,11 +176,53 @@ For example, if one of your member variables in ``String something;``, to avoid 
 
 Lastly, if you have at least one programmer-defined constructor, you will get a compile error if you try to invoke the default constructor. 
 
+Constructor Chaining
+^^^^^^^^^^^^^^^^^^^^
+
+**Constructor chaining** is another feature of constructors that helps eliminate repeated blocks of code to increase efficiency. In essence, using the keyword **this**, you are able to invoke an existing constructor from another constructor of that class. The constructors are executed from the "top of the chain" down. This will become clear in the example below. 
+
+Let’s say we added the following constructors to the ``Otter`` class: 
+
+.. code-block:: shadow 
+    :linenos: 
+
+    public create(String n, String h, int age)
+    {
+        name = n;
+        habitat = h;
+        this:age = age;
+        mate = false;
+    }
+    
+    public create(String n, String h)
+    {
+    	this(n, h, 0); 
+    }
+    
+    public create(String n)
+    {
+    	this(n, "Unknown"); 
+        name = "end of chain"; 
+    }
+
+Now, consider the following test-program excerpt below: 
 
 
+.. code-block:: shadow 
 
-get and set Properties
-^^^^^^^^^^^^^^^^^^^^^^^
+    Otter one = Otter:create("Jasmine"); 
+    Console.printLine(one->name); 
+
+    Otter two = Otter:create("Harrison", "Pond"); 
+
+With the first object, ``one``, notice how we create it with only one parameter (representing its name). You may be wondering, how do the other member variables get instantiated? Look at **Line 17**. Inside the ``this()`` statement, we are sending the name that was passed in ("Jasmine") along with a literal value for ``habitat`` ("Unknown") as parameters. Control then flows to the constructor that takes two ``String`` values as parameters. If there hadn’t been such a matching constructor, we would have gotten a compile error. In this constructor, there is yet *another* example of constructor chaining. The two ``String`` values passed in, along with the value 0, are sent as parameters to the original constructor where the member variables are initialized.
+
+However, consider **Line 2** of the test program. What do you think is the value of ``name``? "Unknown" or "end of chain"? Although the member variable ``name`` was initially set to ``Unknown`` via constructor chaining, ``name`` actually stores the literal value "end of chain". This is because the ``this()`` statement is executed first, with control flowing to the "top of the chain" (constructor without a ``this()`` call) back down to the constructor that was originally invoked. Thus, ``name = "end of chain"`` is executed last. You will get a compile error if any ``this()`` call is not the first statement in the constructor. 
+
+Finally, look at the ``Otter`` object ``two``. Here, we have invoked the constructor that takes two ``String`` values, which also includes a ``this()`` call. The member variable ``age`` is set to 0. 
+
+``get`` and ``set`` Properties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We are now going to move back to our analysis of the ``Otter`` class and address the properties ``get`` and ``set``. 
 

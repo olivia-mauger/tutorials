@@ -81,8 +81,8 @@ For example,
 
 The **variable** ``isBeautiful`` is of **primitive** type ``boolean`` and holds the value ``true``. 
 
-Strings and Immutability
-^^^^^^^^^^^^^^^^^^^^^^^^^
+``String`` and Immutability
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Although Strings will be discussed more in-depth in a later tutorial, the basics are outlined here. 
 

@@ -66,8 +66,8 @@ Defining a Class
 
 The first line in this segment declares a class named ``HelloWorld``. The definition of ``HelloWorld`` begins on the following line with a left brace (``{``) and ends several lines later with a corresponding right brace (``}``). All methods and variables declared in this space become members of ``HelloWorld``. All code in Shadow must be encapsulated within a class.
 
-The main Method
-^^^^^^^^^^^^^^^
+The ``main`` Method
+^^^^^^^^^^^^^^^^^^^^
 .. code-block:: shadow
     :linenos: 
 

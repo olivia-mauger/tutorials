@@ -328,15 +328,15 @@ However, ``i`` does not *have* to be initialized inside the ``for`` loop. It cou
 
 .. code-block:: Shadow
 
-    int c; 
-    for( c = 1; c <= 5; c += 1 )  
+    int count; 
+    for( count = 1; count <= 5; count += 1 )  
     {
         Console.printLine("Hey you! Wake up!!"); 
     }
 
-    Console.printLine(c); 
+    Console.printLine(count); 
 
-Does declaring the variable *outside* of the loop change the output? **No.**  "Hey you! Wake up!!" is still printed 5 times, like in the original example. The difference, instead, lies in the **scope of the variable.**  In Shadow, the **scope** of a variable is where the variable carries meaning in the program. Although **scope** will be discussed more in-depth in a :ref:`later tutorial<A Note on Scope>`., it is important to note the distinction here. In the first example, ``i`` is declared and initialized inside the ``for`` loop. This means that if you tried to write ``Console.printLine(i);`` outside of the loop, you would get a compile error because you are not in the *scope* of ``i``. In other words, when you declare a variable inside of a loop, it only carries meaning *in that loop*, so in essence, it does not exist/cannot be accessed outside of the loop. However, in example 2, ``c`` is declared outside of the loop. Now, not only is ``c`` within the scope of the ``main()`` method, it also can be used inside of the loop. Why would you want to do this? Sometimes when writing programs, we want to use the counter variable in later calculations or for some other purpose, and declaring the variable outside of the loop allows this to happen. 
+Does declaring the variable *outside* of the loop change the output? **No.**  "Hey you! Wake up!!" is still printed 5 times, like in the original example. The difference, instead, lies in the **scope of the variable.**  In Shadow, the **scope** of a variable is where the variable carries meaning in the program. Although **scope** will be discussed more in-depth in a :ref:`later tutorial<A Note on Scope>`., it is important to note the distinction here. In the first example, ``i`` is declared and initialized inside the ``for`` loop. This means that if you tried to write ``Console.printLine(i);`` outside of the loop, you would get a compile error because you are not in the *scope* of ``i``. In other words, when you declare a variable inside of a loop, it only carries meaning *in that loop*, so in essence, it does not exist/cannot be accessed outside of the loop. However, in example 2, ``count`` is declared outside of the loop. Now, not only is ``count`` within the scope of the ``main()`` method, it also can be used inside of the loop. Why would you want to do this? Sometimes when writing programs, we want to use the counter variable in later calculations or for some other purpose, and declaring the variable outside of the loop allows this to happen. 
 
 
 2. **The Condition to be Evaluated** 

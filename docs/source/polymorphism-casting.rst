@@ -1,7 +1,11 @@
 Polymorphism and Casting
 ------------------------
 
-This brief, but very important, tutorial on **polymorphism** and **casting** touches on a key **Object-Oriented** programming principle. **Polymorphism**, an often confusing term to define, is best understood in terms of an example. Consider the classes from the :ref:`inheritance tutorial<Classes: Inheritance>`. There is a parent class called ``Employee`` and 3 child classes: ``Waiter``, ``Chef``, and ``Manager`` (only the ``Waiter`` implementation is shown, as ``Chef`` and ``Manager`` were given as exercises). All 3 of these child classes will inherit the methods ``clockIn()`` and ``clockOut()`` from ``Employee``. **Polymorphism** can be seen in their implementation. Let’s say we decided to override ``clockIn()`` in the child classes. Now, the "same " method calls on subclasses of ``Employee`` give completely different results. This is the essence of polymorphism: that these various objects (that share the same parent class) can take on many different behaviors. After all, polymorphism literally means "many forms". 
+This brief, but very important, tutorial on **polymorphism** and **casting** touches on a key **Object-Oriented** programming principle. **Polymorphism**, an often confusing term to define, is best understood in terms of an example. 
+
+Consider the classes from the :ref:`inheritance tutorial<Classes: Inheritance>`. There is a parent class called ``Employee`` and 3 child classes: ``Waiter``, ``Chef``, and ``Manager`` (only the ``Waiter`` implementation is shown, as ``Chef`` and ``Manager`` were given as exercises). All 3 of these child classes will inherit the methods ``clockIn()`` and ``clockOut()`` from ``Employee``. Let’s say we decided to **override** ``clockIn()`` in the child classes and create a method in the driver class called ``work()``. ``work()`` takes in an ``Employee`` object as a parameter and calls the object’s ``clockIn()`` method. Since ``Chef``, ``Manager``, and ``Waiter`` are all children of ``Employee``, you could pass objects of **any** of these classes as parameters legally. 
+
+Now, the "same " ``work()`` method calls on children of ``Employee`` give completely different results, as they all have overridden the ``clockIn()`` method . This is the  essence of polymorphism: that many different objects can be passed into the same method yet result in many different behaviors. After all, polymorphism literally means "many forms". 
 
 The following example will hopefully solidify your understanding of polymorphism, and lead us into casting. 
 
@@ -115,7 +119,7 @@ The general syntax for casting is as follows:
 
 ``cast<typeCastingTo>(referenceBeingCast)``
 
-Using the ``SeaCreature``, ``Dolphin``, and ``Turtle`` classes above, consider the following example: 
+Using the ``SeaCreature``, ``Dolphin``, ``Turtle``, and driver classes above, consider the following example: 
 
 .. code-block:: shadow
 
@@ -125,17 +129,28 @@ Using the ``SeaCreature``, ``Dolphin``, and ``Turtle`` classes above, consider t
 
 Here, the first statement on the right side of the equals sign is the *cast*. We are casting a pre-existing ``turtle`` object into the type ``SeaCreature`` (This would have worked the same way if the static type of ``turtle`` had been either ``SeaCreature`` or ``Turtle``) Why does this work? Recall the idea of an **is-a** relationship from the :ref:`inheritance tutorial<Classes: Inheritance>`. Since ``Turtle`` **extends** ``SeaCreature``, a ``Turtle`` object is *always* a ``SeaCreature`` and therefore can be cast to the type of its parent class without error. This is called **widening** (going from a more narrow class to a broader one). 
 
-Now look at the second statement. Which ``swim()`` method do you think will run? The one from ``SeaCreature``, or the one from ``Turtle``? Since we have cast ``turtle`` into a ``SeaCreature``, your instinct might be to say that the ``SeaCreature`` version of swim will run. However, the ``swim()`` method from ``Turtle`` is actually executed. Even though ``turtle`` has been cast to a ``SeaCreature``, it still does not change the fact that its dynamic type is ``Turtle``. 
+This is an example of an **explicit** cast. However, we do not need to use an explicit cast in order to store a ``Turtle`` object in a ``SeaCreature``. We could have just as easily written ``SeaCreature creature2 = turtle;`` This is called an **implicit cast**.
+
+Now look at the second statement. Which ``swim()`` method do you think will run? The one from ``SeaCreature``, or the one from ``Turtle``? Since we have cast ``turtle`` into a ``SeaCreature``, your instinct might be to say that the ``SeaCreature`` version of swim will run. However, the ``swim()`` method from ``Turtle`` is actually executed. Even though ``turtle`` has been cast to a ``SeaCreature``, it still does not change the fact that its dynamic type is ``Turtle``. For object types, ``cast`` only changes the static type.
 
 Suppose we wanted to cast a ``SeaCreature`` into a ``Turtle`` as shown below. Would this compile?
 
 
 .. code-block:: shadow
 
-    Turtle turtle2 = Turtle:create("Snapping Turtle", "Atlantic"); 
-    turtle2 = cast<Turtle>(creature); 
+    Turtle turtle2 = cast<Turtle>(creature); 
 
 Although the code would compile (syntax of the cast is correct), it would cause a runtime error, ``CastException``, because the type ``SeaCreature`` is not compatible with ``Turtle`` when you are trying to cast ``SeaCreature`` to ``Turtle``. This is called **narrowing**. Why? Once again think about an **is-a** relationship. While a ``Turtle`` object is always a ``SeaCreature``, a ``SeaCreature`` *could* be a ``Turtle``, but it could also be a ``Dolphin``. You are trying to go from a broad type to a more specific one.  Thus, the statement is ambiguous and we get a runtime error. 
+
+However, **narrowing** does not always cause a compile error. Consider the example below:
+
+.. code-block:: shadow
+
+    SeaCreature creature2 = cast<SeaCreature>(turtle); 
+    turtle = cast<Turtle>(creature2); 
+		
+We are using the same ``SeaCreature`` object from the first example -- we have cast a ``Turtle`` object into a ``SeaCreature`` (widening). In the second line of code, we are casting ``seaCreature2`` back to ``Turtle`` and storing the result in a ``Turtle`` object. Although we are casting from a broader type to a narrower type, this is legal because technically the dynamic type of ``seaCreature2`` is still ``Turtle``. 
+
 
 It is also worth mentioning that **side-casting** in Shadow is **always illegal**. For example, you cannot cast a ``Turtle`` to a ``Dolphin`` or vice versa, despite the fact that they are both subclasses of ``SeaCreature``.
 
