@@ -162,6 +162,47 @@ Lastly, as a final note on casting, since ``Object`` is the root class for all `
     String s = "Help me";		
     Object o = cast<Object>(s);
 
+Numeric Casting
+^^^^^^^^^^^^^^^
+
+Although we have discussed casting in terms of objects so far,  it also possible to cast  **numeric types** as well. 
+
+For example, consider the short segment of code below: 
+
+.. code-block:: shadow 
+    :linenos: 
+
+    var w = cast<double>(8); 
+    Console.printLine(w); 
+    double x = 8; 
+    Console.printLine(x);
+
+**Lines 2 and 4** both print  "8.0" to the console. However, you may be wondering what the difference is, then, between how ``w`` and ``x`` were initialized. ``w`` is initialized with an **explicit cast** from a ``int`` to a ``double``. On the other hand, ``x`` is an example of an **implicit cast**; 8 becomes 8.0 when stored in a ``double``. 
+
+Now, let’s look another example: 
+
+.. code-block:: shadow 
+    :linenos: 
+    
+    var y = cast<int>(8.5); 
+    Console.printLine(y); 
+    
+    int z = 8.0;
+
+**Lines 1 and 2** of the above segment of code should look familiar. Now, we are simply casting a ``double`` to an ``int``. However, what do you think will be printed to the console: 8 or 9? **The answer is 9**. Although the decimal point is truncated, 8.5 is still rounded to the nearest whole number when being converted to an ``int``. (8.4 would give 8 as the result). 
+
+Turn your attention to **Line 3**. Although this may seem like legal **implicit casting**, this line of code will cause a compile error because ``double`` is not a subtype of ``int``. 
+
+Lastly, since ``Object`` is the root class for all classes, it is legal to say ``Object a = 8;`` because the primitive becomes **wrapped up** into ``Integer``.
+
+
+.. note:: You may **not** cast a ``String`` to a ``code`` and vice versa. 
+
+
+    
+
+
+
 
 
 
