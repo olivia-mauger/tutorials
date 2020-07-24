@@ -3,9 +3,9 @@ Polymorphism and Casting
 
 This brief, but very important, tutorial on **polymorphism** and **casting** touches on a key **Object-Oriented** programming principle. **Polymorphism**, an often confusing term to define, is best understood in terms of an example. 
 
-Consider the classes from the :ref:`inheritance tutorial<Classes: Inheritance>`. There is a parent class called ``Employee`` and 3 child classes: ``Waiter``, ``Chef``, and ``Manager`` (only the ``Waiter`` implementation is shown, as ``Chef`` and ``Manager`` were given as exercises). All 3 of these child classes will inherit the methods ``clockIn()`` and ``clockOut()`` from ``Employee``. Let’s say we decided to **override** ``clockIn()`` in the child classes and create a method in the driver class called ``work()``. ``work()`` takes in an ``Employee`` object as a parameter and calls the object’s ``clockIn()`` method. Since ``Chef``, ``Manager``, and ``Waiter`` are all children of ``Employee``, you could pass objects of **any** of these classes as parameters legally. 
+Consider the classes from the :ref:`inheritance tutorial<Inheritance>`. There is a parent class called ``Employee`` and 3 child classes: ``Waiter``, ``Chef``, and ``Manager`` (only the ``Waiter`` implementation is shown, as ``Chef`` and ``Manager`` were given as exercises). All 3 of these child classes will inherit the methods ``clockIn()`` and ``clockOut()`` from ``Employee``. Let’s say we decided to **override** ``clockIn()`` in the child classes and create a method in the driver class called ``work()``. ``work()`` takes in an ``Employee`` object as a parameter and calls the object’s ``clockIn()`` method. Since ``Chef``, ``Manager``, and ``Waiter`` are all children of ``Employee``, you could pass objects of **any** of these classes as parameters legally. 
 
-Now, the "same " ``work()`` method calls on children of ``Employee`` give completely different results, as they all have overridden the ``clockIn()`` method . This is the  essence of polymorphism: that many different objects can be passed into the same method yet result in many different behaviors. After all, polymorphism literally means "many forms". 
+Now, the "same" ``work()`` method calls on children of ``Employee`` give completely different results, as they all have overridden the ``clockIn()`` method . This is the  essence of polymorphism: that many different objects can be passed into the same method yet result in many different behaviors. After all, polymorphism literally means "many forms". 
 
 The following example will hopefully solidify your understanding of polymorphism, and lead us into casting. 
 
@@ -97,7 +97,7 @@ Lastly, the driver program and console output are provided below.
     This Dolphin jumps above the waves!
     This Turtle glides through the water!
 
-Before we delve into **polymorphism**, make sure to read through the classes above and the console output. If the information does not look familiar, it would be a good idea to revisit the :ref:`inheritance tutorial<Classes: Inheritance>` before continuing. 
+Before we delve into **polymorphism**, make sure to read through the classes above and the console output. If the information does not look familiar, it would be a good idea to revisit the :ref:`inheritance tutorial<Inheritance>` before continuing. 
 
 Static vs Dynamic Type
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -127,7 +127,7 @@ Using the ``SeaCreature``, ``Dolphin``, ``Turtle``, and driver classes above, co
     creature2.swim(); 
 		
 
-Here, the first statement on the right side of the equals sign is the *cast*. We are casting a pre-existing ``turtle`` object into the type ``SeaCreature`` (This would have worked the same way if the static type of ``turtle`` had been either ``SeaCreature`` or ``Turtle``) Why does this work? Recall the idea of an **is-a** relationship from the :ref:`inheritance tutorial<Classes: Inheritance>`. Since ``Turtle`` **extends** ``SeaCreature``, a ``Turtle`` object is *always* a ``SeaCreature`` and therefore can be cast to the type of its parent class without error. This is called **widening** (going from a more narrow class to a broader one). 
+Here, the first statement on the right side of the equals sign is the *cast*. We are casting a pre-existing ``turtle`` object into the type ``SeaCreature`` (This would have worked the same way if the static type of ``turtle`` had been either ``SeaCreature`` or ``Turtle``) Why does this work? Recall the idea of an **is-a** relationship from the :ref:`inheritance tutorial<Inheritance>`. Since ``Turtle`` **extends** ``SeaCreature``, a ``Turtle`` object is *always* a ``SeaCreature`` and therefore can be cast to the type of its parent class without error. This is called **widening** (going from a more narrow class to a broader one). 
 
 This is an example of an **explicit** cast. However, we do not need to use an explicit cast in order to store a ``Turtle`` object in a ``SeaCreature``. We could have just as easily written ``SeaCreature creature2 = turtle;`` This is called an **implicit cast**.
 

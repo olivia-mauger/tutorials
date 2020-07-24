@@ -62,7 +62,6 @@ Below is any example of how this can be done:
 
 Although not shown, if you wanted to read a ``double`` value, simply replace ``toInt()`` with ``toDouble()``. 
 		
-	
 
 
 

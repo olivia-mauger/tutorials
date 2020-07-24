@@ -139,9 +139,9 @@ Thus, the following statement is now valid:
 
 The program recognizes that this second constructor exists, and now ``oliver`` has ``age = 0;``. It is important to recognize that both ``olive`` and ``oliver`` are still otters. They were just created by invoking different constructors. 
 
-Nullable and Default Constructors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to understand how to properly invoke the **default constructor**, we must first discuss ``null`` and the modifier ``nullable``. As previously noted in the  "Arrays" tutorial, there are default values for the different variable types. 
+``nullable`` and Default Constructors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In order to understand how to properly invoke the **default constructor**, we must first discuss ``null`` and the modifier ``nullable``. As previously noted in the :ref:`Arrays<Arrays>` tutorial, there are default values for the different variable types. 
 
 The default values for primitive types are as follows: 
 

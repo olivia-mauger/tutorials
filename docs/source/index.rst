@@ -17,7 +17,7 @@ Welcome to the Shadow Tutorials!
    operators
    flow-control
    methods
-   string-methods
+   common-methods
    read-from-console
    arrays
    classes-basics
@@ -27,6 +27,7 @@ Welcome to the Shadow Tutorials!
    inheritance
    abstract-classes
    polymorphism-casting
+   
    
    
    

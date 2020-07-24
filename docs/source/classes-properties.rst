@@ -3,8 +3,10 @@ Properties of Classes and Objects
 
 Now that we have covered the basics of classes in **Shadow**, we can move on to some features/properties of classes. 
 
+.. _immutable-and-freeze-keywords: 
+
 The ``immutable`` and ``freeze`` Keywords
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In a :ref:`previous tutorial<Strings and Immutability>`, we discussed the concept of **immutability** in terms of a ``String``. When we say that a ``String`` is **immutable**, we mean that once it is created, **its value cannot be changed**. 
 
@@ -121,7 +123,7 @@ See below for an example of using ``copy`` (references the ``Otter`` class from 
 
 As you can see, the syntax for using ``copy`` is quite simple. You simply write ``copy(objectToCopy)`` and store it in an object of the appropriate type. The ``Otter`` ``oscar`` is now a deep copy of ``oliver`` -- including deep copies of all of its members. Any changes to ``oscar`` are not reflected in ``oliver``. Internally, the ``copy`` command keeps track of all the new objects allocated. If a circular reference would cause something to be copied a second time, the ``copy`` command instead uses the first copy. The exception to the rule is ``immutable`` objects, which cannot be changed anyway. References to such objects are assigned directly, without making copies of the underlying objects.
 
-In order to review how ``freeze`` works, take a look at the :ref:`above section<The ``immutable`` and ``freeze`` Keywords>`. The syntax is the same. The only difference is that ``freeze`` creates an immutable copy of the object. 
+In order to review how ``freeze`` works, take a look at the :ref:`above section<immutable-and-freeze-keywords>`. The syntax is the same. The only difference is that ``freeze`` creates an immutable copy of the object. 
 
 
 Arrays as Objects
@@ -131,8 +133,10 @@ At this point in the tutorials, you probably have noticed that arrays appear to 
 Now that we have introduced objects, it is also worth mentioning that instead of having an array of primitive type or a ``String`` array,  you can also create an array of objects as well. In addition, as introduced in :ref:`Classes: The Basics<Classes: The Basics>`, you can also declare an array to be ``nullable``. This will be covered in the next section. 
 
 
-nullable Arrays
-^^^^^^^^^^^^^^^^
+.. _nullable-arrays: 
+
+``nullable`` Arrays
+^^^^^^^^^^^^^^^^^^^^
 
 Just as you can declare a ``String`` reference to be ``nullable``, you can do the same for arrays. However, it is important to note that the **array itself is not nullable, but the elements inside of it are.** Consider the example below. 
 
@@ -167,7 +171,7 @@ Often confused with method overloading, **method overriding** is when the progra
 ``toString()``
 ^^^^^^^^^^^^^^
 
-You may have noticed in the :ref:`nullable Arrays<nullable Arrays>` section that the ``String`` representation of the ``Otter`` object ``ophelia`` was ``default@Otter`` . In other languages like Java, ``toString()`` returns a number representing the location of that object in memory, and most of that time the number is meaningless to the programmer. In **Shadow**, the default implementation of ``toString()`` **returns the package and class that the object belongs to.**  If you don’t create a package for a class, like in the ``Otter`` example, the package will be default automatically. 
+You may have noticed in an :ref:`earlier section<nullable-arrays>` that the ``String`` representation of the ``Otter`` object ``ophelia`` was ``default@Otter`` . In other languages like Java, ``toString()`` returns a number representing the location of that object in memory, and most of that time the number is meaningless to the programmer. In **Shadow**, the default implementation of ``toString()`` **returns the package and class that the object belongs to.**  If you don’t create a package for a class, like in the ``Otter`` example, the package will be default automatically. 
 
 Either way, the default implementation is often useless. This is where **method overriding** becomes valuable. For example, let’s pretend we have a very simple class representing Shadow State Park, located in the Methods Mountain Range. The member variables represent the guest’s name, length of stay, and preferred activity, respectively. See below for the full class. 
 
