@@ -162,10 +162,14 @@ Lastly, as a final note on casting, since ``Object`` is the root class for all `
     String s = "Help me";		
     Object o = cast<Object>(s);
 
-Numeric Casting
+Primitve Casting
 ^^^^^^^^^^^^^^^
 
-Although we have discussed casting in terms of objects so far,  it also possible to cast  **numeric types** as well. 
+Although we have discussed casting in terms of objects so far,  it also possible to cast  **primitive types** as well. 
+
+**Numeric Casting**
+
+We will first discuss casting between numeric types. 
 
 For example, consider the short segment of code below: 
 
@@ -193,7 +197,32 @@ Now, let’s look another example:
 
 Turn your attention to **Line 3**. Although this may seem like legal **implicit casting**, this line of code will cause a compile error because ``double`` is not a subtype of ``int``. 
 
-Lastly, since ``Object`` is the root class for all classes, it is legal to say ``Object a = 8;`` because the primitive becomes **wrapped up** into ``Integer``.
+Lastly, since ``Object`` is the root class for all classes, it is also legal to say ``Object a = 8;`` because the primitive becomes **wrapped up** into ``Integer``.
+
+
+**Casting with** ``code``
+
+In this section, we will address a common mistake/assumption that is made when casting from a ``code`` to an ``int``. 
+
+First, look at the two examples below: 
+
+.. code-block:: shadow 
+    :linenos:
+ 
+    //example one
+    var num = '7'; 
+    var anotherNum = cast<int>(num); 
+    Console.printLine(anotherNum); 
+
+    //example 2	
+    var num2 = 97; 
+    var anotherNum2 = cast<code>(num2); 
+    Console.printLine(anotherNum2); 
+
+
+In the first example, we are casting the ``code`` '7' into an  ``int`` called ``num``. You might expect that ``num`` now stores the *numeric* value 7, but this is not the case. It actually holds 55. The **character** 7, when converted to a number is 55. An `ASCII Table <http://www.asciitable.com/>`_ can be used to make these conversions. 
+
+The same applies for converting an ``int`` to a ``code`` like in the second example. The character corresponding to the numeric value 97 is `a`, and this is what is printed to the console. This is why it is important to be careful and intentional when casting between primitive -- and any -- types. 
 
 
 .. note:: You may **not** cast a ``String`` to a ``code`` and vice versa. 
