@@ -7,7 +7,7 @@ Welcome to the Shadow Tutorials!
 ================================
 
 .. toctree::
-   :maxdepth: 20
+   :maxdepth: 22
    :caption: Contents:
    
    intro
@@ -27,6 +27,7 @@ Welcome to the Shadow Tutorials!
    inheritance
    abstract-classes
    polymorphism-casting
+   exceptions
    
    
    
