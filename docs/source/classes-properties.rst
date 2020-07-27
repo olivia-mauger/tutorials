@@ -163,6 +163,24 @@ The ``nullable`` ``String`` array ``test`` is created with 4 elements, all stori
 .. note:: Recall that putting the ``#`` in front of a value converts it to a ``String``.
 
 
+.. _check-method: 
+
+``check()``
+^^^^^^^^^^^
+
+While we are on the topic of ``nullable``, it is also useful to understand the ``check()`` method. ``check()`` takes one ``nullable`` expression as a parameter and returns a non-``nullable`` object. 
+
+For example, consider the following lines of code: 
+
+
+.. code-block:: shadow 
+
+    nullable String hint =  "machine";  
+    String mystery = check(hint);  
+
+What is stored in the non-``nullable`` ``String`` variable, ``mystery``? The literal value, "machine". The ``check()`` method call takes in a ``nullable`` object, in this case ``hint``, and returns a non-``nullable`` version of it. However, what would have happened if ``hint`` was equal to ``null``? The console would have displayed the following exception message: ``shadow:Standard@UnexpectedNullException``. Although exceptions will be covered in a :ref:`later tutorial<Exceptions>`, it is simply important to understand that it is not possible for ``check()`` to return a non-``nullable`` version of ``null``. Thus, the program terminates with an exception. 
+
+
 Method Overriding
 ^^^^^^^^^^^^^^^^^
 

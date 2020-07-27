@@ -32,8 +32,8 @@ The  ``toLowerCase()`` method takes a ``String`` as a parameter and returns anot
     Console.printLine(yell.toLowerCase()); 
     //"yelling" is printed to the console
 
-substring()
-^^^^^^^^^^^^
+``substring()``
+^^^^^^^^^^^^^^^^
 
 ``substring()`` is an overloaded method. One version takes in two ``int`` values that represent the starting and ending indices of a ``String``. For example, in the word "hi", "h" has index 0 and "i" has index one. The method then returns a ``String`` with all characters from (and including) the starting index to the ending index (excluding the character at this index). 
 
@@ -185,7 +185,7 @@ Although we have touched on a few ``int`` methods, they only represent a handful
 * ``toDouble()`` (same for ``float``, ``int``, ``long``, ``short``, ``String``, ``ubyte``, ``uint``, ``ulong``, ``ushort``, and ``unsigned``)
 * ``trailingZeroes()``
 
-Lastly, the ``double`` class has methods that can be called on ``double`` values. The same can be said for the ``code``, ``long``, ``boolean``, etc. classes. In order to explore all of these methods and their capabilities, visit the Shadow API, `standard package <http://shadow-language.org/documentation/shadow/standard/$package-summary.html>`_, and select the desired class to see its methods. 
+Lastly, the ``double`` class has methods that can be called on ``double`` values. They can be found `here <http://shadow-language.org/documentation/shadow/standard/double.html>`_. The same can be said for the ``code``, ``long``, ``boolean``, etc. classes. In order to explore all of these methods and their capabilities, visit the Shadow API, `standard package <http://shadow-language.org/documentation/shadow/standard/$package-summary.html>`_, and select the desired class to see its methods. 
 
 		
 
