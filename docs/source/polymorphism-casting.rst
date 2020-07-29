@@ -162,7 +162,7 @@ Lastly, as a final note on casting, since ``Object`` is the root class for all `
     String s = "Help me";		
     Object o = cast<Object>(s);
 
-Primitve Casting
+Primitive Casting
 ^^^^^^^^^^^^^^^
 
 Although we have discussed casting in terms of objects so far,  it also possible to cast  **primitive types** as well. 
