@@ -28,7 +28,7 @@ Welcome to the Shadow Tutorials!
    abstract-classes
    polymorphism-casting
    exceptions
-   
+   generics
    
    
    
