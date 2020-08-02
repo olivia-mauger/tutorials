@@ -25,7 +25,6 @@ Console output:
 .. code-block:: console 
 
     [Beagle, Chihuahua, Poodle, Pomeranian, Maltese]
-    [Beagle, Chihuahua, Poodle, Pomeranian, Maltese]
 	
 **Basic Initialization** 
 
@@ -73,7 +72,7 @@ Thus, the array ``golfScores`` holds five 0’s. Now you may ask, how do we inpu
      * You: 102
      * Zizi: 104
      * Omar: 106
-     * Chris: 108
+     * Stephen: 108
      * Daphne: 110
      */
 		 
@@ -149,7 +148,7 @@ Using the example from the ``default`` section above, where ``a`` is a ``String`
     :linenos:  
 
     String[] b = copy(a); 
-    for( int i = 0; i < b->size; i += 1 )
+    for (int i = 0; i < b->size; i += 1)
     {
         Console.printLine("b[" # i # "]: " # b[i]);
     }
@@ -220,7 +219,7 @@ The array we are making a subarray from, ``a``, has three elements. Using ``suba
      */
 		 
     double[] temperature = double:create[6]; 
-    for( int i = 0; i < temperature-> size; i += 1 )
+    for (int i = 0; i < temperature-> size; i += 1)
     {
         temperature[i] = 40 + (i * 2.1); 
     }
@@ -250,14 +249,14 @@ The key lines in this example are **Lines 17** and **20**. In **Line 17**, we us
 ``IndexOutOfBoundsException``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Although **exceptions** will be covered in detail in a later tutorial, it is important to note a common exception you might run into when working with arrays. In basic terms, an exception is a runtime error that is thrown when the program runs.  An ``IndexOutOfBoundsException`` is thrown when you try to access/create/use/reference an index that does not exist (i.e. a negative index or an index that is greater than the size of the array). For example, consider the code below: 
+Although **exceptions** will be covered in detail in a :ref:`later tutorial<Exceptions>`, it is important to note a common exception you might run into when working with arrays. In basic terms, an exception is a runtime error that is thrown when the program runs.  An ``IndexOutOfBoundsException`` is thrown when you try to access/create/use/reference an index that does not exist (i.e. a negative index or an index that is greater than the size of the array). For example, consider the code below: 
 
 .. code-block:: shadow 
     :linenos:  
 
     int[] outOfBounds= int:create[3];
 			
-    for( int i = 0; i < outOfBounds->size; i += 1 )
+    for (int i = 0; i < outOfBounds->size; i += 1)
         outOfBounds[i] = 3*i + 1;
 						
     outOfBounds[4] = 4;
@@ -302,9 +301,9 @@ In both examples, each grouping of words is like its own array. In the first exa
 
     int[][] speeding = int:create[4][5]; 
 		
-    for( int i = 0; i < speeding->size; i += 1 )
+    for (int i = 0; i < speeding->size; i += 1)
     {
-        for( int j = 0; j < speeding[i]->size; j += 1 )
+        for (int j = 0; j < speeding[i]->size; j += 1)
 	{
 	    speeding[i][j] =  i + j + 60; 
 	}
@@ -338,8 +337,8 @@ For the last array topic, we will examine the ``foreach`` loop. In basic terms, 
 
     String[] a = String:create[5]:default("Kerfuffle");
 		
-    foreach ( String value in a )
-        Console.printLine( value );
+    foreach (String value in a)
+        Console.printLine(value);
 
 Console: 
 

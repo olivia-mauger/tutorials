@@ -181,7 +181,7 @@ For example, consider the short segment of code below:
     double x = 8; 
     Console.printLine(x);
 
-**Lines 2 and 4** both print  "8.0" to the console. However, you may be wondering what the difference is, then, between how ``w`` and ``x`` were initialized. ``w`` is initialized with an **explicit cast** from a ``int`` to a ``double``. On the other hand, ``x`` is an example of an **implicit cast**; 8 becomes 8.0 when stored in a ``double``. 
+**Lines 2 and 4** both print  8.0 to the console. However, you may be wondering what the difference is, then, between how ``w`` and ``x`` were initialized. ``w`` is initialized with an **explicit cast** from a ``int`` to a ``double``. On the other hand, ``x`` is an example of an **implicit cast**; 8 becomes 8.0 when stored in a ``double``. 
 
 Now, let’s look another example: 
 
@@ -222,7 +222,7 @@ First, look at the two examples below:
 
 In the first example, we are casting the ``code`` '7' into an  ``int`` called ``num``. You might expect that ``num`` now stores the *numeric* value 7, but this is not the case. It actually holds 55. The **character** 7, when converted to a number is 55. An `ASCII Table <http://www.asciitable.com/>`_ can be used to make these conversions. 
 
-The same applies for converting an ``int`` to a ``code`` like in the second example. The character corresponding to the numeric value 97 is `a`, and this is what is printed to the console. This is why it is important to be careful and intentional when casting between primitive -- and any -- types. 
+The same applies for converting an ``int`` to a ``code`` like in the second example. The character corresponding to the numeric value 97 is ``a``, and this is what is printed to the console. This is why it is important to be careful and intentional when casting between primitive -- and any -- types. 
 
 
 .. note:: You may **not** cast a ``String`` to a ``code`` and vice versa. 

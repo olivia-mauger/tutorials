@@ -27,7 +27,7 @@ Key **numeric type** variables, which are examples of **primitive variables** an
 
 In addition to the above integer-like types, Shadow also has two types of primitive variables for storing **floating-point values** (e.g. 10.4 or 12.3564): ``double`` and ``float.``
 
-Unlike Java, Shadow has **unsigned types** for primitive variables as well. For example, an unsigned ``int`` is represented as ``uint``. However, casting is still needed if you want to store an uint in an int, or vice versa. Due to strict Shadow type-checking, exercise caution when using unsigned variables.
+Unlike Java, Shadow has **unsigned types** for primitive variables as well. For example, an unsigned ``int`` is represented as ``uint``. However, :ref:`casting<Casting>` is still needed if you want to store an uint in an int, or vice versa. Due to strict Shadow type-checking, exercise caution when using unsigned variables.
 
 .. note:: There is no ``udouble`` or ``ufloat`` class!
 
@@ -238,6 +238,40 @@ In all examples in this section, the variables are declared with a **specific** 
     var marathonCity = "Boston" 
 
 As you can see, ``milesRun`` is clearly a ``double``, and ``marathonCity`` is a ``String``. Going forward with the tutorials, variables will be declared using ``var`` in examples. 
+
+.. _nullable-check: 
+
+``nullable`` and ``check()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To conclude this section on variables, we will discuss the ``nullable`` modifier and its associated method ``check()``. Although methods will be covered in a :ref:`later tutorial<Methods>`, ``check()`` should be understood in the context of ``nullable``. 
+ 
+In order to understand ``nullable``, we must first define the **default values** for primitive and reference types. For now, all you need to know about reference types is that ``String`` is considered a reference type.  The default values for primitive types are as follows:
+
+* ``int`` : ``0``
+* ``double`` : ``0.0``
+* ``boolean`` : ``false``
+* ``code`` : ``\0``
+
+For **reference types**, which includes ``String`` , the most logical default value is ``null``. However, those who are familiar with C/C++/Java will understand that ``null`` can cause many unintended errors and bugs in a program (e.g. a ``NullPointerException`` in Java). **Shadow** deals with this issue by using the ``nullable`` modifier. If a reference is marked as ``nullable``, it means that it is **able to store the value** ``null`` **in it**. For example:
+
+``nullable String word = null;``
+
+This is a ``nullable`` ``String`` reference that is equal to ``null`` and will not cause a compile error. However, what if we tried to write this statement?
+
+``String word2 = null;``
+
+This will cause a compile error, as ``word2`` is a non-``nullable`` reference and therefore cannot hold the value ``null``. Although creating ``nullable`` references can circumvent some issues with using ``null``, **the goal is to have as little** ``nullable`` **references as possible** -- using them when only absolutely necessary.
+
+The ``check()`` method is a main way to help eliminate ``nullable`` references. ``check()`` takes one nullable expression as a parameter and returns a non-nullable object (a ``String`` is technically an object). For example, consider the following lines of code:
+
+.. code-block:: shadow
+    :linenos: 
+
+    nullable String hint =  "machine";
+    String mystery = check(hint);
+ 
+What is stored in the non-``nullable`` ``String`` variable, ``mystery``? The literal value, "machine". The ``check()`` method call takes in a ``nullable`` object, in this case ``hint``, and returns a non-``nullable`` version of it. However, what would have happened if ``hint`` was equal to ``null``? The console would have displayed the following exception message: ``shadow:Standard@UnexpectedNullException``. Although exceptions will be covered in a :ref:`later tutorial<Exceptions>`, it is simply important to understand that it is not possible for ``check()`` to return a non-``nullable`` version of ``null``. Thus, the program terminates with an exception.
 
 
 

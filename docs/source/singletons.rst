@@ -54,7 +54,7 @@ Now, let's break down the ``CovertOperation`` class.
 
 
 
-``CovertOperation`` is a simple class with 3 member variables, including a ``singleton`` object -- ``tracker``. The constructor, which starts on **Line 7**, initializes ``password`` and ``secret``. As seen in **Line 11**, the method ``startMission()`` is called on ``tracker``, which is a  ``singleton``.  This ensures that every time a ``CovertOperation`` object is created, the ``singleton`` object’s member variable ``numOperations`` is incremented by 1. So, in basic terms, ``tracker`` represents the number of times an ``CovertOperation`` object has been instantiated. 
+``CovertOperation`` is a simple class with 3 member variables, including a ``singleton`` object -- ``tracker``. The constructor, which starts on **Line 7**, initializes ``password`` and ``secret``. As seen in **Line 11**, the method ``startMission()`` is called on ``tracker``, which is a  ``singleton``.  This ensures that every time a ``CovertOperation`` object is created, the ``singleton`` object’s member variable ``numOperations`` is incremented by 1. So, in basic terms, ``tracker`` represents the number of times a ``CovertOperation`` object has been instantiated. 
 
 You might be asking, "How can ``tracker`` keep track of the total number of objects created, when each ``CovertOperation`` object has its own ``tracker`` member variable?" In reality, the ``tracker`` member variable **is actually the same object** for every instance of the ``CovertOperation`` class. After all, the whole point of a ``singleton`` is to only allow one object of the class to exist at one time. 
 

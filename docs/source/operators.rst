@@ -31,7 +31,7 @@ While these two examples constitute the basics of assignment, Shadow also has so
     (x, y) = (y, x); 
     (x, y, z) = 10; 
 
-The above section of code demonstrates a few Shadow syntactic structures: **sequences** and two of its subtypes, **swaps** and **splats**. In the first three lines of code, the variables ``x``, ``y``, and ``z``  are declared but not **initialized**. However, in Line 4, variables ``x`` and ``y`` are initiated in a single line. This is a basic **sequence**. Line 5 is an example of a **swap** because now ``x`` has a value 6 and ``y`` has value 3. Lastly, Line 6 is called a **splat** because all three variables are set to 10 in the same line. 
+The above section of code demonstrates a few Shadow syntactic structures: **sequences** and two of its subtypes, **swaps** and **splats**. In the first three lines of code, the variables ``x``, ``y``, and ``z``  are declared but not **initialized**. However, in **Line 4**, variables ``x`` and ``y`` are initiated in a single line. This is a basic **sequence**. **Line 5** is an example of a **swap** because now ``x`` has a value 6 and ``y`` has value 3. Lastly, **Line 6** is called a **splat** because all three variables are set to 10 in the same line. 
 
 Arithmetic Operators
 ^^^^^^^^^^^^^^^^^^^^ 
@@ -88,7 +88,7 @@ First, let's examine some nuances of **Shadow division**.
 	      * that the result must be stored as a double, so now divide3 holds the value 3.0, 
 	      * not 3.5 -- which is a common mistake. 
 	      */
-             var divide3 = 7 / 2; 
+             double divide3 = 7 / 2; 
 	     Console.printLine("Result 3: " # divide3); 	 
 	 }
     }
@@ -163,8 +163,7 @@ The variable ``test`` is assigned ``true``. However, suppose you wanted to compa
     var compare = (want == need); 
     Console.printLine(compare); 
 
-Here, the variables ``want`` and ``need`` both are equal to the literal ``String`` value "coffee," so the result is ``true``. While the ``==`` compares literal values, Shadow also has the ``===`` operator which compares **references**. Let’s say we assign ``want`` and ``need`` to new ``String`` objects (see "Objects and Classes") that have the same literal value: 
-
+Here, the variables ``want`` and ``need`` both are equal to the literal ``String`` value "coffee," so the result is ``true``. While the ``==`` compares literal values, Shadow also has the ``===`` operator which compares **references**. Let’s say we assign ``want`` and ``need`` to new ``String`` objects (see :ref:`Classes: The Basics<Classes: The Basics>`) that have the same literal value: 
 
 .. code-block:: shadow 
 
@@ -266,7 +265,7 @@ The following basic program outlines how to use these logical operators:
 	     var withCream = true; 
 	     var withSugar = false; 
 	    
-	     if(withCream and !withSugar) 
+	     if (withCream and !withSugar) 
 	     {
 	     	Console.printLine("I like my coffee with cream but NOT sugar!" ); 
 	     }
@@ -280,12 +279,10 @@ The following basic program outlines how to use these logical operators:
 	      * coffee. Surprise me!" is printed. 
 	      */
 
-	     if(withCream or withSugar) 
+	     if (withCream or withSugar) 
 	     { 
-	     	Console.printLine("I like cream OR sugar in my coffee. Surprise me! "); 
+	     	Console.printLine("I like cream OR sugar in my coffee. Surprise me!"); 
 	     }
-	     
-	   
 	}    	      
     }
 
@@ -298,7 +295,7 @@ Although the program outlines the basic functionality of ``and`` and ``or``, the
 Unary and Assignment Operators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To conclude our analysis of the major types of operators in Shadow, we will discuss unary and assignment operators. 
+To continue our analysis of the major types of operators in Shadow, we will discuss unary and assignment operators. 
 
 **Unary Operators**
 
@@ -343,7 +340,7 @@ Let’s examine the following segments of code to see why these operators are us
     // Now y = 0 
 
 
-Although lines 2 and 7 effectively do the same thing, line 2 is a more simple way to get to the same answer. 
+Although **Lines 2 and 7** effectively do the same thing, line 2 is a more simple way to get to the same answer. 
 
 
 The Concatenation Operator

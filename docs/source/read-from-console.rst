@@ -39,7 +39,7 @@ There are a couple of important things to note syntax-wise with the code above. 
 
 As discussed in the previous page, :ref:`Methods<Methods>`, methods in Shadow can return multiple values. This is the case with the 4 aforementioned methods. Since we want to store our user input in a variable, that is why we say ``(String sign, )`` with an empty space for the second return value (a ``boolean``) to indicate we want to ignore it. Then, on the right side of the equals sign you have the ``Console.readString();``. Depending on the value you want the user to enter, substitute in any of the other four methods after ``Console``.  Once the user types in their answer and hits the enter key, the value is stored in ``sign``. Then, we can use the variable as we choose -- like in **Line 5**. 
 
-A note on ``readString()`` vs ``readLine()``: 
+**A note on** ``readString()`` **vs** ``readLine()``: 
 
 Although using either of these two methods requires you to assign the input to a ``String`` variable, ``readLine()`` will read the entire line of text (including spaces) while ``readString`` will include everything up until a space, a tab, a new line, or a line feed character is reached. Thus, if I entered "Aquarius I think" as my Zodiac sign, the variable ``sign`` will be equal to "Aquarius" and not "Aquarius I think". 
 	

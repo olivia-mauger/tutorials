@@ -8,12 +8,12 @@ In general, generics is best understood through an example. Since there are many
 Creating a Generic ``class``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following ``class``, named ``Trunk``, demonstrates how to create a generic ``class``. 
+The following class, named ``Chest``, demonstrates how to create a generic class. 
 
 .. code-block:: shadow
     :linenos: 
 
-    class tutorials:generics@Trunk<T>
+    class tutorials:generics@Chest<T>
     {
         T object; 
 	
@@ -26,10 +26,14 @@ The following ``class``, named ``Trunk``, demonstrates how to create a generic `
         {
             return object; 
         }
+        public getValue() => (double)
+	{
+	    return object->value; 
+	}
     }
 
-Think of ``Trunk`` as a literal trunk/chest that stores many different objects. There are endless possibilities as to what you can put inside of a trunk: treasure, clothes, books, puzzles, etc. Thus, we can think of a generic class as a container of sorts. Notice how the only member variable is ``T object``. While it may seem like ``T`` is the name of a class, **it is not**. ``T`` is representative of a type, which will be substituted for a specific class (like ``String``) or interface when an instance of ``Trunk`` is created. 
-This is also why the ``class`` header says ``class Trunk<T>``. The type ``T`` is included in between angle brackets and indicates that when an instance of ``Trunk`` is created, a type must be specified in its place. 
+Think of ``Chest`` as a literal trunk/chest that stores many different objects. There are endless possibilities as to what you can put inside of a chest: treasure, clothes, books, puzzles, etc. Thus, we can think of a generic class as a container of sorts. Notice how the only member variable is ``T object``. While it may seem like ``T`` is the name of a class, **it is not**. ``T`` is representative of a type, which will be substituted for a specific class (like ``String``) or interface when an instance of ``Chest`` is created. 
+This is also why the ``class`` header says ``class Chest<T>``. The type ``T`` is included in between angle brackets and indicates that when an instance of ``Chest`` is created, a type must be specified in its place. 
 
 The rest of the class should look familiar to you. There is a single constructor that takes in ``T`` as a parameter, and a ``getObject()`` method that turns an object of the same type ``T``. The benefits of using ``T`` will become apparent when we look at the driver program. 
 
@@ -105,9 +109,23 @@ Although the implementation is not shown, you are also able and encouraged to cr
 Bounds
 ^^^^^^^ 
 
-Another feature of generics in Shadow is the ability to create **bounds**. In basic terms, using bounds with generics allows you specify constraints for acceptable types, ``T``. For example, in our ``Chest`` class above, let’s say we only wanted ``Chest`` to be able to "hold" instances of the ``Treasure`` class and any of its children. All we would need to do is modify the class header slightly: ``class tutorials:generics@Trunk<T is Treasure>``. Now, if we tried to create ``numChest`` from the previous section, we would get a compile error because ``int`` is not a child of ``Treasure``. This is called an **upper bound**. 
+Another feature of generics in Shadow is the ability to create **bounds**. In basic terms, using bounds with generics allows you specify constraints for acceptable types, ``T``. For example, in our ``Chest`` class above, let’s say we only wanted ``Chest`` to be able to "hold" instances of the ``Treasure`` class and any of its children. All we would need to do is modify the class header slightly: ``class tutorials:generics@Chest<T is Treasure>``. Now, if we tried to create ``numChest`` from the previous section, we would get a compile error because ``int`` is not a child of ``Treasure``. This is called an **upper bound**. 
 
-Additionally, Shadow also allows you to have **more than one** bound. For example, we could also state ``class tutorials:generics@Trunk<T is Treasure and String>``. Lastly, if you also included interfaces as bounds, the only caveat is that the ``class`` (or classes) should be listed first.
+Since ``T is Treasure``, we could also add the following method to ``Chest`` in order to access the member variable ``value`` of ``Treasure`` objects (and objects of its subclasses). 
+
+.. code-block:: shadow
+    :linenos: 
+
+    public getValue() => (double)
+    {
+        return object->value; 
+    }
+
+However, in order for this to work, ``value`` in the ``Treasure`` class must be marked with ``get``. 
+
+
+
+Additionally, Shadow also allows you to have **more than one** bound. For example, we could also state ``class tutorials:generics@Chest<T is Treasure and String>``. Lastly, if you also included interfaces as bounds, the only caveat is that the class (or classes) should be listed first.
 
 Generic Arrays
 ^^^^^^^^^^^^^^

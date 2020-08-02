@@ -16,7 +16,7 @@ Below is the basic structure for an ``if``/``else`` statement.
 .. code-block:: shadow 
 
 
-    if( ) //some expression that evaluates to true or false 
+    if ( ) //some expression that evaluates to true or false 
     { 
         //do something here 
     }
@@ -43,10 +43,10 @@ Below are some possible examples:
 
     //Here is a example of a nested if/else statement (inside a larger if)
     var numDonuts = 4; 
-    if( numDonuts > 0 )
+    if (numDonuts > 0)
     { 
         //pay attention to how the use of brackets directs program flow
-	if ( numDonuts % 2 == 0 )
+	if (numDonuts % 2 == 0)
 	{
 	    Console.printLine("You have an even number of donuts left!"); 
 	    Console.printLine("Now you have to share."); 
@@ -86,15 +86,15 @@ Lastly, here is an example of ``else if``.
     var noLoops = true; 
     var idealRideSpeed = 100; 
 		 
-    if( scaredOfHeights and noLoops ) 
+    if (scaredOfHeights and noLoops) 
     {
         Console.printLine("Sorry, there aren't any rides without loops and heights."); 
     }
-    else if( !scaredOfHeights and idealRideSpeed >= 110 ) 
+    else if (!scaredOfHeights and idealRideSpeed >= 110) 
     {
-        Console.printLine( "You would love the Super Speedy Plunge!" ); 
+        Console.printLine("You would love the Super Speedy Plunge!"); 
     } 
-    else if( !noLoops or idealRideSpeed < 80 ) 
+    else if (!noLoops or idealRideSpeed < 80) 
     {
         Console.printLine("Get in line for the Loop Dee Loop"); 
     }
@@ -113,7 +113,7 @@ Which ride should Surya go on?
 
 Why should Surya go on Madness Mountain? Let's trace through the code. 
 
-Lines 8-11 establish the "rules" for determining what ride he should go on. We know that he prefers rides that go 100 mph, don’t have loops, and have heights. Control then is passed to  **Line 13**. This expression evaluates to ``false`` because ``scaredOfHeights`` is ``false``. This means that the statement inside the first ``if`` is skipped, and execution is passed to **Line 17**. Since his ideal ride speed is not greater than or equal to 110 mph, the expression evaluates to ``false`` and control is passed to **Line 21.** Neither statement is ``true``, so the last ``else if`` evaluates to ``false``. Therefore, the statement inside the final ``else`` is printed (there is no condition), and Surya should ride Madness Mountain. 
+**Lines 8-11** establish the "rules" for determining what ride he should go on. We know that he prefers rides that go 100 mph, don’t have loops, and have heights. Control then is passed to  **Line 13**. This expression evaluates to ``false`` because ``scaredOfHeights`` is ``false``. This means that the statement inside the first ``if`` is skipped, and execution is passed to **Line 17**. Since his ideal ride speed is not greater than or equal to 110 mph, the expression evaluates to ``false`` and control is passed to **Line 21.** Neither statement is ``true``, so the last ``else if`` evaluates to ``false``. Therefore, the statement inside the final ``else`` is printed (there is no condition), and Surya should ride Madness Mountain. 
 
 It is important to note that if one of the earlier ``else if`` statements had evaluated to ``true``, the rest of the ``else if`` and final ``else`` would NOT be evaluated, and control would be passed to the the next line after the final ``else``. 
 
@@ -125,7 +125,7 @@ Technically, if an ``if`` statement is followed by a single line of code, braces
 
 .. code-block:: shadow
 
-    if( 1 > 2 )
+    if (1 > 2)
         Console.printLine("hey"); 
         Console.printLine("hi"); 
 
@@ -156,7 +156,7 @@ For example, let’s examine this block of code:
 .. code-block:: shadow
 
     var favoriteNumber = 13; 
-    while ( favoriteNumber > 0 )
+    while (favoriteNumber > 0)
     {
         Console.printLine("Your favorite number is " # favoriteNumber); 
     }
@@ -176,9 +176,9 @@ You want to create some basic programming art, so you will start by "drawing" a 
     //This is the loop counter
     var count = 1; 
 			
-    while(count <= 10) //boolean expression 
+    while (count <= 10) //boolean expression 
     {
-        if( count % 2 == 0 ) 
+        if (count % 2 == 0) 
 	{
 	    Console.print("$"); 
 	}
@@ -238,7 +238,7 @@ Although very similar in structure and concept to the ``while`` loop, there are 
     var points = 5; 
     do 
     {
-        if ( points <= 0 ) 
+        if (points <= 0) 
         {
              Console.printLine("I'm sorry, you don't have enough points to play!"); 
 	     points -= 1; 
@@ -300,7 +300,7 @@ Below is a very basic example of a ``for`` loop that we will break down piece-by
 
 .. code-block:: Shadow
 
-    for( int i = 1; i <= 5; i += 1 )  
+    for (int i = 1; i <= 5; i += 1)  
     {
         Console.printLine("Hey you! Wake up!!"); 
     }
@@ -329,7 +329,7 @@ However, ``i`` does not *have* to be initialized inside the ``for`` loop. It cou
 .. code-block:: Shadow
 
     int count; 
-    for( count = 1; count <= 5; count += 1 )  
+    for (count = 1; count <= 5; count += 1)  
     {
         Console.printLine("Hey you! Wake up!!"); 
     }
@@ -372,9 +372,9 @@ In this brief section, we will examine **nested** ``for`` loops and their applic
 .. code-block:: Shadow
     :linenos:
 
-    for ( int i = 5; i > 0; i -= 1 ) //this is the outer loop
+    for (int i = 5; i > 0; i -= 1) //this is the outer loop
     {
-        for ( int k = 5; k >= i; k -= 1 ) //this is the inner loop
+        for (int j = 5; j >= i; j -= 1) //this is the inner loop
 	{
 	    Console.print("@"); 
 	}
@@ -394,11 +394,13 @@ The ouput is as follows:
 
 There are two important aspects of the nested ``for`` loop: the **outer loop** and the **inner loop**. Let’s trace through the example to see how control flows between the outer and inner loops. 
 
-The outer loop is the "driver" of the nested ``for`` loop. For example, the goal of the block of code above is to output a 5 ``@`` tall right triangle. Since we will need five separate lines of varying length to do so, the outer loop needs to run a total of 5 times. Thus, the statement on Line 1 ensures that will happen. 
+The outer loop is the "driver" of the nested ``for`` loop. For example, the goal of the block of code above is to output a 5 ``@`` tall right triangle. Since we will need five separate lines of varying length to do so, the outer loop needs to run a total of 5 times. Thus, the statement on **Line 1** ensures that will happen. 
 
-But how do we get the different numbers of ``@`` symbols on each of the 5 lines? That is controlled by the **inner** loop. Initially, the outer loop counter variable, ``i``,  is  equal to 5. Before ``i`` is decremented by 1, control is passed to the inner loop. ``k`` is initialized to 5, so the condition that ``k >= i;``  is ``true``. Then a ``@`` is printed and ``k`` is decremented by 1, so ``k``` is no longer greater than or equal to ``i``. Once the **inner loop** has completely executed, then control flows to the statement outside the inner loop -- the empty ``Console.printLine()`` that starts the next line of ``@``’s. (If we had forgotten Line 7, all the ``@``’s would have been printed on the same line). 
+But how do we get the different numbers of ``@`` symbols on each of the 5 lines? That is controlled by the **inner** loop. Initially, the outer loop counter variable, ``i``,  is  equal to 5. Before ``i`` is decremented by 1, control is passed to the inner loop. ``j`` is initialized to 5, so the condition that ``j >= i;``  is ``true``. Then a ``@`` is printed and ``j`` is decremented by 1, so ``j``` is no longer greater than or equal to ``i``. Once the **inner loop** has completely executed, then control flows to the statement outside the inner loop -- the empty ``Console.printLine()`` that starts the next line of ``@``’s. (If we had forgotten **Line 7**, all the ``@``’s would have been printed on the same line). 
 
-Now, control flows back the **outer loop**, and ``i`` is decreased by one (so now ``i`` equals 4). It is important to note that when the inner loop is executed again, it is in essence "reset", so ``k`` starts as equal to 5 and two ``*``’s will be printed before ``i >= k`` becomes ``false``. This process continues until the fifth line of 5 ``*``’s is printed and ``i`` becomes 0, which causes the program to exit the outer loop. The triangle is now complete! 
+Now, control flows back the **outer loop**, and ``i`` is decreased by one (so now ``i`` equals 4). It is important to note that when the inner loop is executed again, it is in essence "reset", so ``j`` starts as equal to 5 and two ``*``’s will be printed before ``i >= j`` becomes ``false``. This process continues until the fifth line of 5 ``*``’s is printed and ``i`` becomes 0, which causes the program to exit the outer loop. The triangle is now complete! 
+
+.. _switch: 
 
 ``switch`` Statements
 ^^^^^^^^^^^^^^^^^^^^^
@@ -438,20 +440,20 @@ Notice the ``default case`` on **Line 9**. If none of the cases had equaled "roc
 
 Below are some important takeaways for ``switch`` statements. 
 
-* Any type of variable may be used in a ``switch`` statement 
-* There is no limit to the number of cases 
+* Any type of variable may be used in a ``switch`` statement.
+* There is no limit to the number of cases.
 * A ``default`` is not required, but there can only be one. 
-* ``switch`` statements may be included inside loops (usually a ``for`` or a ``while`` loop)
-* You may include multiple cases in one statements e.g. ``case( 1, 2, 3 )``
-* The ``default`` does not have to be the last statement in the body of the ``switch`` 
-* Enclose multiple statements for one ``case`` in braces (see below)  
+* ``switch`` statements may be included inside loops (usually a ``for`` or a ``while`` loop).
+* You may include multiple cases in one statements e.g. ``case( 1, 2, 3 )``.
+* The ``default`` does not have to be the last statement in the body of the ``switch``. 
+* Enclose multiple statements for one ``case`` in braces (see below).  
 
 .. code-block:: shadow
 
     var someNum = 0;
-    case ( someNum ) 
+    switch (someNum) 
     {
-        case( 0 )
+        case(0)
         {
             Console.printLine("Uh oh your number is 0."); 
             Console.printLine("Is 0 even, odd, or neither?"); 
@@ -473,9 +475,9 @@ First, let’s discuss ``break``. When a program reaches a break statement, it w
 .. code-block:: shadow
     :linenos: 
     
-    for( int i = 1; i < 5; i += 1 )
+    for (int i = 1; i < 5; i += 1)
     {
-        if( i * 2 > 5 )
+        if (i * 2 > 5)
 	{
 	    break;
 	} 
@@ -506,7 +508,7 @@ An example of a ``while`` loop with a ``continue`` statement is provided.
     int i = 0; 
     Console.printLine("Odd Numbers");
 		
-    while( i < 10 )
+    while (i < 10)
     {
         if (i % 2 == 0) 
 	{ 

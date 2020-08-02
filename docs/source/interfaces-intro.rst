@@ -137,7 +137,7 @@ For example, let’s say that we added an interface called ``CanScubaDive`` that
 No Default Implementation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are familiar with Java, you are probably wondering if it is possible for an ``interface`` to provide a default implementation for some or all of its methods. In **Shadow** the is answer is **no**. You will get a compile error if you try to do so. **The whole purpose of an interface is to outline methods that a class is forced to implement itself based off of the specific needs/function of the class itself**. 
+If you are familiar with Java, you are probably wondering if it is possible for an ``interface`` to provide a default implementation for some or all of its methods. In **Shadow** the answer is **no**. You will get a compile error if you try to do so. **The whole purpose of an interface is to outline methods that a class is forced to implement itself based off of the specific needs/function of the class itself**. 
 
 
 

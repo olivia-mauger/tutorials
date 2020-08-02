@@ -78,7 +78,7 @@ The last is ``OutOfIngredientsException``:
 .. code-block:: shadow 
     :linenos: 
     
-    exception tutorials:exceptOutOfIngredientsException
+    exception tutorials:except@OutOfIngredientsException
     {
         public create()
         {
@@ -89,13 +89,13 @@ The last is ``OutOfIngredientsException``:
 
 Upon examining these 3 different ``Exception`` classes, there are a few key things to take away. For one, instead of the keyword ``class``, they are all created with the following syntax: ``exception ClassName``. 
 
-In addition, each has a single constructor that calls the parent class’ constructor via ``super()``. As for all exceptions, the parent class is called ``Exception``. ``Exception`` has 2 constructors, one that takes no parameters (creating an ``Exception`` without a message) and one that takes a ``String`` representing an explanation for the exception. In all 3 examples, we have invoked the parent constructor that takes in a ``String``. These ``String`` values are the messages displayed when the specific exception is thrown. For instance, if in a driver class we stated, ``throw MeasuringMistakeException:create();``, the console output would have been ``except@MeasuringMistakeException: Brush up on your fractions! You measured wrong!``
+In addition, each has a single constructor that calls the parent class’ constructor via ``super()``. As for all exceptions, the parent class is called ``Exception``. ``Exception`` has 2 constructors, one that takes no parameters (creating an exception without a message) and one that takes a ``String`` representing an explanation for the exception. In all 3 examples, we have invoked the parent constructor that takes in a ``String``. These ``String`` values are the messages displayed when the specific exception is thrown. For instance, if in a driver class we stated, ``throw MeasuringMistakeException:create();``, the console output would have been ``except@MeasuringMistakeException: Brush up on your fractions! You measured wrong!``
 
 Now that we have established **how** to create our own exceptions, it is time to move on to **catching exceptions**. 
 
 **Catching Exceptions**
 
-Although knowing how to create and throw exceptions is important, it is even more useful to know how to **catch** them. As you have seen from the previous examples, when an exception is thrown, the program stops running at that point. **Catching** an exception circumvents this issue by identifying and "preventing" the exception that may or may not result when a given action is taken. 
+Although knowing how to create and throw exceptions is important, it is even more useful to know how to **catch** them. As you have seen from the previous examples, when an exception is thrown, the program stops running at that point. **Catching** an exception circumvents this issue by identifying and "handling" the exception that may or may not result when a given action is taken. 
 
 Let’s revisit our cooking example by looking at the driver program, ``ExceptionTest`` below. 
 
@@ -103,6 +103,7 @@ Let’s revisit our cooking example by looking at the driver program, ``Exceptio
     :linenos: 
 
     import shadow:io@Console;
+    import shadow:utility@Random; 
 
     class tutorials:except@ExceptionTest   
     {
@@ -110,7 +111,28 @@ Let’s revisit our cooking example by looking at the driver program, ``Exceptio
         {
             try
             {
-                runOut();  
+                Random random = Random:create();
+	        var number = random.nextInt(4); 
+			
+		switch (number)
+		{
+		    case(0)  
+		    { 
+		        Console.printLine("No cooking errors!"); 
+		    }
+		    case(1)
+	            {
+		        burnFood(); 
+		    }
+		    case(2)
+		    {
+		        runOut(); 
+		    }
+		    case(3) 
+		    {
+		         measureMistake(); 
+		    }
+	         }
             } 
 	    catch (BurnedFoodException ex) 
 	    {
@@ -142,7 +164,7 @@ Let’s revisit our cooking example by looking at the driver program, ``Exceptio
 	}
     } 
 
-First, ignore the ``main()`` method and look at **Lines 25-39**. Here we see 3 methods: ``burnFood()``, ``runOut()``, and ``measureMistake()``. These methods represent 3 different actions you could take to ruin your cooking, so it makes sense that each of these methods throws a corresponding exception (defined above). If you simply called ``burnFood()`` in the ``main()`` method, you would get an exception with the message "Oh no! You have burned the food!", and the program would terminate. This is not very useful, especially if you want the program to keep running.
+First, ignore the ``main()`` method and look at **Lines 47-61**. Here we see 3 methods: ``burnFood()``, ``runOut()``, and ``measureMistake()``. These methods represent 3 different actions you could take to ruin your cooking, so it makes sense that each of these methods throws a corresponding exception (defined above). If you simply called ``burnFood()`` in the ``main()`` method, you would get an exception with the message "Oh no! You have burned the food!", and the program would terminate. This is not very useful, especially if you want the program to keep running.
 
 Wouldn’t it be better if you got a warning that you were about to burn your food or run out of ingredients? This is where the **try-catch** block comes in. The syntax is as follows: 
 
@@ -161,7 +183,15 @@ Wouldn’t it be better if you got a warning that you were about to burn your fo
     .
     .
 
-There are no restrictions on the number or type of statements we can put inside the ``try`` block. We can call methods, create variables, create objects, etc. Look at **Line 9** of ``ExceptionTest``. Inside the ``try`` block, we are calling the method ``runOut()``, which throws an ``OutOfIngredientsException``. Once this exception is thrown, we say that it is **in flight**. In other words, the program goes back to the try-catch block and runs through each ``catch`` statement (from top to bottom) until it finds an exception of compatible type. 
+Before we discuss the ``try`` block in the example, it is important to touch on the new import statement ``import shadow:utility@Random;``, you probably noticed in ``ExceptionTest``. This imports the ``Random`` class from the Shadow utility package, which allows the generation of pseudorandom numbers using the Mersenne Twister algorithm. Look at **Lines 10 and 11**. Here, inside the ``try`` block, we have created a ``Random`` object. Then, we call the ``nextInt()`` method on it, which returns an ``int`` between zero and the parameter passed in (excluding this value). Thus, ``number`` will hold an integer between 0 and 3. 
+
+.. note:: To learn more about the different methods in ``Random``, visit this page on the `Shadow API <http://shadow-language.org/documentation/shadow/utility/Random.html>`_. 
+
+Now, based on the number stored in ``number``, a method will be called that could produce a certain exception. This is done through a ``switch`` :ref:`statement<switch>`. However, ``case(0)`` indicates it is possible for no cooking mistake to be made. There is a ¼ chance that this will happen.
+
+For the sake of the example, let’s say that ``number`` holds the value 2. Look at **Line 23** of ``ExceptionTest``. For this case, we are calling the method ``runOut()``, which throws an ``OutOfIngredientsException``. Once this exception is thrown, we say that it is **in flight**. In other words, the program goes back to the try-catch block and runs through each ``catch`` statement (from top to bottom) until it finds an exception of compatible type. 
+
+
 
 In this example, the first ``catch`` block has the type ``BurnedFoodException``, so then the second ``catch`` block is checked. It is of type ``OutOfIngredients``, which matches the type of exception thrown by ``runOut()``. Subsequently, the program enters this ``catch`` block and executes all statements inside of it. Thus, "Warning: Make a trip to the grocery store!" is printed to the console. Then, the try-catch block is exited completely and any statements after the ``runOut()`` method call will **not** execute. Control then flows to the first statement outside of the try-catch block. 
 
@@ -176,6 +206,8 @@ Although we have covered the basics of creating a try-catch block in the previou
 * There is no limit to how many ``catch`` blocks you can have 
 * If you do include **multiple** ``catch`` **blocks**, the **most specific** exceptions should be put first, getting more general/broad at the end. For example, let’s say we added the ``catch`` statement -- ``catch (Exception ex)`` -- as the first ``catch`` after the ``try`` block. Since all exceptions are children of ``Exception``, any exception that could be thrown would match with this first ``catch`` block. Thus, none of the other ``catch`` blocks could ever be reached, **leading to a compile error** ( ``Unreachable code:`` ). 
 * If an exception is thrown from a ``try`` block and is never caught, the program simply terminates and the exception is displayed on the console. 
+* There are no restrictions on the number or type statements we can put inside the ``try`` block. We can call methods, create variables, create objects, etc. 
+
 
 The ``finally`` Block
 ^^^^^^^^^^^^^^^^^^^^^
@@ -210,7 +242,7 @@ The ``recover`` Block
 ^^^^^^^^^^^^^^^^^^^^^^ 
 
 
-This brief section will analyze the ``recover`` block, which is used to handle an ``UnexpectedNullException``. In the example below, the ``check()`` method call causes this type of exception to be thrown and subsequently caught by the ``recover`` block. In case you need a refresher on how ``check()`` works, it can be found in an :ref:`earlier tutorial<check-method>`. 
+This brief section will analyze the ``recover`` block, which is used to handle an ``UnexpectedNullException``. In the example below, the ``check()`` method call causes this type of exception to be thrown and subsequently caught by the ``recover`` block. In case you need a refresher on how ``check()`` works, it can be found in an :ref:`earlier tutorial<nullable-check>`.  
 
 .. code-block:: shadow 
     :linenos: 
@@ -302,7 +334,7 @@ However, this is not the case in our example. First, we go back to ``test1()``. 
 
 We will conclude the tutorial on exceptions with a brief note on the ``toString()`` method and ``message`` property of the ``Exception`` class. 
 
-Consider the following ``BurnedFoodException`` object (see above for full class): 
+Consider the following ``BurnedFoodException`` object (see above for the full class): 
 
 .. code-block:: shadow 
     :linenos: 

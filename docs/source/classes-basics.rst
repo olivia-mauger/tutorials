@@ -37,7 +37,7 @@ In order to explain the concepts behind classes and objects, we will be analyzin
 	 */
 	public set mate(boolean value) => ()
 	{
-	    if( value and age > 2 )
+	    if (value and age > 2)
 	    {
 	        mate = true;
 	    }
@@ -50,7 +50,7 @@ In order to explain the concepts behind classes and objects, we will be analyzin
 	public goFishing() => (int)
 	{
 	    int numFish; 
-	    if ( mate ) 
+	    if (mate) 
 	    {
 	        numFish = 10; 	
 	    }
@@ -109,7 +109,7 @@ What happens if the parameter name is the same as the member variable name? Alth
 
 In addition, not all member variables need to be initialized using parameter values like in **Line 19**.  The member variable ``mate`` is set to ``false``, as we are assuming an ``Otter`` object does not have a mate when it is first created. 
 
-.. note:: We also could have set the field ``mate`` equal to ``false`` at **Line 8** where the variable was initially declared 
+.. note:: We also could have set the field ``mate`` equal to ``false`` at **Line 8** where the variable was initially declared.
 
 Overloaded Constructors
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,40 +139,18 @@ Thus, the following statement is now valid:
 
 The program recognizes that this second constructor exists, and now ``oliver`` has ``age = 0;``. It is important to recognize that both ``olive`` and ``oliver`` are still otters. They were just created by invoking different constructors. 
 
-``nullable`` and Default Constructors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to understand how to properly invoke the **default constructor**, we must first discuss ``null`` and the modifier ``nullable``. As previously noted in the :ref:`Arrays<Arrays>` tutorial, there are default values for the different variable types. 
+Default Constructors
+^^^^^^^^^^^^^^^^^^^^^
 
-The default values for primitive types are as follows: 
+A default constructor is a "built-in" constructor that takes in no parameters and can be invoked **only when no other constructor is defined in the class**. If this is the case, the default constructor gives each member variable a **default value**. For primitive member variables, this is no problem. They are assigned their :ref:`default values<nullable-check>`. 
 
-* ``int`` : ``0``
-* ``double`` : ``0.0``
-* ``boolean`` : ``false``
-* ``code`` : ``\0``
-
-For **reference types**, including ``String`` and objects, the most logical default value is ``null``. However, those who are familiar with C/C++/Java will understand that ``null`` can cause many unintended errors and bugs in a program (e.g. a ``NullPointerException`` in Java). 
-
-**Shadow** deals with this issue by using the ``nullable`` modifier. If a reference is marked as ``nullable``, it means that it is **able to store the value** ``null`` **in it**. For example: 
-
-``nullable String word = null;``
-
-This is a  ``nullable`` ``String`` reference that is equal to ``null`` and will not cause a compile error. 
-
-However, what if we tried to write this statement?
-
-``String word2 = null;``
-
-This will cause a compile error, as ``word2`` is a non-``nullable`` reference and therefore cannot hold the value ``null``. Although creating ``nullable`` references can circumvent some issues with using ``null``, **the goal is to have as little** ``nullable`` **references as possible** -- using them when only absolutely necessary. 
-
-The implications of using ``nullable`` can be seen in the **Shadow default constructor**. A default constructor is a "built-in" constructor that takes in no parameters and can be invoked **only when no other constructor is defined in the class**. If this is the case, the default constructor gives each member variable a **default value**. For primitive member variables, this is no problem. They are assigned the default values listed above. 
-
-However, what  happens to **reference-type** member variables? Unless the variable declared to be **nullable**, you will get a compile error that says: 
+However, what happens to **reference-type** member variables? Unless the variable declared to be **nullable**, you will get a compile error that says: 
 
 ``Uninitialized field: Non-nullable field name might not be initialized by a create``. This happens because the program is trying to assign the value ``null`` to a non- ``nullable`` reference type. 
 
 How can we get around this error in order to invoke the default constructor? You *could* mark all reference variable types as ``nullable`` , but this would not help keep the number of ``nullable`` references at a minimum, which is the goal. Instead you could just as easily initialize the individual member variables outside of any constructor. 
 
-For example, if one of your member variables in ``String something;``, to avoid using ``nullable`` and still use the default constructor, you could simple write ``String something = " ";`` 
+For example, if one of your member variables in ``String something;``, to avoid using ``nullable`` and still use the default constructor, you could simply write ``String something = " ";`` 
 
 Lastly, if you have at least one programmer-defined constructor, you will get a compile error if you try to invoke the default constructor. 
 
@@ -217,7 +195,7 @@ Now, consider the following test-program excerpt below:
 
 With the first object, ``one``, notice how we create it with only one parameter (representing its name). You may be wondering, how do the other member variables get instantiated? Look at **Line 17**. Inside the ``this()`` statement, we are sending the name that was passed in ("Jasmine") along with a literal value for ``habitat`` ("Unknown") as parameters. Control then flows to the constructor that takes two ``String`` values as parameters. If there hadn’t been such a matching constructor, we would have gotten a compile error. In this constructor, there is yet *another* example of constructor chaining. The two ``String`` values passed in, along with the value 0, are sent as parameters to the original constructor where the member variables are initialized.
 
-However, consider **Line 2** of the test program. What do you think is the value of ``name``? "Unknown" or "end of chain"? Although the member variable ``name`` was initially set to ``Unknown`` via constructor chaining, ``name`` actually stores the literal value "end of chain". This is because the ``this()`` statement is executed first, with control flowing to the "top of the chain" (constructor without a ``this()`` call) back down to the constructor that was originally invoked. Thus, ``name = "end of chain"`` is executed last. You will get a compile error if any ``this()`` call is not the first statement in the constructor. 
+However, consider **Line 2** of the test program. What do you think is the value of ``name``? "Unknown" or "end of chain"? Although the member variable ``name`` was initially set to ``Unknown`` via constructor chaining, ``name`` actually stores the literal value "end of chain". This is because the ``this()`` statement is executed first, with control flowing to the "top of the chain" (constructor without a ``this()`` call) back down to the constructor that was originally invoked. Thus, ``name = "end of chain;"`` is executed last. You will get a compile error if any ``this()`` call is not the first statement in the constructor. 
 
 Finally, look at the ``Otter`` object ``two``. Here, we have invoked the constructor that takes two ``String`` values, which also includes a ``this()`` call. The member variable ``age`` is set to 0. 
 
@@ -315,7 +293,7 @@ Defining different methods within a class gives the class greater functionality 
 Packages
 ^^^^^^^^
 
-**Packages** in **Shadow** are a means of organizing groups of classes that serve a similar function or have some commonality that unites them. They are created by putting these different classes in folders/directories. You have already been exposed to packages, just not explicitly. For example, consider the ``shadow:standard`` package. It contains essential classes, interfaces, singletons, and exceptions (to be explained in later tutorials) needed for any Shadow program. These types do not need to be explicitly imported because the compiler will do so automatically. The other built-in Shadow packages are listed below (as described in the Shadow API). 
+**Packages** in **Shadow** are a means of organizing groups of classes that serve a similar function or have some commonality that unites them. They are created by putting these different classes in folders/directories. You have already been exposed to packages, just not explicitly. For example, consider the ``shadow:standard`` package. It contains essential classes, interfaces, singletons, and exceptions (to be explained in later tutorials) needed for any Shadow program. These types do not need to be explicitly imported because the compiler will do so automatically. The other built-in Shadow packages are listed below (as described in the `Shadow API <http://shadow-language.org/reference/>`_). 
 
 * Package ``shadow:io`` contains fundamental types used for input and output, both for the console and for file and path manipulation
 
@@ -325,7 +303,7 @@ Packages
 
 While these are the packages essential to the Shadow language, what if you wanted to create your own package? For example, you may be wondering what package all of these test programs we have studied are stored in. **If not specified in the class header, classes are stored in the** ``default`` **package**. From now on, let’s say we want to put all of these example programs in a Shadow tutorials package. 
 
-First, we will create a folder called ``tutorials``, and inside this folder we can have multiple other folders to hold different classes. For example, inside the ``tutorial`` folder, let’s say we make a folder called ``variables``. Inside this folder, we can put all the programs we have relating to variable examples. It becomes a package. But how do we designate the package in class headings? 
+First, we will create a folder called ``tutorials``, and inside this folder we can have multiple other folders to hold different classes. For example, inside the ``tutorials`` folder, let’s say we make a folder called ``variables``. Inside this folder, we can put all the programs we have relating to variable examples. It becomes a package. But how do we designate the package in class headings? 
 
 Let’s pretend we made a class called ``VariableClass``. 
 

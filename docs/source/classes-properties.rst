@@ -114,7 +114,7 @@ Another notable feature of Shadow and Shadow classes is the ability to create **
 
 Nevertheless, to be precise, making a **deep copy** means not only copying the object, but all members of the object as well. This is different than storing an object in another reference, as this only creates an **alias** to the original object. Especially in other programming languages such as Java, attempting to make a deep copy can lead to a circular reference,  where a cycle of copying begins that never terminates. Shadow mitigates this potential problem through the keywords ``copy`` and ``freeze``.  
 
-See below for an example of using ``copy`` (references the ``Otter`` class from the previous tutorial): 
+See below for an example of using ``copy`` (references the ``Otter`` class from the :ref:`previous tutorial<Classes: The Basics>`): 
 
 .. code-block:: shadow 
 
@@ -130,7 +130,7 @@ Arrays as Objects
 ^^^^^^^^^^^^^^^^^
 At this point in the tutorials, you probably have noticed that arrays appear to behave much like objects. You can initialize them with ``create()``, use the ``copy`` command, and call certain methods on them (e.g. ``index()`` ). As it turns out, **arrays themselves are objects**, so concepts relating to Objects in general apply to arrays.
 
-Now that we have introduced objects, it is also worth mentioning that instead of having an array of primitive type or a ``String`` array,  you can also create an array of objects as well. In addition, as introduced in :ref:`Classes: The Basics<Classes: The Basics>`, you can also declare an array to be ``nullable``. This will be covered in the next section. 
+Now that we have introduced objects, it is also worth mentioning that instead of having an array of primitive type or a ``String`` array,  you can also create an array of objects as well. In addition, you can also declare an array to be ``nullable``. This will be covered in the next section. 
 
 
 .. _nullable-arrays: 
@@ -161,24 +161,6 @@ The console output is:
 The ``nullable`` ``String`` array ``test`` is created with 4 elements, all storing ``null``. Then, in **Line 5**, we have changed the value of the 2nd element in the array to "Joy". In **Line 6**  have changed the value of the 3rd element in the array to the ``String`` representation of the ``Otter`` object ``ophelia``. 
 
 .. note:: Recall that putting the ``#`` in front of a value converts it to a ``String``.
-
-
-.. _check-method: 
-
-``check()``
-^^^^^^^^^^^
-
-While we are on the topic of ``nullable``, it is also useful to understand the ``check()`` method. ``check()`` takes one ``nullable`` expression as a parameter and returns a non-``nullable`` object. 
-
-For example, consider the following lines of code: 
-
-
-.. code-block:: shadow 
-
-    nullable String hint =  "machine";  
-    String mystery = check(hint);  
-
-What is stored in the non-``nullable`` ``String`` variable, ``mystery``? The literal value, "machine". The ``check()`` method call takes in a ``nullable`` object, in this case ``hint``, and returns a non-``nullable`` version of it. However, what would have happened if ``hint`` was equal to ``null``? The console would have displayed the following exception message: ``shadow:Standard@UnexpectedNullException``. Although exceptions will be covered in a :ref:`later tutorial<Exceptions>`, it is simply important to understand that it is not possible for ``check()`` to return a non-``nullable`` version of ``null``. Thus, the program terminates with an exception. 
 
 
 Method Overriding
@@ -236,7 +218,7 @@ Here is an exerpt from the driver program and console output:
 
 The key lines to pay attention to in the ``ShadowPark`` class are **Lines 16-22**. This is where we have overridden the default ``toString()`` method. If a programmer decides to override the ``toString()`` method in any class, the method header **MUST** match ``public readonly toString() => (String)``, exactly. Omitting ``readonly`` will cause a compile error, as ``toString()`` cannot make changes to the object it is called on. 
 
-Now, when we say ``Console.printLine(objectName)``, or ``#objectName``,  the program will display on the console the ``String`` value returned by the ``toString()`` method that we overrode, as shown in the driver program above. Our new ``toString()`` method is now much more helpful/informational than what would have been returned from the ``toString()`` method by default, ``default@ShadowPark``. 
+Now, when we say ``Console.printLine(objectName)``, or ``#objectName``,  the program will display on the console the ``String`` value returned by the ``toString()`` method that we overrode, as shown in the driver program above. Our new ``toString()`` method is now much more helpful/informational than what would have been returned from the ``toString()`` method by default, ``properties@ShadowPark``. 
 
 More information on method overriding will be provided when we start discussing **inheritance** in a :ref:`later tutorial<Inheritance>`. 
 

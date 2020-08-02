@@ -32,7 +32,7 @@ Before we go over how to implement this example, let’s define some basic terms
 
 .. note:: In order to visualize the relationship between superclasses and subclasses, think of it as branches coming off of a tree. The superclass is the tree itself, and its subclasses are the different branches coming off of it.
 
-**That being said, it is extremely important to note that a given class can only extend one other class**. In basic terms, this means that a child class **may only have one parent** (e.g. A ``Waiter`` cannot extend ``Employee`` **and** a ``Student`` class).  However, this does not mean that a parent class cannot extend another class (e.g. ``Employee`` *could* extend a class called ``Person``. In fact, the root class of all objects is ``Object``. 
+**That being said, it is extremely important to note that a given class can only extend one other class**. In basic terms, this means that a child class **may only have one parent** (e.g. A ``Waiter`` cannot extend ``Employee`` **and** a ``Student`` class).  However, this does not mean that a parent class cannot extend another class (e.g. ``Employee`` *could* extend a class called ``Person``). In fact, the root class of all objects is ``Object``. 
 
 
 Implementation
@@ -163,7 +163,7 @@ Although we only showed the implementation for ``Employee`` and ``Waiter``, it w
 
 Two important keywords in **Shadow** are ``constant`` and ``protected``. 
 
-By definition, if a member variable is marked with the keyword ``constant`` this means that once it is initialized, its **value can never change**. Technically, if a member variable is ``constant``, it is no longer a member variable because it does not belong to a specific object/instance of the class. It has the same unchanging value for every object. The types that can be marked as ``constant`` are primitives, arrays, and ``String`` values. In addition, constants can be declared as ``public``, ``private``, or ``protected``, as outside classes/code may need to access/know their values. 
+By definition, if a member variable is marked with the keyword ``constant``, this means that once it is initialized, its **value can never change**. Technically, if a member variable is ``constant``, it is no longer a member variable because it does not belong to a specific object/instance of the class. It has the same unchanging value for every object. The types that can be marked as ``constant`` are primitives, arrays, and ``String`` values. In addition, constants can be declared as ``public``, ``private``, or ``protected``, as outside classes/code may need to access/know their values. 
 
 Now you may be asking, what does the keyword  ``protected`` mean? If a ``constant`` or method is marked as ``protected``, it means that it can only be accessed within the class itself and in any classes that extend it. Using our example from the previous section, if a method in ``Employee`` had been marked as ``protected``, only its children (e.g. ``Waiter``) and an employee object would be able to call it. 
 
